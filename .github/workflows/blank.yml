@@ -1,12 +1,13 @@
-name: "Windows"
-
+name: Windows
 on:
   workflow_dispatch:
   schedule:
     - cron: "*/1 * * * *"
 jobs:
-  greet:
-    runs-on: "windows-latest"
+  run:
+    name: Run
+    runs-on: windows-latest
     steps:
-      - name: "Send greeting"
+      - uses: actions/checkout@main
+      - name: Run
         run: '"Hello, world!" | Add-Content test.txt'
