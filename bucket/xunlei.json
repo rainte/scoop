@@ -4,7 +4,7 @@
     "homepage": "https://pc.xunlei.com",
     "license": "Proprietary",
     "url": "https://down.sandai.net/thunderPc/XunLeiSetup12.0.2.2210.exe#/dl.7z",
-    "hash": "546e9f94658fa8048641751dd383d221ac7a81bd8258a5f29fd5df179f2fc5b9",
+    "hash": "cde53e27cb68ffc067996de19c0254ec229a5d0b9feae80cd2090a4847f72850",
     "shortcuts": [["Thunder.exe", "迅雷"]],
     "checkver": {
         "url": "https://pc.xunlei.com",
