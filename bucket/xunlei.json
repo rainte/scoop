@@ -11,6 +11,6 @@
         "regex": "XunLeiSetup([\\d.]+)"
     },
     "autoupdate": {
-        "url": "https://down.sandai.net/thunderPc/XunLeiSetup$version.exe#/dl.7z"
+        "url": "https://down.sandai.net/thunderPc/XunLeiSetup$versionexe#/dl.7z"
     }
 }
