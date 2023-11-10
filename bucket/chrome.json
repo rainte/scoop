@@ -25,6 +25,7 @@
         "if (!(Test-Path \"$dir\\User Data\\*\") -and (Test-Path \"$env:LocalAppData\\Google\\Chrome\\User Data\")) {",
         "    info '[Portable Mode]: SymbolicLink user data...'",
         "    New-Item -ItemType SymbolicLink -Target '$dir\\User Data' -LinkName '$env:LocalAppData\\Google\\Chrome\\User Data'",
+        "    New-Item -ItemType SymbolicLink -Target '$env:LocalAppData\\Google\\Chrome\\User Data' -LinkName '$dir\\User Data'",
         "}"
     ],
     "env_set": {
