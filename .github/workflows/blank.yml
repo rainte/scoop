@@ -10,4 +10,4 @@ jobs:
     steps:
       - uses: actions/checkout@main
       - name: Run
-        run: '"Hello, world!" | Add-Content test.txt'
+        run: '"Hello, world!" | Add-Content /test.txt'
