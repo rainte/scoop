@@ -12,6 +12,7 @@
     "extract_dir": "openjdk-8u342-b07",
     "env_add_path": "bin",
     "env_set": {
+        "JAVA8": "$dir",
         "JAVA_HOME": "$dir"
     },
     "checkver": {
