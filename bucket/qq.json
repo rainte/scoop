@@ -12,6 +12,7 @@
         "Files produced at runtime leaves in '%AppData%\\Tencent'."
     ],
     "url": "https://webcdn.m.qq.com/spcmgr/download/QQ9.7.18.29256.exe#/dl.7z",
+    "hash": "f18c8c479eb99f8ebdd9b44ecfc86b71465dff8f21c4671c71bdedef759d512c",
     "shortcuts": [["Bin\\QQScLauncher.exe", "QQ"]],
     "installer": {
         "script": [
