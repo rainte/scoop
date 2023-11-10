@@ -12,6 +12,7 @@
     "extract_dir": "jdk-17.0.2",
     "env_add_path": "bin",
     "env_set": {
+        "JAVA17": "$dir",
         "JAVA_HOME": "$dir"
     },
     "checkver": {
