@@ -1,5 +1,5 @@
 {
-    "version": "9.7.17.29230",
+    "version": "9.7.18.29256",
     "description": "An instant messaging tool that gives you the best way to keep in touch with your friends and family.",
     "homepage": "https://im.qq.com",
     "license": {
@@ -11,8 +11,7 @@
         "'%UserProfile%\\Documents\\Tencent Files'.",
         "Files produced at runtime leaves in '%AppData%\\Tencent'."
     ],
-    "url": "https://webcdn.m.qq.com/spcmgr/download/QQ9.7.17.29230.exe#/dl.7z",
-    "hash": "5ae1949f7ba4c65bf82ee53c55053ad91cb524150a93bf1d2035e530c54757c9",
+    "url": "https://webcdn.m.qq.com/spcmgr/download/QQ9.7.18.29256.exe#/dl.7z",
     "shortcuts": [["Bin\\QQScLauncher.exe", "QQ"]],
     "installer": {
         "script": [
