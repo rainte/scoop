@@ -24,7 +24,7 @@
     "post_install": [
         "if (!(Test-Path \"$dir\\User Data\\*\") -and (Test-Path \"$env:LocalAppData\\Google\\Chrome\\User Data\")) {",
         "    info '[Portable Mode]: SymbolicLink user data...'",
-        "    cmd /c 'mklink /j \"%LOCALAPPDATA%\\Google\\Chrome\\User Data\" \"$dir\\User Data\"'",
+        "    New-Item -ItemType SymbolicLink -Target \"$dir\\User Data\" -Path \"$env:LocalAppData\\Google\\Chrome\\User Data\"",
         "}"
     ],
     "env_set": {
