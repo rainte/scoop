@@ -1,0 +1,11 @@
+name: "Windows"
+
+on:
+  schedule:
+    - cron: "* * * * *"
+jobs:
+  greet:
+    runs-on: "windows-latest"
+    steps:
+      - name: "Send greeting"
+        run: '"Hello, world!" | Add-Content test.txt'
