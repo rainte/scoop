@@ -2,7 +2,7 @@ name: "Windows"
 
 on:
   schedule:
-    - cron: "* * * * *"
+    - cron: "*/1 * * * *"
 jobs:
   greet:
     runs-on: "windows-latest"
