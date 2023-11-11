@@ -15,6 +15,7 @@
     },
     "extract_dir": "Vagrant",
     "bin": "bin\\vagrant.exe",
+    "post_install": ["vagrant plugin install vagrant-vbguest"],
     "checkver": {
         "url": "https://releases.hashicorp.com/vagrant/",
         "regex": "vagrant_([\\d.]+)</a>"
