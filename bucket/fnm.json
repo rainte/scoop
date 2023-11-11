@@ -13,11 +13,11 @@
     "bin": "fnm.exe",
     "post_install": [
         "New-Item -ItemType Directory -Force -Path \"$env:USERPROFILE\\Documents\\WindowsPowerShell\"",
-        "Add-Content -Path \"$env:USERPROFILE\\Documents\\WindowsPowerShell\\Microsoft.PowerShell_profile.ps1\" -Value \"fnm env --use-on-cd | Out-String | Invoke-Expression\""
+        "Add-Content -Path \"$env:USERPROFILE\\Documents\\WindowsPowerShell\\Microsoft.PowerShell_profile.ps1\" -Value 'fnm env --use-on-cd | Out-String | Invoke-Expression'"
     ],
     "uninstaller": {
         "script": [
-            "(Get-Content \"$env:USERPROFILE\\Documents\\WindowsPowerShell\\Microsoft.PowerShell_profile.ps1\") -notmatch \"fnm env --use-on-cd | Out-String | Invoke-Expression\" | Out-File \"$env:USERPROFILE\\Documents\\WindowsPowerShell\\Microsoft.PowerShell_profile.ps1\""
+            "Get-Content \"$env:USERPROFILE\\Documents\\WindowsPowerShell\\Microsoft.PowerShell_profile.ps1\" | Where-Object {$_ -notmatch 'fnm env --use-on-cd | Out-String | Invoke-Expression'} | Set-Content \"$env:USERPROFILE\\Documents\\WindowsPowerShell\\Microsoft.PowerShell_profile.ps1\""
         ]
     },
     "checkver": "github",
