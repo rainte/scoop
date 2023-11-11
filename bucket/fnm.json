@@ -13,10 +13,14 @@
     "bin": "fnm.exe",
     "post_install": [
         "New-Item -ItemType Directory -Force -Path \"$env:USERPROFILE\\Documents\\WindowsPowerShell\"",
-        "Add-Content -Path \"$env:USERPROFILE\\Documents\\WindowsPowerShell\\Microsoft.PowerShell_profile.ps1\" -Value 'fnm env --use-on-cd | Out-String | Invoke-Expression'"
+        "Add-Content -Path \"$env:USERPROFILE\\Documents\\WindowsPowerShell\\Microsoft.PowerShell_profile.ps1\" -Value 'fnm env --use-on-cd | Out-String | Invoke-Expression'",
+        "fnm install 16",
+        "npm config set registry https://registry.npm.taobao.org",
+        "npm install -g yarn"
     ],
     "uninstaller": {
         "script": [
+            "fnm uninstall 16",
             "Get-Content \"$env:USERPROFILE\\Documents\\WindowsPowerShell\\Microsoft.PowerShell_profile.ps1\" | Where-Object {$_ -notmatch 'fnm env --use-on-cd | Out-String | Invoke-Expression'} | Out-File \"$env:USERPROFILE\\Documents\\WindowsPowerShell\\Microsoft.PowerShell_profile.ps1\""
         ]
     },
