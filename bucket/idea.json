@@ -6,7 +6,7 @@
         "identifier": "Proprietary",
         "url": "https://www.jetbrains.com/store/license.html"
     },
-    "notes": ["激活码网址: https://www.idejihuo.com", "验证码: 1314"],
+    "notes": ["激活码网址: https://www.idejihuo.com    验证码: 1314"],
     "url": "https://download.jetbrains.com/idea/ideaIU-2023.2.5.win.zip",
     "hash": "f1261496ee4ce670bc609b080c2fe0cd843640c5b656b90d4f06be48bfdc4b20",
     "extract_to": "IDE",
