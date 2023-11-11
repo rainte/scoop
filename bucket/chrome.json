@@ -23,8 +23,8 @@
     "shortcuts": [["chrome.exe", "Google Chrome"]],
     "post_install": [
         "if ((Test-Path \"$dir\\User Data\") -and !(Test-Path \"$env:LocalAppData\\Google\\Chrome\\User Data\")) {",
-        "    info \"[Portable Mode]: SymbolicLink user data...$dir\"",
-        "    New-Item -ItemType SymbolicLink -Target \"$dir\\User Data\" -Path \"$env:LocalAppData\\Google\\Chrome\\User Data\"",
+        "    info \"[Portable Mode]: SymbolicLink user data...\"",
+        "    New-Item -ItemType SymbolicLink -Target \"$env:LocalAppData\\scoop\\persist\\chrome\\User Data\" -Path \"$env:LocalAppData\\Google\\Chrome\\User Data\"",
         "}"
     ],
     "env_set": {
