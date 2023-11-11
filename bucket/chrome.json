@@ -24,7 +24,7 @@
     "post_install": [
         "if ((Test-Path \"$dir\\User Data\") -and !(Test-Path \"$env:LocalAppData\\Google\\Chrome\\User Data\")) {",
         "    info \"[Portable Mode]: SymbolicLink user data...\"",
-        "    New-Item -ItemType SymbolicLink -Target \"$env:USERPROFILE\\scoop\\persist\\chrome\\User Data\" -Path \"$env:LocalAppData\\Google\\Chrome\\User Data\"",
+        "    New-Item -ItemType SymbolicLink -Target \"$env:LocalAppData\\Google\\Chrome\\User Data\" -Path \"$dir\\User Data\"",
         "}"
     ],
     "env_set": {
