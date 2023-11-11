@@ -14,6 +14,11 @@
     "post_install": [
         "Add-Content -Path \"$env:USERPROFILE\\Documents\\WindowsPowerShell\\Microsoft.PowerShell_profile.ps1\" -Value \"fnm env --use-on-cd | Out-String | Invoke-Expression\""
     ],
+    "uninstaller": {
+        "script": [
+            "(Get-Content \"$env:USERPROFILE\\Documents\\WindowsPowerShell\\Microsoft.PowerShell_profile.ps1\") -notmatch \"fnm env --use-on-cd | Out-String | Invoke-Expression\" | Set-Content \"$env:USERPROFILE\\Documents\\WindowsPowerShell\\Microsoft.PowerShell_profile.ps1\""
+        ]
+    },
     "checkver": "github",
     "autoupdate": {
         "architecture": {

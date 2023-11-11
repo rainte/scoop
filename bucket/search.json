@@ -12,6 +12,11 @@
     "post_install": [
         "Add-Content -Path \"$env:USERPROFILE\\Documents\\WindowsPowerShell\\Microsoft.PowerShell_profile.ps1\" -Value \"Invoke-Expression (&scoop-search-multisource.exe --hook)\""
     ],
+    "uninstaller": {
+        "script": [
+            "(Get-Content \"$env:USERPROFILE\\Documents\\WindowsPowerShell\\Microsoft.PowerShell_profile.ps1\") -notmatch \"Invoke-Expression (&scoop-search-multisource.exe --hook)\" | Set-Content \"$env:USERPROFILE\\Documents\\WindowsPowerShell\\Microsoft.PowerShell_profile.ps1\""
+        ]
+    },
     "checkver": "github",
     "autoupdate": {
         "url": "https://hub.gitmirror.com/https://github.com/plicit/scoop-search-multisource/releases/download/v$version/scoop-search-multisource.exe"
