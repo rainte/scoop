@@ -8,7 +8,7 @@
     "shortcuts": [["ChromeGo\\singbox.cmd", "ChromeGo"]],
     "pre_install": [
         "Copy-Item -Path \"$dir\\ChromeGo\\4.singbox翻墙.cmd\" -Destination \"$dir\\ChromeGo\\singbox.cmd\"",
-        "Get-Content \"$dir\\ChromeGo\\singbox.cmd\" | Out-File \"$dir\\ChromeGo\\singbox.cmd\""
+        "(Get-Content \"$dir\\ChromeGo\\singbox.cmd\") | Out-File \"$dir\\ChromeGo\\singbox.cmd\""
     ],
     "checkver": "github",
     "autoupdate": {
