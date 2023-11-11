@@ -11,6 +11,9 @@
         }
     },
     "bin": "fnm.exe",
+    "post_install": [
+        "Add-Content -Path \"$env:USERPROFILE\\Documents\\WindowsPowerShell\\Microsoft.PowerShell_profile.ps1\" -Value \"fnm env --use-on-cd | Out-String | Invoke-Expression\""
+    ],
     "checkver": "github",
     "autoupdate": {
         "architecture": {
