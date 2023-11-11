@@ -12,7 +12,8 @@
     },
     "bin": "fnm.exe",
     "post_install": [
-        "New-Item -ItemType Directory -Force -Path \"$env:USERPROFILE\\Documents\\WindowsPowerShell\""
+        "New-Item -ItemType Directory -Force -Path \"$env:USERPROFILE\\Documents\\WindowsPowerShell\"",
+        "Add-Content -Path \"$env:USERPROFILE\\Documents\\WindowsPowerShell\\Microsoft.PowerShell_profile.ps1\" -Value \"Invoke-Expression (&scoop-search-multisource.exe --hook)\""
     ],
     "uninstaller": {
         "script": [
