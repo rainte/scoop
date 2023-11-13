@@ -3,7 +3,7 @@
     "description": "音乐播放器",
     "homepage": "https://y.qq.com",
     "url": "https://dldir1.qq.com/music/clntupate/QQMusic_YQQWinPCDL.exe#/dl.7z",
-    "hash": "a27ef47712004a8c177f3570d100e9429f44dc160282ab4b8f1bfc9fb484c563",
+    "hash": "3C0DBBB2435D818FED9AD4CAED9E657C88EAE580E6E47C57B59CDFDED637F02E",
     "installer": {
         "script": [
             "Import-Module $(Join-Path $(Find-BucketDirectory -Root -Name apps) scripts/AppsUtils.psm1)",
