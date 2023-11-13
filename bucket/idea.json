@@ -6,9 +6,7 @@
         "identifier": "Proprietary",
         "url": "https://www.jetbrains.com/store/license.html"
     },
-    "notes": [
-        "激活码网址: https://www.idejihuo.com    验证码: 1314"
-    ],
+    "notes": ["激活码网址: https://www.idejihuo.com    验证码: 1314"],
     "url": "https://download.jetbrains.com/idea/ideaIU-2023.2.5.win.zip",
     "hash": "f1261496ee4ce670bc609b080c2fe0cd843640c5b656b90d4f06be48bfdc4b20",
     "extract_to": "IDE",
@@ -18,33 +16,15 @@
     },
     "architecture": {
         "64bit": {
-            "bin": [
-                [
-                    "IDE\\bin\\idea64.exe",
-                    "idea"
-                ]
-            ],
-            "shortcuts": [
-                [
-                    "IDE\\bin\\idea64.exe",
-                    "IDEA Ultimate"
-                ]
-            ]
+            "bin": [["IDE\\bin\\idea64.exe", "idea"]],
+            "shortcuts": [["IDE\\bin\\idea64.exe", "IDEA Ultimate"]]
         },
         "32bit": {
             "bin": "IDE\\bin\\idea.exe",
-            "shortcuts": [
-                [
-                    "IDE\\bin\\idea.exe",
-                    "IDEA Ultimate"
-                ]
-            ]
+            "shortcuts": [["IDE\\bin\\idea.exe", "IDEA Ultimate"]]
         }
     },
-    "persist": [
-        "IDE\\bin\\idea.properties",
-        "profile"
-    ],
+    "persist": ["IDE\\bin\\idea.properties", "profile"],
     "pre_uninstall": "Get-ChildItem \"$dir\\IDE\\bin\\idea*.exe.vmoptions\" -ErrorAction SilentlyContinue | Copy-Item -Destination \"$persist_dir\\IDE\\bin\"",
     "checkver": {
         "url": "https://data.services.jetbrains.com/products/releases?code=IIU&latest=true&platform=zip&type=release",
