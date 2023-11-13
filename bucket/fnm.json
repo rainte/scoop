@@ -15,7 +15,7 @@
         "New-Item -ItemType Directory -Force -Path \"$env:USERPROFILE\\Documents\\WindowsPowerShell\"",
         "Add-Content -Path \"$env:USERPROFILE\\Documents\\WindowsPowerShell\\Microsoft.PowerShell_profile.ps1\" -Value 'fnm env --use-on-cd | Out-String | Invoke-Expression'",
         ". $PROFILE",
-        "fnm install 20",
+        "fnm install 20 --node-dist-mirror=https://npmmirror.com/mirrors/node",
         "npm config set registry https://registry.npm.taobao.org",
         "npm install -g yarn"
     ],
