@@ -5,6 +5,37 @@
 .\bin\checkver.ps1 * -u
 ```
 
+```json
+{
+    "version": "",
+    "description": "",
+    "homepage": "",
+    "license": "",
+    "url": "",
+    "hash": "",
+    "extract_dir": "",
+    "extract_to": "",
+    "innosetup": "",
+    "pre_install": "",
+    "installer": "",
+    "bin": "",
+    "shortcuts": "",
+    "psmodule": "",
+    "env_add_path": "",
+    "env_set": "",
+    "persist": "",
+    "post_install": "",
+    "suggest": "",
+    "notes": "",
+    "pre_uninstall": "",
+    "depends": "",
+    "uninstaller": "",
+    "post_uninstall": "",
+    "checkver": "",
+    "autoupdate": ""
+}
+```
+
 <!-- Uncomment the following line after replacing placeholders -->
 <!-- [![Tests](https://github.com/<username>/<bucketname>/actions/workflows/ci.yml/badge.svg)](https://github.com/<username>/<bucketname>/actions/workflows/ci.yml) [![Excavator](https://github.com/<username>/<bucketname>/actions/workflows/excavator.yml/badge.svg)](https://github.com/<username>/<bucketname>/actions/workflows/excavator.yml) -->
 

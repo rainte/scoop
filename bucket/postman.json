@@ -1,17 +1,9 @@
 {
     "version": "10.19.7",
-    "description": "Complete API development environment.",
-    "homepage": "https://www.getpostman.com/",
-    "license": {
-        "identifier": "Freeware",
-        "url": "https://www.getpostman.com/licenses/postman_eula"
-    },
-    "architecture": {
-        "64bit": {
-            "url": "https://dl.pstmn.io/download/10.19.7/Postman-win64-10.19.7-Setup.exe#/dl.7z",
-            "hash": "sha1:7636df6de725e0d34de137318fdcb0686ff18ed0"
-        }
-    },
+    "description": "接口测试工具",
+    "homepage": "https://www.getpostman.com",
+    "url": "https://dl.pstmn.io/download/10.19.7/Postman-win64-10.19.7-Setup.exe#/dl.7z",
+    "hash": "sha1:7636df6de725e0d34de137318fdcb0686ff18ed0",
     "installer": {
         "script": [
             "Expand-7zipArchive \"$dir\\Postman-$version-full.nupkg\" \"$dir\\app\" -ExtractDir 'lib\\net45' -Removal",
@@ -24,14 +16,10 @@
         "jsonpath": "$.changelog[0].name"
     },
     "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://dl.pstmn.io/download/$version/Postman-win64-$version-Setup.exe#/dl.7z",
-                "hash": {
-                    "url": "https://dl.pstmn.io/RELEASES?platform=win64&from=$version",
-                    "regex": "(?sm)$basename.*?$sha1"
-                }
-            }
+        "url": "https://dl.pstmn.io/download/$version/Postman-win64-$version-Setup.exe#/dl.7z",
+        "hash": {
+            "url": "https://dl.pstmn.io/RELEASES?platform=win64&from=$version",
+            "regex": "(?sm)$basename.*?$sha1"
         }
     }
 }
