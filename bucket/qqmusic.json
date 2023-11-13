@@ -6,7 +6,7 @@
     "hash": "3C0DBBB2435D818FED9AD4CAED9E657C88EAE580E6E47C57B59CDFDED637F02E",
     "installer": {
         "script": [
-            "Import-Module $(Join-Path $(Find-BucketDirectory -Root -Name apps) scripts/AppsUtils.psm1)",
+            "Import-Module $bucketsdir\\rainte\\scripts\\qqmusic\\AppsUtils.psm1",
             "Mount-ExternalRuntimeData -Source \"$persist_dir\\appdata\" -Target \"$env:APPDATA\\Tencent\\QQMusic\"",
             "Remove-Module -Name AppsUtils"
         ]
@@ -16,7 +16,7 @@
     "post_install": "Copy-Item \"$dir\\QQMusic.tpc\" \"$dir\\instok\"",
     "uninstaller": {
         "script": [
-            "Import-Module $(Join-Path $(Find-BucketDirectory -Root -Name apps) scripts/AppsUtils.psm1)",
+            "Import-Module $bucketsdir\\rainte\\scripts\\qqmusic\\AppsUtils.psm1",
             "Dismount-ExternalRuntimeData -Target \"$env:APPDATA\\Tencent\\QQMusic\"",
             "Remove-Module -Name AppsUtils"
         ]
