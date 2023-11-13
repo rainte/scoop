@@ -18,7 +18,7 @@ $choice = Read-Host -Prompt '1: IP1更新 2: IP2更新 0: 跳过'
 Invoke-WebRequest -useb $choices[$choice].Url1 -o ($dir + '\singbox.json');
 Invoke-WebRequest -useb $choices[$choice].Url2 -o ($dir + '\singbox.json');
 
-if (-not (Get-Item singbox.json)) {
+if (-not (Test-Path -Path singbox.json -PathType Leaf)) {
     Write-Error '无法获取配置文件 singbox.json' -ErrorAction Stop
 }
 else {
@@ -27,7 +27,7 @@ else {
     Remove-Item -Force singbox.json
 }
 
-if (-not (Get-Item ChromeGo.exe)) {
+if (-not (Test-Path -Path ChromeGo.exe -PathType Leaf)) {
     Copy-Item sing-box.exe -Destination ChromeGo.exe
 }
 
