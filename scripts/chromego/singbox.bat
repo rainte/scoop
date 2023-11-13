@@ -30,5 +30,4 @@ goto run
 start "" "sing-box.exe" run -c config.json
 
 cd ..
-start chrome
 pause
