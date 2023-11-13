@@ -22,7 +22,7 @@
     "uninstaller": {
         "script": [
             "fnm uninstall 20",
-            "Get-Content \"$env:USERPROFILE\\Documents\\WindowsPowerShell\\Microsoft.PowerShell_profile.ps1\" | Where-Object {$_ -notmatch 'fnm env --use-on-cd | Out-String | Invoke-Expression'} | Out-File \"$env:USERPROFILE\\Documents\\WindowsPowerShell\\Microsoft.PowerShell_profile.ps1\""
+            "(Get-Content \"$env:USERPROFILE\\Documents\\WindowsPowerShell\\Microsoft.PowerShell_profile.ps1\" | Where-Object {$_ -notmatch 'fnm env --use-on-cd | Out-String | Invoke-Expression'}) | Out-File \"$env:USERPROFILE\\Documents\\WindowsPowerShell\\Microsoft.PowerShell_profile.ps1\""
         ]
     },
     "checkver": "github",
