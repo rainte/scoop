@@ -1,9 +1,9 @@
 {
-    "version": "3.9.7.29",
+    "version": "3.9.8.15",
     "description": "通讯应用",
     "homepage": "https://pc.weixin.qq.com",
-    "url": "https://webcdn.m.qq.com/spcmgr/download/WeChatSetup_3.9.7.29.exe#/dl.7z",
-    "hash": "bf1f0a79013b1f253ef47a606e20ab636cae80a8aa42c3ab4f01f0b40893a5d0",
+    "url": "https://webcdn.m.qq.com/spcmgr/download/WeChatSetup_3.9.8.15.exe#/dl.7z",
+    "hash": "749753d77418666f4f76a107fbf38cfbc8f7df9d19ff0e5218b03a02a6122583",
     "installer": {
         "script": [
             "Remove-Item \"$dir\\`$*\", \"$dir\\Uninst*\" -Force -Recurse",
@@ -27,9 +27,9 @@
     },
     "checkver": {
         "url": "https://pc.qq.com/detail/8/detail_11488.html",
-        "regex": "(?<prefix>WeChat|WeChatSetup_)([\\d.]+)\\.exe"
+        "regex": "版本：([\\d.]+)"
     },
     "autoupdate": {
-        "url": "https://webcdn.m.qq.com/spcmgr/download/$matchPrefix$version.exe#/dl.7z"
+        "url": "https://webcdn.m.qq.com/spcmgr/download/WeChatSetup_$version.exe#/dl.7z"
     }
 }

@@ -19,7 +19,7 @@
     "shortcuts": [["Bin\\QQScLauncher.exe", "QQ"]],
     "checkver": {
         "url": "https://pc.qq.com/detail/2/detail_2.html",
-        "regex": "QQ([\\d.]+).exe"
+        "regex": "版本：([\\d.]+)"
     },
     "autoupdate": {
         "url": "https://webcdn.m.qq.com/spcmgr/download/QQ$version.exe#/dl.7z"

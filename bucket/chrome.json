@@ -27,13 +27,9 @@
         "    New-Item -ItemType SymbolicLink -Target \"$dir\\User Data\" -Path \"$user\\User Data\"",
         "}"
     ],
-    "notes": [
-        "SwitchySharp: https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt"
-    ],
+    "notes": "SwitchySharp: https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt",
     "uninstaller": {
-        "script": [
-            "[Environment]::SetEnvironmentVariable('CHROME_EXECUTABLE', '', 'User')"
-        ]
+        "script": "[Environment]::SetEnvironmentVariable('CHROME_EXECUTABLE', '', 'User')"
     },
     "checkver": {
         "url": "https://scoopinstaller.github.io/UpdateTracker/googlechrome/chrome.min.xml",
