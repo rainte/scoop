@@ -9,9 +9,10 @@
         "FNM_NODE_DIST_MIRROR": "https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/"
     },
     "post_install": [
-        "$user = \"$env:USERPROFILE\\Documents\\WindowsPowerShell\"",
-        "New-Item -ItemType Directory -Force -Path \"$user\"",
-        "Add-Content -Path \"$user\\Microsoft.PowerShell_profile.ps1\" -Value 'fnm env --use-on-cd | Out-String | Invoke-Expression'",
+        "if (!(Test-Path $PROFILE)) {",
+        "    New-Item $PROFILE -ItemType File -Force",
+        "}",
+        "Add-Content -Path $PROFILE -Value 'fnm env --use-on-cd | Out-String | Invoke-Expression'",
         ". $PROFILE",
         "fnm install 20",
         "npm config set registry https://registry.npm.taobao.org",
@@ -21,8 +22,7 @@
         "script": [
             "[Environment]::SetEnvironmentVariable('FNM_NODE_DIST_MIRROR', '', 'User')",
             "fnm uninstall 20",
-            "$user = \"$env:USERPROFILE\\Documents\\WindowsPowerShell\"",
-            "(Get-Content \"$user\\Microsoft.PowerShell_profile.ps1\" | Where-Object {$_ -notmatch 'fnm env --use-on-cd | Out-String | Invoke-Expression'}) | Out-File \"$user\\Microsoft.PowerShell_profile.ps1\""
+            "(Get-Content $PROFILE | Where-Object {$_ -notmatch 'fnm env --use-on-cd | Out-String | Invoke-Expression'}) | Out-File $PROFILE"
         ]
     },
     "checkver": "github",
