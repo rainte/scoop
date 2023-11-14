@@ -10,7 +10,7 @@
         "    New-Item $PROFILE -ItemType File -Force",
         "}",
         "if (!(Get-Content $PROFILE | Where-Object {$_ -like '$OutputEncoding*'})) {",
-        "    Add-Content -Path $PROFILE -Value '$OutputEncoding = [console]::InputEncoding = [console]::OutputEncoding = New-Object System.Text.UTF8Encoding'",
+        "    Add-Content -Path $PROFILE -Value '$OutputEncoding = [console]::InputEncoding = [console]::OutputEncoding = [System.Text.Encoding]::GetEncoding(936)'",
         "}",
         "Copy-Item -Path \"$bucketsdir\\rainte\\scripts\\chromego\\ChromeGo.ps1\" -Destination \"$dir\\ChromeGo.ps1\""
     ],
