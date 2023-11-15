@@ -13,13 +13,13 @@ $choices = @(
     }
 )
 
-$choice = Read-Host -Prompt '1: IP1更新 2: IP2更新 0: 跳过'
+$choice = Read-Host -Prompt '1: IP1 Update 2: IP2 Update 0: Continue'
 ($dir = (Get-Location).Path + '\singbox') | Set-Location
 Invoke-WebRequest -useb $choices[$choice].Url1 -o ($dir + '\singbox.json');
 Invoke-WebRequest -useb $choices[$choice].Url2 -o ($dir + '\singbox.json');
 
-if (-not (Test-Path -Path singbox.json -PathType Leaf)) {
-    Write-Error '无法获取配置文件 singbox.json' -ErrorAction Stop
+if ($choice -ne 0 -and -not (Test-Path -Path singbox.json -PathType Leaf)) { 
+    Write-Error 'Failed to load singbox.json' -ErrorAction Stop
 }
 else {
     Copy-Item config.json -Destination config.json_backup
