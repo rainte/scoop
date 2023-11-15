@@ -20,9 +20,9 @@
     ],
     "uninstaller": {
         "script": [
+            "(Get-Content $PROFILE | Where-Object {$_ -notmatch 'fnm env --use-on-cd | Out-String | Invoke-Expression'}) | Out-File $PROFILE",
             "[Environment]::SetEnvironmentVariable('FNM_NODE_DIST_MIRROR', '', 'User')",
-            "fnm uninstall 20",
-            "(Get-Content $PROFILE | Where-Object {$_ -notmatch 'fnm env --use-on-cd | Out-String | Invoke-Expression'}) | Out-File $PROFILE"
+            "fnm uninstall 20"
         ]
     },
     "checkver": "github",

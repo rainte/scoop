@@ -7,17 +7,9 @@
     "installer": {
         "script": "Expand-7zipArchive \"$dir\\chrome.7z\" -ExtractDir 'Chrome-bin' -Removal"
     },
-    "bin": [
-        [
-            "chrome.exe",
-            "chrome"
-        ]
-    ],
+    "bin": [["chrome.exe", "chrome"]],
     "shortcuts": [
-        [
-            "chrome.exe",
-            "Google Chrome"
-        ],
+        ["chrome.exe", "Google Chrome"],
         [
             "chrome.exe",
             "Google Chrome Proxy",
@@ -29,10 +21,10 @@
     },
     "persist": "User Data",
     "post_install": [
-        "$user = \"$env:LocalAppData\\Google\\Chrome\"",
-        "New-Item -ItemType Directory -Force -Path \"$user\"",
-        "if ((Test-Path \"$dir\\User Data\") -and !(Test-Path \"$user\\User Data\")) {",
-        "    New-Item -ItemType SymbolicLink -Target \"$dir\\User Data\" -Path \"$user\\User Data\"",
+        "$chrome = \"$env:LocalAppData\\Google\\Chrome\"",
+        "New-Item -ItemType Directory -Force -Path \"$chrome\"",
+        "if ((Test-Path \"$dir\\User Data\") -and !(Test-Path \"$chrome\\User Data\")) {",
+        "    New-Item -ItemType SymbolicLink -Target \"$dir\\User Data\" -Path \"$chrome\\User Data\"",
         "}"
     ],
     "notes": "SwitchySharp: https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt",

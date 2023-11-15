@@ -7,9 +7,9 @@
     "innosetup": true,
     "shortcuts": [["navicat.exe", "Navicat Premium"]],
     "post_install": [
-        "$bucket = \"$bucketsdir\\rainte\\scripts\\navicat\"",
-        "cmd /c \"$bucket\\crack.bat\"",
-        "Copy-Item -Path \"$bucket\\winmm.dll\" -Destination \"$dir\\winmm.dll\""
+        "$scriptdir = \"$bucketsdir\\rainte\\scripts\\navicat\"",
+        "cmd /c \"$scriptdir\\crack.bat\"",
+        "Copy-Item -Path \"$scriptdir\\winmm.dll\" -Destination \"$dir\\winmm.dll\""
     ],
     "checkver": {
         "url": "https://navicat.com.cn/products/navicat-premium-release-note",
