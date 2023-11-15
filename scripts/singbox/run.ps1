@@ -14,9 +14,9 @@ $choices = @(
 )
 
 $choice = Read-Host -Prompt '1: IP1 Update 2: IP2 Update 0: Continue'
-($dir = (Get-Location).Path + '\singbox') | Set-Location
-Invoke-WebRequest -useb $choices[$choice].Url1 -o ($dir + '\singbox.json');
-Invoke-WebRequest -useb $choices[$choice].Url2 -o ($dir + '\singbox.json');
+# ($dir = (Get-Location).Path + '\singbox') | Set-Location
+Invoke-WebRequest -useb $choices[$choice].Url1 -o ('singbox.json');
+Invoke-WebRequest -useb $choices[$choice].Url2 -o ('singbox.json');
 
 if ($choice -ne 0 -and -not (Test-Path -Path singbox.json -PathType Leaf)) { 
     Write-Error 'Failed to load singbox.json' -ErrorAction Stop
@@ -27,9 +27,4 @@ else {
     Remove-Item -Force singbox.json
 }
 
-if (-not (Test-Path -Path ChromeGo.exe -PathType Leaf)) {
-    Copy-Item sing-box.exe -Destination ChromeGo.exe
-}
-
-Start-Process ChromeGo.exe -ArgumentList 'run -c config.json' -WindowStyle Hidden
-((Get-Location).Path + '\..') | Set-Location
+Start-Process sing-box.exe -ArgumentList 'run -c config.json' -WindowStyle Hidden
