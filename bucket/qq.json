@@ -1,9 +1,9 @@
 {
-    "version": "9.7.18.29256",
+    "version": "9.7.19.29259",
     "description": "通讯应用",
     "homepage": "https://im.qq.com",
-    "url": "https://webcdn.m.qq.com/spcmgr/download/QQ9.7.18.29256.exe#/dl.7z",
-    "hash": "f18c8c479eb99f8ebdd9b44ecfc86b71465dff8f21c4671c71bdedef759d512c",
+    "url": "https://webcdn.m.qq.com/spcmgr/download/QQ9.7.19.29259.exe#/dl.7z",
+    "hash": "eb22b5c6a0034f4b4196451a108a5743be59e6a30673f557feb3db2a3fbf80bf",
     "installer": {
         "script": [
             "Get-Item \"$dir\\*\" -Exclude .rsrc | Remove-Item",
@@ -16,7 +16,12 @@
             "Remove-Item \"$dir\\.rsrc\", \"$dir\\temp\" -Recurse"
         ]
     },
-    "shortcuts": [["Bin\\QQScLauncher.exe", "QQ"]],
+    "shortcuts": [
+        [
+            "Bin\\QQScLauncher.exe",
+            "QQ"
+        ]
+    ],
     "checkver": {
         "url": "https://pc.qq.com/detail/2/detail_2.html",
         "regex": "版本：([\\d.]+)"
