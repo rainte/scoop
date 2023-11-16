@@ -14,7 +14,6 @@ $choices = @(
 )
 
 $choice = Read-Host -Prompt '1: IP1 Update 2: IP2 Update 0: Continue'
-# ($dir = (Get-Location).Path + '\singbox') | Set-Location
 Invoke-WebRequest -useb $choices[$choice].Url1 -o ('singbox.json');
 Invoke-WebRequest -useb $choices[$choice].Url2 -o ('singbox.json');
 
@@ -22,7 +21,9 @@ if ($choice -ne 0 -and -not (Test-Path -Path singbox.json -PathType Leaf)) {
     Write-Error 'Failed to load singbox.json' -ErrorAction Stop
 }
 else {
-    Copy-Item config.json -Destination config.json_backup
+    if (Test-Path -Path config.json -PathType Leaf) {
+        Copy-Item config.json -Destination config.json_backup
+    }
     Copy-Item singbox.json -Destination config.json
     Remove-Item -Force singbox.json
 }

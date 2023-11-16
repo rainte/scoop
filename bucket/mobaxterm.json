@@ -14,8 +14,16 @@
         "@('MobaXterm backup.zip', 'MobaXterm.ini') | ForEach-Object { PersistsFile $_ }"
     ],
     "bin": "MobaXterm.exe",
-    "shortcuts": [["MobaXterm.exe", "MobaXterm Personal"]],
-    "persist": ["MobaXterm.ini", "MobaXterm backup.zip"],
+    "shortcuts": [
+        [
+            "MobaXterm.exe",
+            "MobaXterm Personal"
+        ]
+    ],
+    "persist": [
+        "MobaXterm.ini",
+        "MobaXterm backup.zip"
+    ],
     "checkver": {
         "url": "https://mobaxterm.mobatek.net/download-home-edition.html",
         "regex": "//download.mobatek.net/(?<random>[\\d]+)/MobaXterm_Portable_v([\\d.]+)\\.zip"

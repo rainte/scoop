@@ -4,7 +4,12 @@
     "homepage": "https://code.visualstudio.com",
     "url": "https://update.code.visualstudio.com/1.84.2/win32-x64-archive/stable#/dl.7z",
     "hash": "e4dd3d83cb46e6889b02d542d30da37547329fba238745bed8a863eb365059a7",
-    "shortcuts": [["code.exe", "Visual Studio Code"]],
+    "shortcuts": [
+        [
+            "code.exe",
+            "Visual Studio Code"
+        ]
+    ],
     "env_add_path": "bin",
     "persist": "data",
     "post_install": [

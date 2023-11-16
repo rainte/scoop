@@ -36,7 +36,12 @@
         "VirtualBox.exe",
         "VirtualBoxVM.exe"
     ],
-    "shortcuts": [["VirtualBox.exe", "VirtualBox"]],
+    "shortcuts": [
+        [
+            "VirtualBox.exe",
+            "VirtualBox"
+        ]
+    ],
     "uninstaller": {
         "script": [
             "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",

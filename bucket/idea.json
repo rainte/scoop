@@ -9,9 +9,22 @@
     "installer": {
         "script": "& \"$bucketsdir\\rainte\\scripts\\idea\\portable.ps1\" \"$dir\" \"$persist_dir\""
     },
-    "bin": [["IDE\\bin\\idea64.exe", "idea"]],
-    "shortcuts": [["IDE\\bin\\idea64.exe", "IDEA Ultimate"]],
-    "persist": ["IDE\\bin\\idea.properties", "profile"],
+    "bin": [
+        [
+            "IDE\\bin\\idea64.exe",
+            "idea"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "IDE\\bin\\idea64.exe",
+            "IDEA Ultimate"
+        ]
+    ],
+    "persist": [
+        "IDE\\bin\\idea.properties",
+        "profile"
+    ],
     "notes": "激活码网址: https://www.idejihuo.com  验证码: 1314",
     "pre_uninstall": "Get-ChildItem \"$dir\\IDE\\bin\\idea*.exe.vmoptions\" -ErrorAction SilentlyContinue | Copy-Item -Destination \"$persist_dir\\IDE\\bin\"",
     "checkver": {
