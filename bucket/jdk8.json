@@ -15,7 +15,7 @@
     },
     "checkver": {
         "url": "https://api.github.com/repos/AdoptOpenJDK/openjdk8-upstream-binaries/releases/latest",
-        "re": "tag_namehttps://github.com/(?<url>.*?(?<tag>jdk(?<major>[\\d]+)(?<update>u[\\d]+)-(?<build>b[\\d]+)(?<patch>[\\d.]*)))/",
+        "re": "tag_name(?<url>.*?(?<tag>jdk(?<major>[\\d]+)(?<update>u[\\d]+)-(?<build>b[\\d]+)(?<patch>[\\d.]*)))/",
         "replace": "${major}${update}-${build}${patch}"
     },
     "autoupdate": {
