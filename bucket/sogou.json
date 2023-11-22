@@ -1,9 +1,9 @@
 {
-    "version": "13.11.0.8646",
+    "version": "13.9.0.8319",
     "description": "搜狗输入法",
     "homepage": "https://pinyin.sogou.com",
-    "url": "http://cdn1.ime.sogou.com/_sogou_pinyin_[Release]_13.11.0.8646_0.exe#/installer.exe",
-    "hash": "md5:769051a43ce7acbd3ec760cd2b86e006",
+    "url": "https://sw.pcmgr.qq.com/e7ea74e9a7160ab651727bf484789695/655def7e/spcmgr/download/_sogou_pinyin_Release_13.9.0.8319_6990.exe#/installer.exe",
+    "hash": "dedf9f196ee18500fd50689fbe98064b9e006ae2a85022a712debb1d9c6d0b51",
     "installer": {
         "script": "Start-Process -filepath \"$dir\\installer.exe\" -WorkingDirectory \"$dir\" -ArgumentList \"/S /D=$dir\" -Wait"
     },
@@ -12,15 +12,10 @@
         "script": "Start-Process -filepath \"$dir\\Uninstall.exe\" -WorkingDirectory \"$dir\" -ArgumentList \"-y\" -PassThru -NoNewWindow | Wait-Process"
     },
     "checkver": {
-        "url": "http://ime.sogou.com/version.txt",
-        "regex": "(?sm)product0.*?version=([\\d.]+)"
+        "url": "https://pc.qq.com/detail/9/detail_12489.html",
+        "regex": "版本：([\\d.]+)"
     },
     "autoupdate": {
-        "url": "http://cdn1.ime.sogou.com/_sogou_pinyin_[Release]_$version_0.exe#/installer.exe",
-        "hash": {
-            "url": "http://ime.sogou.com/version.txt",
-            "regex": "(?sm)product0.*?md5=$md5",
-            "mode": "extract"
-        }
+        "url": "https://sw.pcmgr.qq.com/e7ea74e9a7160ab651727bf484789695/655def7e/spcmgr/download/_sogou_pinyin_Release_$version_6990.exe#/installer.exe"
     }
 }
