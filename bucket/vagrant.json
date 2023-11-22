@@ -1,7 +1,7 @@
 {
     "version": "2.4.0",
     "description": "构建虚拟开发环境",
-    "homepage": "https://www.vagrantup.com",
+    "homepage": "https://vagrantup.com",
     "url": "https://releases.hashicorp.com/vagrant/2.4.0/vagrant_2.4.0_windows_amd64.msi",
     "hash": "d8f62fce5de0f4b9fb1a4afece10faa6fafed41929ccfe7bb380f160358043e4",
     "extract_dir": "Vagrant",

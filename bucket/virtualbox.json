@@ -1,7 +1,7 @@
 {
     "version": "7.0.12",
     "description": "虚拟机",
-    "homepage": "https://www.virtualbox.org",
+    "homepage": "https://virtualbox.org",
     "url": "https://download.virtualbox.org/virtualbox/7.0.12/VirtualBox-7.0.12-159484-Win.exe#/setup.exe",
     "hash": "9769bae970244249e043bde9c74d704d25a80773acced5c59a04df64a10a5db7",
     "installer": {
@@ -52,13 +52,13 @@
         ]
     },
     "checkver": {
-        "url": "https://www.virtualbox.org/wiki/Downloads",
+        "url": "https://virtualbox.org/wiki/Downloads",
         "regex": "VirtualBox-(?<version>[\\d.]+)-(?<revision>[\\d]+)-Win.exe"
     },
     "autoupdate": {
         "url": "https://download.virtualbox.org/virtualbox/$version/VirtualBox-$version-$matchRevision-Win.exe#/setup.exe",
         "hash": {
-            "url": "https://www.virtualbox.org/download/hashes/$version/SHA256SUMS"
+            "url": "https://virtualbox.org/download/hashes/$version/SHA256SUMS"
         }
     }
 }

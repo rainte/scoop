@@ -1,7 +1,18 @@
 {
-    "version": "119.0.6045.160",
-    "description": "谷歌浏览器",
-    "homepage": "https://google.com/chrome",
+    "license": "Freeware",
+    "url": "https://www.ximalaya.com/down/lite/v2?client=win#/dl.7z",
+    "hash": "bfc6955980077628889e366a7a874208e4f03e34e9ede39281f9b2912a6abfa3",
+    "installer": {
+        "script": "Expand-7zipArchive \"$dir\\ximalaya-$version-ia32.nsis.7z\" \"$dir\""
+    },
+    "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\" -Force -Recurse",
+    "bin": [["喜马拉雅.exe", "喜马拉雅"]],
+    "shortcuts": [["喜马拉雅.exe", "喜马拉雅"]],
+
+
+    "version": "3.3.7",
+    "description": "喜马拉雅",
+    "homepage": "https://ximalaya.com/",
     "url": "https://dl.google.com/release2/chrome/ad6yu5cjlwmibvcbyfvev7hpdo2a_119.0.6045.160/119.0.6045.160_chrome_installer.exe#/dl.7z",
     "hash": "ed1b1936e61268bed6fa633b71d82bf3bfeb4690196f610d8e30ce24e7243480",
     "installer": {
