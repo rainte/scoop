@@ -52,7 +52,7 @@
         ]
     },
     "checkver": {
-        "url": "https://virtualbox.org/wiki/Downloads",
+        "url": "https://www.virtualbox.org/wiki/Downloads",
         "regex": "VirtualBox-(?<version>[\\d.]+)-(?<revision>[\\d]+)-Win.exe"
     },
     "autoupdate": {
