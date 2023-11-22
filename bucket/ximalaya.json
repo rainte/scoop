@@ -27,7 +27,7 @@
     "autoupdate": {
         "url": "https://webcdn.m.qq.com/spcmgr/download/GKwRIW4IbydWACAAAAIvIR_Q.exe#/dl.7z",
         "installer": {
-            "script": "Expand-7zipArchive \"$dir\\ximalaya-$matchVersion-ia32.nsis.7z\" \"$dir\""
+            "script": "Expand-7zipArchive \"$dir\\ximalaya-$matchHead-ia32.nsis.7z\" \"$dir\""
         }
     }
 }
