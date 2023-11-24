@@ -1,0 +1,62 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  # 定义多个虚拟机配置.
+  vms = [
+    { name: "ubuntu", ip: "192.168.1.110" },
+  ]
+
+  config.vm.box = "ubuntu/jammy64"
+  config.vm.synced_folder ".", "/www/wwwroot"
+
+  if Vagrant.has_plugin?("vagrant-vbguest")
+    config.vbguest.auto_update = false
+  end
+
+  init_script = <<-SHELL
+echo ================== 去除提示页 ==================
+sudo apt purge -y needrestart
+echo ================== 更换阿里源 ==================
+sudo sed -i -E 's#http://(archive|security).ubuntu.com#http://mirrors.aliyun.com#g' /etc/apt/sources.list
+# cloud-init 之后会替换源，所以把它的也换掉.
+sudo sed -i -E 's#http://(archive|security).ubuntu.com#http://mirrors.aliyun.com#g' /etc/cloud/cloud.cfg
+echo ================== 移除无用包 ==================
+sudo apt autoremove -y
+echo ================== 更新软件包 ==================
+sudo apt update
+echo ================== 改系统时区 ==================
+sudo cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+sudo timedatectl set-timezone Asia/Shanghai
+echo ================== 安装 Docker ==================
+sudo apt install -y docker.io
+sudo mkdir -p /etc/docker
+cat <<EOF | sudo tee /etc/docker/daemon.json
+{
+  "registry-mirrors": ["https://registry.cn-hangzhou.aliyuncs.com"]
+}
+EOF
+sudo systemctl restart docker
+echo ================== 安装 docker-compose ==================
+sudo curl -L "https://hub.gitmirror.com/https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+SHELL
+
+  vms.each do |vm|
+    config.vm.define "#{vm[:name]}" do |instance|
+      instance.vm.hostname = vm[:name]
+      # config.vm.network "forwarded_port", guest: 80, host: 80
+      # config.vm.network "private_network", ip: "192.168.1.100"
+      instance.vm.network "public_network", ip: vm[:ip]
+
+      instance.vm.provider "virtualbox" do |vb|
+        vb.cpus = 2
+        # vb.gui = true
+        vb.memory = "4096"
+        vb.name = vm[:name]
+      end
+
+      instance.vm.provision "shell", inline: init_script
+    end
+  end
+end
