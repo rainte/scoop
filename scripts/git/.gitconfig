@@ -1,0 +1,14 @@
+[user]
+    name = Sean
+    email = sxfmao@163.com
+[init]
+    defaultBranch = main
+[core]
+    autocrlf = false
+[alias]
+    ac = "!git add -A; git commit -m'commit';"
+    ap = "!git ac; git pull origin ${1-main}; git push origin ${1-main};"
+    ta = "!git tag $1; git push origin --tag; : "
+    td = "!git tag -d $1; git push origin --delete tag $1; : "
+    tc = "!rm -rf ./.git; git init; git remote add origin $1; git ac; git push origin main -f; : "
+    to = "!git checkout $1; git pull origin $1; git pull origin ${3-main}; git checkout $2; git pull origin $2; git pull origin ${3-main}; git merge $1; git push origin $2; git checkout $1; : "

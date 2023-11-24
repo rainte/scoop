@@ -35,7 +35,7 @@
         "    New-Item -ItemType SymbolicLink -Target \"$dir\\User Data\" -Path \"$chrome\\User Data\"",
         "}"
     ],
-    "notes": "SwitchySharp: https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt",
+    "notes": "AutoProxy: https://hub.gitmirror.com/https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt",
     "uninstaller": {
         "script": "[Environment]::SetEnvironmentVariable('CHROME_EXECUTABLE', '', 'User')"
     },
