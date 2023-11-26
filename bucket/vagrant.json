@@ -6,7 +6,10 @@
     "hash": "d8f62fce5de0f4b9fb1a4afece10faa6fafed41929ccfe7bb380f160358043e4",
     "extract_dir": "Vagrant",
     "bin": "bin\\vagrant.exe",
-    "post_install": "vagrant plugin install vagrant-vbguest",
+    "post_install": [
+        "vagrant plugin install vagrant-vbguest",
+        "Add-Content -Path \"$env:WINDIR\\System32\\drivers\\etc\\hosts\" -Value '192.168.1.110       mine.com'"
+    ],
     "checkver": {
         "url": "https://releases.hashicorp.com/vagrant/",
         "regex": "vagrant_([\\d.]+)</a>"
