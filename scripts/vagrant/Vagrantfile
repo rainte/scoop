@@ -50,9 +50,9 @@ SHELL
       instance.vm.network "public_network", ip: vm[:ip]
 
       instance.vm.provider "virtualbox" do |vb|
-        vb.cpus = 2
+        vb.cpus = 4
         # vb.gui = true
-        vb.memory = "4096"
+        vb.memory = "8192"
         vb.name = vm[:name]
       end
 
