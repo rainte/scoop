@@ -1,9 +1,9 @@
 {
-    "version": "119.0.6045.160",
+    "version": "119.0.6045.200",
     "description": "谷歌浏览器",
     "homepage": "https://google.com/chrome",
-    "url": "https://dl.google.com/release2/chrome/ad6yu5cjlwmibvcbyfvev7hpdo2a_119.0.6045.160/119.0.6045.160_chrome_installer.exe#/dl.7z",
-    "hash": "ed1b1936e61268bed6fa633b71d82bf3bfeb4690196f610d8e30ce24e7243480",
+    "url": "https://dl.google.com/release2/chrome/ahckqtq74iesp5nueo4knjewpe_119.0.6045.200/119.0.6045.200_chrome_installer.exe#/dl.7z",
+    "hash": "c372888bce251f48a45d6dda961861991eae2d9d6bf494017680c51064ce603c",
     "installer": {
         "script": "Expand-7zipArchive \"$dir\\chrome.7z\" -ExtractDir 'Chrome-bin' -Removal"
     },
