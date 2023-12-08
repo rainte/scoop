@@ -3,7 +3,7 @@
     "description": "数据库工具",
     "homepage": "https://navicat.com.cn",
     "url": "https://download.navicat.com.cn/download/navicat163_premium_cs_x64.exe",
-    "hash": "15d5f731aa9ae7654eab32887a5f2fcdd03f4e4f861245140a128a0ddc5bf782",
+    "hash": "7b6202187ff25facef1cbcfb4f56aebfcb081887ecc0b1c3d068eb0f81b5d3e7",
     "innosetup": true,
     "shortcuts": [
         [

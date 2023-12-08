@@ -24,7 +24,7 @@
     ],
     "checkver": {
         "url": "https://pc.qq.com/detail/2/detail_2.html",
-        "regex": "版本：([\\d.]+)"
+        "regex": "年最新([\\d.]+)"
     },
     "autoupdate": {
         "url": "https://webcdn.m.qq.com/spcmgr/download/QQ$version.exe#/dl.7z"

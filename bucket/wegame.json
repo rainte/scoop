@@ -20,7 +20,7 @@
     ],
     "checkver": {
         "url": "https://pc.qq.com/detail/1/detail_23761.html",
-        "regex": "版本：([\\d.]+)"
+        "regex": "年最新([\\d.]+)"
     },
     "autoupdate": {
         "url": "https://webcdn.m.qq.com/spcmgr/download/WeGameSetup$version_gjwegame_0_0.exe#/dl.7z"
