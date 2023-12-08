@@ -3,7 +3,7 @@ Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 
 # ========================= 变量 Start =========================
 # GitHub Token https://github.com/settings/tokens
-$token = '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'
+$token = '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'
 # GitHub 代理.
 $mirror = 'https://hub.gitmirror.com'
 # 过滤的软件.

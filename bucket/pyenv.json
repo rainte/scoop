@@ -21,7 +21,6 @@
         "pyenv-win\\versions",
         "pyenv-win\\install_cache"
     ],
-    "notes": "You can specify the PYTHON_BUILD_MIRROR_URL environment variable and run 'pyenv update' to speed up downloads.",
     "checkver": "github",
     "autoupdate": {
         "url": "https://github.com/pyenv-win/pyenv-win/archive/v$version.zip",
