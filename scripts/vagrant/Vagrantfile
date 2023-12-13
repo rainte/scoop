@@ -36,6 +36,8 @@ cat <<EOF | sudo tee /etc/docker/daemon.json
   "registry-mirrors": ["https://registry.cn-hangzhou.aliyuncs.com"]
 }
 EOF
+sudo sed -i '/ExecStart=/s/$/ -H tcp:\/\/0.0.0.0:2375/' /usr/lib/systemd/system/docker.service
+sudo systemctl daemon-reload
 sudo systemctl restart docker
 echo ================== 安装 docker-compose ==================
 sudo curl -L "https://hub.gitmirror.com/https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
