@@ -5,16 +5,15 @@ Vagrant.configure("2") do |config|
   # 定义多个虚拟机配置.
   vms = [
     { name: "ubuntu", ip: "192.168.1.110" },
+    # { name: "windows", ip: "192.168.1.111", box: "gusztavvargadr/windows-11" },
   ]
 
-  config.vm.box = "ubuntu/jammy64"
-  config.vm.synced_folder ".", "/www/wwwroot"
-
+  config.vm.box_check_update = false
   if Vagrant.has_plugin?("vagrant-vbguest")
     config.vbguest.auto_update = false
   end
 
-  init_script = <<-SHELL
+  ubuntu = <<-SHELL
 echo ================== 去除提示页 ==================
 sudo apt purge -y needrestart
 echo ================== 更换阿里源 ==================
@@ -45,20 +44,24 @@ sudo chmod +x /usr/local/bin/docker-compose
 SHELL
 
   vms.each do |vm|
-    config.vm.define "#{vm[:name]}" do |instance|
-      instance.vm.hostname = vm[:name]
-      # config.vm.network "forwarded_port", guest: 80, host: 80
-      # config.vm.network "private_network", ip: "192.168.1.100"
-      instance.vm.network "public_network", ip: vm[:ip]
-
-      instance.vm.provider "virtualbox" do |vb|
-        vb.cpus = 4
-        # vb.gui = true
-        vb.memory = "8192"
-        vb.name = vm[:name]
+    config.vm.define "#{vm[:name]}" do |item|
+      if vm.key?(:box) && !vm[:box].nil?
+        item.vm.box = vm[:box]
+      else
+        item.vm.box = "ubuntu/jammy64"
+        item.vm.provision "shell", inline: ubuntu
       end
 
-      instance.vm.provision "shell", inline: init_script
+      item.vm.hostname = vm[:name]
+      item.vm.network "public_network", ip: vm[:ip]
+      item.vm.synced_folder ".", "/www/wwwroot"
+
+      item.vm.provider "virtualbox" do |vb|
+        # vb.gui = true
+        vb.name = vm[:name]
+        vb.cpus = 4
+        vb.memory = "8192"
+      end
     end
   end
 end
