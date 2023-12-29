@@ -9,17 +9,17 @@
         "FNM_NODE_DIST_MIRROR": "https://mirrors.aliyun.com/nodejs-release"
     },
     "post_install": [
-        "    Write-Output '0000'",
+        "   info '0000'",
         "if (!(Test-Path $PROFILE)) {",
         "    New-Item $PROFILE -ItemType File -Force",
         "}",
-        "    Write-Output '11111'",
+        "   info '11111'",
         "Add-Content -Path $PROFILE -Value 'fnm env --use-on-cd | Out-String | Invoke-Expression'",
-        "    Write-Output '22222'",
+        "   info '22222'",
         ". $PROFILE",
-        "    Write-Output '33333'",
+        "   info '33333'",
         "fnm install 20",
-        "    Write-Output '44444'",
+        "   info '44444'",
         "npm config set registry https://registry.npmmirror.com",
         "npm install -g pnpm"
     ],
