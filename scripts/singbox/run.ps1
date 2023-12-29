@@ -14,10 +14,12 @@ $choices = @(
 )
 
 $choice = Read-Host -Prompt '1: IP1 Update 2: IP2 Update 0: Continue'
-Invoke-WebRequest -useb $choices[$choice].Url1 -o ('singbox.json');
-Invoke-WebRequest -useb $choices[$choice].Url2 -o ('singbox.json');
+if ($choice -ne 0) {
+    Invoke-WebRequest -useb $choices[$choice].Url1 -o ('singbox.json');
+    Invoke-WebRequest -useb $choices[$choice].Url2 -o ('singbox.json');
+}
 
-if ($choice -ne 0 -and -not (Test-Path -Path singbox.json -PathType Leaf)) { 
+if (-not (Test-Path -Path singbox.json -PathType Leaf)) { 
     Write-Error 'Failed to load singbox.json' -ErrorAction Stop
 }
 else {
