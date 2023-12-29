@@ -12,9 +12,13 @@
         "if (!(Test-Path $PROFILE)) {",
         "    New-Item $PROFILE -ItemType File -Force",
         "}",
+        "    info '11111'",
         "Add-Content -Path $PROFILE -Value 'fnm env --use-on-cd | Out-String | Invoke-Expression'",
+        "    info '22222'",
         ". $PROFILE",
+        "    info '33333'",
         "fnm install 20",
+        "    info '44444'",
         "npm config set registry https://registry.npmmirror.com",
         "npm install -g pnpm"
     ],
