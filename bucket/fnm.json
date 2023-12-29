@@ -16,7 +16,7 @@
         ". $PROFILE",
         "fnm install 20",
         "npm config set registry https://registry.npmmirror.com",
-        "npm install -g yarn"
+        "npm install -g pnpm"
     ],
     "uninstaller": {
         "script": [
