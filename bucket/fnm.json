@@ -16,7 +16,8 @@
         ". $PROFILE",
         "fnm install 20",
         "npm config set registry https://registry.npmmirror.com",
-        "npm install -g pnpm"
+        "npm install -g pnpm",
+        "pnpm config set store-dir $env:LOCALAPPDATA/.pnpm-store"
     ],
     "uninstaller": {
         "script": [
