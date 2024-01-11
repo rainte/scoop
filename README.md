@@ -2,37 +2,42 @@
 
 ```bash
 # 自动更新版本.
-.\bin\checkver.ps1 * -u
+.\bin\checkver.ps1 -f
+# 更新 Token.
+scoop config gh_token "GITHUB_TOKEN"
+# 设置代理.
+scoop config proxy 127.0.0.1:1080
+scoop config rm proxy
 ```
 
 ```json
 {
-    "version": "",
-    "description": "",
-    "homepage": "",
-    "license": "",
-    "url": "",
-    "hash": "",
-    "extract_dir": "",
-    "extract_to": "",
-    "innosetup": "",
-    "pre_install": "",
-    "installer": "",
-    "bin": "",
-    "shortcuts": "",
-    "psmodule": "",
-    "env_add_path": "",
-    "env_set": "",
-    "persist": "",
-    "post_install": "",
-    "suggest": "",
-    "notes": "",
-    "pre_uninstall": "",
-    "depends": "",
-    "uninstaller": "",
-    "post_uninstall": "",
-    "checkver": "",
-    "autoupdate": ""
+  "version": "",
+  "description": "",
+  "homepage": "",
+  "license": "",
+  "url": "",
+  "hash": "",
+  "extract_dir": "",
+  "extract_to": "",
+  "innosetup": "",
+  "pre_install": "",
+  "installer": "",
+  "bin": "",
+  "shortcuts": "",
+  "psmodule": "",
+  "env_add_path": "",
+  "env_set": "",
+  "persist": "",
+  "post_install": "",
+  "suggest": "",
+  "notes": "",
+  "pre_uninstall": "",
+  "depends": "",
+  "uninstaller": "",
+  "post_uninstall": "",
+  "checkver": "",
+  "autoupdate": ""
 }
 ```
 
@@ -46,13 +51,13 @@ Template bucket for [Scoop](https://scoop.sh), the Windows command-line installe
 1. Generate your own copy of this repository with the "Use this template"
    button.
 2. Allow all GitHub Actions:
-    - Navigate to `Settings` - `Actions` - `General` - `Actions permissions`.
-    - Select `Allow all actions and reusable workflows`.
-    - Then `Save`.
+   - Navigate to `Settings` - `Actions` - `General` - `Actions permissions`.
+   - Select `Allow all actions and reusable workflows`.
+   - Then `Save`.
 3. Allow writing to the repository from within GitHub Actions:
-    - Navigate to `Settings` - `Actions` - `General` - `Workflow permissions`.
-    - Select `Read and write permissions`.
-    - Then `Save`.
+   - Navigate to `Settings` - `Actions` - `General` - `Workflow permissions`.
+   - Select `Read and write permissions`.
+   - Then `Save`.
 4. Document the bucket in `README.md`.
 5. Replace the placeholder repository string in `bin/auto-pr.ps1`.
 6. Create new manifests by copying `bucket/app-name.json.template` to

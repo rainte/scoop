@@ -1,9 +1,9 @@
 {
-    "version": "5.6.5.12090",
+    "version": "5.6.6.12275",
     "description": "游戏平台",
     "homepage": "https://wegame.com.cn",
-    "url": "https://webcdn.m.qq.com/spcmgr/download/WeGameSetup5.6.5.12090_gjwegame_0_0.exe#/dl.7z",
-    "hash": "b44813f8075ab355b4c1e33a1179cc317b5bf35165765632b763549e0d9d4e4e",
+    "url": "https://webcdn.m.qq.com/spcmgr/download/WeGameSetup5.6.6.12275_gjwegame_0_0.exe#/dl.7z",
+    "hash": "1c71aa9672c17696bfe69f6da3c6e42b5e59686625755df80767b5d069eaa02c",
     "pre_install": [
         "Expand-7zipArchive \"$dir\\WeGameSetup.exe\" \"$dir\"",
         "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\`$SYSDIR\",\"$dir\\WeGameSetup.exe\" -Force -Recurse"
