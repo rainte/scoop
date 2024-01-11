@@ -1,9 +1,9 @@
 {
-    "version": "9.7.21.29276",
+    "version": "9.7.21.29280",
     "description": "通讯应用",
     "homepage": "https://im.qq.com",
-    "url": "https://webcdn.m.qq.com/spcmgr/download/QQ9.7.21.29276.exe#/dl.7z",
-    "hash": "ebae3c5481d82ab43fce5f39a9204a56e12b6d0dc20441e78671b0ef5dca689c",
+    "url": "https://webcdn.m.qq.com/spcmgr/download/QQ9.7.21.29280.exe#/dl.7z",
+    "hash": "04fc3f1e46938858a13714d4182d19f3542c04d8963c721db9dafbf8aaeeb1f6",
     "installer": {
         "script": [
             "Get-Item \"$dir\\*\" -Exclude .rsrc | Remove-Item",
