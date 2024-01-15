@@ -1,22 +1,14 @@
 $choices = @(
-    @{
-        Url1 = '';
-        Url2 = '';
-    },
-    @{
-        Url1 = 'https://www.gitlabip.xyz/Alvin9999/pac2/master/singbox/1/config.json'
-        Url2 = 'https://gitlab.com/free9999/ipupdate/-/raw/master/singbox/config.json'
-    },
-    @{
-        Url1 = 'https://www.githubip.xyz/Alvin9999/pac2/master/singbox/config.json'
-        Url2 = 'https://fastly.jsdelivr.net/gh/Alvin9999/pac2@latest/singbox/config.json' 
-    }
+    @{Url = '' },
+    @{Url = 'https://www.gitlabip.xyz/Alvin9999/pac2/master/singbox/1/config.json' },
+    @{Url = 'https://gitlab.com/free9999/ipupdate/-/raw/master/singbox/config.json' },
+    @{Url = 'https://www.githubip.xyz/Alvin9999/pac2/master/singbox/config.json' },
+    @{Url = 'https://fastly.jsdelivr.net/gh/Alvin9999/pac2@latest/singbox/config.json' }
 )
 
-$choice = Read-Host -Prompt '1: IP1 Update 2: IP2 Update 0: Continue'
+$choice = Read-Host -Prompt 'Update IP: 1|2|3|4 Continue: 0'
 if ($choice -ne 0) {
-    Invoke-WebRequest -useb $choices[$choice].Url1 -o ('singbox.json');
-    Invoke-WebRequest -useb $choices[$choice].Url2 -o ('singbox.json');
+    Invoke-WebRequest -useb $choices[$choice].Url -o ('singbox.json');
 }
 
 if (-not (Test-Path -Path singbox.json -PathType Leaf)) { 
