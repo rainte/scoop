@@ -35,6 +35,17 @@ function Install-Apps {
     scoop config scoop_repo "git@github.com:ScoopInstaller/Scoop.git"
     # 配置 Token.
     scoop config gh_token $Token
+    # 配置 GitHub 端口.
+    $sshConfig = "~\.ssh\config"
+    if (!(Test-Path $sshConfig)) {
+        New-Item $sshConfig -ItemType File -Force
+    }
+    Add-Content -Path $sshConfig -Value @'
+
+Host github.com
+Hostname ssh.github.com
+Port 443
+'@
     # 安装 Git.
     $git_manifest = '~\scoop\buckets\main\bucket\git.json'
     ((Get-Content -Path $git_manifest) -replace 'https://github.com', "$Mirror/https://github.com") | Set-Content -Path $git_manifest
@@ -46,7 +57,6 @@ function Install-Apps {
     scoop bucket add rainte "git@github.com:rainte/scoop.git"
     # 添加配置.
     Copy-Item -Path '~\scoop\buckets\rainte\scripts\git\.gitconfig' -Destination '~\.gitconfig'
-    Copy-Item -Path '~\scoop\buckets\rainte\scripts\git\config' -Destination '~\.ssh\config'
     # 安装软件.
     scoop install (Get-ChildItem "~\scoop\buckets\rainte\bucket" | ForEach-Object { $_.Name.Replace('.json', '') } | Where-Object { $_ -notin $Filters } | ForEach-Object { 'rainte/' + $_ })
 }
