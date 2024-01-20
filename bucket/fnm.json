@@ -28,7 +28,7 @@
     "script": [
       "fnm uninstall 20",
       "$bashrc = \"~\\.bashrc\"",
-      "(Get-Content $bashrc | Where-Object {$_ -notmatch 'eval \"$(fnm env --use-on-cd)\"'}) | Out-File $bashrc",
+      "(Get-Content $bashrc | Where-Object {$_ -notmatch 'fnm env --use-on-cd'}) | Out-File $bashrc",
       "(Get-Content $PROFILE | Where-Object {$_ -notmatch 'fnm env --use-on-cd | Out-String | Invoke-Expression'}) | Out-File $PROFILE",
       "[Environment]::SetEnvironmentVariable('FNM_NODE_DIST_MIRROR', '', 'User')"
     ]
