@@ -1,8 +1,10 @@
 # 允许本地运行 PowerShell 脚本.
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+# GitHub Token https://github.com/settings/tokens
+# scoop config gh_token GITHUB_TOKEN
 
 # ========================= 变量 Start =========================
-# GitHub Token https://github.com/settings/tokens
+# GitHub Token.
 $token = 'GITHUB_TOKEN'
 # GitHub 代理.
 $mirror = 'https://hub.gitmirror.com'
