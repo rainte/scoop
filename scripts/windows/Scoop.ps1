@@ -32,7 +32,7 @@ function Install-Apps {
     )
 
     # 配置仓库源.
-    scoop config scoop_repo "$Mirror/https://github.com/ScoopInstaller/Scoop"
+    scoop config scoop_repo "git@github.com:ScoopInstaller/Scoop.git"
     # 配置 Token.
     scoop config gh_token $Token
     # 安装 Git.
@@ -42,8 +42,8 @@ function Install-Apps {
     cmd /c 'mklink /j "%PROGRAMFILES%\Git" "~\scoop\apps\git\current"'
     # 添加仓库.
     scoop bucket rm main
-    scoop bucket add main "$Mirror/https://github.com/ScoopInstaller/Main.git"
-    scoop bucket add rainte "$Mirror/https://github.com/rainte/scoop.git"
+    scoop bucket add main "git@github.com:ScoopInstaller/Main.git"
+    scoop bucket add rainte "git@github.com:rainte/scoop.git"
     # 添加配置.
     Copy-Item -Path '~\scoop\buckets\rainte\scripts\git\.gitconfig' -Destination '~\.gitconfig'
     # 安装软件.
