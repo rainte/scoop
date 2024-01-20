@@ -46,6 +46,7 @@ function Install-Apps {
     scoop bucket add rainte "git@github.com:rainte/scoop.git"
     # 添加配置.
     Copy-Item -Path '~\scoop\buckets\rainte\scripts\git\.gitconfig' -Destination '~\.gitconfig'
+    Copy-Item -Path '~\scoop\buckets\rainte\scripts\git\config' -Destination '~\.ssh\config'
     # 安装软件.
     scoop install (Get-ChildItem "~\scoop\buckets\rainte\bucket" | ForEach-Object { $_.Name.Replace('.json', '') } | Where-Object { $_ -notin $Filters } | ForEach-Object { 'rainte/' + $_ })
 }
