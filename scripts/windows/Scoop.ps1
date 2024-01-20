@@ -3,14 +3,14 @@ Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 # GitHub Token https://github.com/settings/tokens
 # scoop config gh_token GITHUB_TOKEN
 
-# ========================= 变量 Start =========================
+# ========== 变量 Start ==========
 # GitHub Token.
 $token = 'GITHUB_TOKEN'
 # GitHub 代理.
 $mirror = 'https://hub.gitmirror.com'
 # 过滤的软件.
 $filters = @('jdk8', 'sogou', 'wegame')
-# ========================= 变量 End =========================
+# ========== 变量 End ==========
 
 function Install-Scoop {
     param (
