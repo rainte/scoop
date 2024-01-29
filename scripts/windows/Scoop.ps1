@@ -1,25 +1,21 @@
 # 允许本地运行 PowerShell 脚本.
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
-# GitHub Token https://github.com/settings/tokens
-# scoop config gh_token GITHUB_TOKEN
 
 # ========== 变量 Start ==========
-# GitHub Token.
-$token = 'GITHUB_TOKEN'
+# GitHub Token https://github.com/settings/tokens
+# scoop config gh_token GITHUB_TOKEN
 # 过滤的软件.
 $filters = @('jdk8', 'sogou', 'wegame')
 # ========== 变量 End ==========
 
 function Install-Scoop {
-    iwr -useb 'https://raw.githubusercontent.com/scoopinstaller/install/master/install.ps1' | iex
-}
-
-function Install-Apps {
     param (
         [Parameter(Mandatory = $true)]
-        [string]$Token,
-        [string[]]$Filters
+        [string]$Token
     )
+
+    $install = iwr -useb 'https://raw.githubusercontent.com/scoopinstaller/install/master/install.ps1'
+    $install | iex
 
     # 配置仓库源.
     scoop config scoop_repo "git@github.com:ScoopInstaller/Scoop.git"
@@ -45,6 +41,13 @@ Port 443
     scoop bucket add rainte "git@github.com:rainte/scoop.git"
     # 添加配置.
     Copy-Item -Path '~\scoop\buckets\rainte\scripts\git\.gitconfig' -Destination '~\.gitconfig'
+}
+
+function Install-Apps {
+    param (
+        [string[]]$Filters
+    )
+
     # 安装软件.
     scoop install (Get-ChildItem "~\scoop\buckets\rainte\bucket" | ForEach-Object { $_.Name.Replace('.json', '') } | Where-Object { $_ -notin $Filters } | ForEach-Object { 'rainte/' + $_ })
 }
@@ -59,13 +62,14 @@ if ($choice -eq 1) {
         Write-Error 'Do not start PowerShell as an administrator.' -ErrorAction Stop
     }
     else {
-        Install-Scoop
+        $token = Read-Host -Prompt 'Github Token'
+        Install-Scoop -Token $token
     }
 }
 
 if ($choice -eq 2) {
     if ($isAdmin) {
-        Install-Apps -Token $token -Filters $filters
+        Install-Apps -Filters $filters
     }
     else {
         Write-Error 'To start PowerShell as an administrator.' -ErrorAction Stop
