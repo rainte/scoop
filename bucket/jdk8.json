@@ -2,7 +2,7 @@
   "version": "8.0.402-6",
   "description": "Temurin8 Jdk8",
   "homepage": "https://adoptium.net",
-  "url": "https://hub.gitmirror.com/https://github.com/adoptium/temurin8-binaries/releases/download/jdk8u402-b06/OpenJDK8U-jdk_x64_windows_hotspot_8u402b06.zip",
+  "url": "https://github.com/adoptium/temurin8-binaries/releases/download/jdk8u402-b06/OpenJDK8U-jdk_x64_windows_hotspot_8u402b06.zip",
   "hash": "74b53da7dd086e4eeb09a4eafef9864f292cd7975c5af36bbf47a673ec7760ae",
   "extract_dir": "jdk8u402-b06",
   "env_add_path": "bin",
@@ -25,7 +25,7 @@
     "replace": "${ver}"
   },
   "autoupdate": {
-    "url": "https://hub.gitmirror.com/https://github.com/$matchLink/download/$matchTag/$matchName",
+    "url": "https://github.com/$matchLink/download/$matchTag/$matchName",
     "hash": {
       "url": "$url.sha256.txt",
       "find": "^([a-fA-F0-9]+)\\s"

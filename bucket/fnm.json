@@ -2,7 +2,7 @@
   "version": "1.35.1",
   "description": "Node 版本管理器 Fast Node Manager",
   "homepage": "https://github.com/Schniz/fnm",
-  "url": "https://hub.gitmirror.com/https://github.com/Schniz/fnm/releases/download/v1.35.1/fnm-windows.zip",
+  "url": "https://github.com/Schniz/fnm/releases/download/v1.35.1/fnm-windows.zip",
   "hash": "f083e7256c24f359d2101934426c87e3066831a40303ebe6e538cea917a0f184",
   "bin": "fnm.exe",
   "env_set": {
@@ -35,6 +35,6 @@
   },
   "checkver": "github",
   "autoupdate": {
-    "url": "https://hub.gitmirror.com/https://github.com/Schniz/fnm/releases/download/v$version/fnm-windows.zip"
+    "url": "https://github.com/Schniz/fnm/releases/download/v$version/fnm-windows.zip"
   }
 }

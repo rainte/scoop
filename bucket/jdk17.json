@@ -2,7 +2,7 @@
   "version": "17.0.10-7",
   "description": "Temurin17 Jdk17",
   "homepage": "https://adoptium.net",
-  "url": "https://hub.gitmirror.com/https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.10+7/OpenJDK17U-jdk_x64_windows_hotspot_17.0.10_7.zip",
+  "url": "https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.10+7/OpenJDK17U-jdk_x64_windows_hotspot_17.0.10_7.zip",
   "hash": "fa963bc6fa54c3537c663d444c7bb4aa8ae9939cba8fadaf672311f352835060",
   "extract_dir": "jdk-17.0.10+7",
   "env_add_path": "bin",
@@ -26,7 +26,7 @@
     "replace": "${ver}"
   },
   "autoupdate": {
-    "url": "https://hub.gitmirror.com/https://github.com/$matchLink/download/$matchTag/$matchName",
+    "url": "https://github.com/$matchLink/download/$matchTag/$matchName",
     "hash": {
       "url": "$url.sha256.txt",
       "find": "^([a-fA-F0-9]+)\\s"
