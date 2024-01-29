@@ -15,6 +15,8 @@ function Install-Scoop {
     )
 
     $install = iwr -useb 'https://raw.githubusercontent.com/scoopinstaller/install/master/install.ps1'
+    $pattern = "(https?://github\.com/)([\w-]+)/([\w-]+)(\.git)"
+    $install = $install -replace $pattern, 'git@github.com:$2/$3$4' | Out-String
     $install | iex
 
     # 配置仓库源.
