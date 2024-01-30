@@ -14,35 +14,10 @@ function Install-Scoop {
         [string]$Token
     )
 
-    $install = iwr -useb 'https://raw.githubusercontent.com/scoopinstaller/install/master/install.ps1'
-    $pattern = "(https?://github\.com/)([\w-]+)/([\w-]+)(\.git)"
-    $install = $install -replace $pattern, 'git@github.com:$2/$3$4' | Out-String
-    $install | iex
-
-    # 配置仓库源.
-    scoop config scoop_repo "git@github.com:ScoopInstaller/Scoop.git"
-    # 配置 Token.
+    Write-Host 'Install Scoop.'
+    iex "& {$(irm get.scoop.sh)} -RunAsAdmin"
     scoop config gh_token $Token
-    # 配置 GitHub 端口.
-    $sshConfig = "~\.ssh\config"
-    if (!(Test-Path $sshConfig)) {
-        New-Item $sshConfig -ItemType File -Force
-    }
-    Add-Content -Path $sshConfig -Value @'
-
-Host github.com
-Hostname ssh.github.com
-Port 443
-'@
-    # 安装 Git.
-    scoop install git
-    cmd /c 'mklink /j "%PROGRAMFILES%\Git" "~\scoop\apps\git\current"'
-    # 添加仓库.
-    scoop bucket rm main
-    scoop bucket add main "git@github.com:ScoopInstaller/Main.git"
-    scoop bucket add rainte "git@github.com:rainte/scoop.git"
-    # 添加配置.
-    Copy-Item -Path '~\scoop\buckets\rainte\scripts\git\.gitconfig' -Destination '~\.gitconfig'
+    Write-Host 'Install completed.'
 }
 
 function Install-Apps {
@@ -50,8 +25,16 @@ function Install-Apps {
         [string[]]$Filters
     )
 
-    # 安装软件.
-    scoop install (Get-ChildItem "~\scoop\buckets\rainte\bucket" | ForEach-Object { $_.Name.Replace('.json', '') } | Where-Object { $_ -notin $Filters } | ForEach-Object { 'rainte/' + $_ })
+    Write-Host 'Install Git.'
+    scoop install git
+    cmd /c 'mklink /j "%PROGRAMFILES%\Git" "~\scoop\apps\git\current"'
+    Write-Host 'Scoop add bucket.'
+    scoop bucket add rainte 'https://github.com/rainte/scoop.git'
+    Write-Host 'Git add .gitconfig.'
+    Copy-Item -Path '~\scoop\buckets\rainte\scripts\git\.gitconfig' -Destination '~\.gitconfig'
+    Write-Host 'Install software.'
+    scoop install (Get-ChildItem '~\scoop\buckets\rainte\bucket' | ForEach-Object { $_.Name.Replace('.json', '') } | Where-Object { $_ -notin $Filters } | ForEach-Object { 'rainte/' + $_ })
+    Write-Host 'Install completed.'
 }
 
 $choice = Read-Host -Prompt '1: Install-Scoop 2: Install-Apps'
@@ -60,16 +43,11 @@ $user = [security.principal.windowsidentity]::getcurrent()
 $isAdmin = ([security.principal.windowsprincipal]($user)).isinrole($admin)
 
 if ($choice -eq 1) {
-    if ($isAdmin) {
-        Write-Error 'Do not start PowerShell as an administrator.' -ErrorAction Stop
-    }
-    else {
-        $token = Read-Host -Prompt 'Github Token'
-        Install-Scoop -Token $token
-    }
+    $token = Read-Host -Prompt 'Github Token'
+    Install-Scoop -Token $token
 }
-
-if ($choice -eq 2) {
+elseif
+ ($choice -eq 2) {
     if ($isAdmin) {
         Install-Apps -Filters $filters
     }
