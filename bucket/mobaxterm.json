@@ -1,26 +1,34 @@
 {
-  "version": "23.6",
-  "description": "终端工具 MobaXterm",
-  "homepage": "https://mobaxterm.mobatek.net",
-  "url": "https://download.mobatek.net/2362023122033030/MobaXterm_Portable_v23.6.zip",
-  "hash": "d7f0a88bbb7de051413b8e28c1c7b3e0c692b5153bb8d96ae8618042f6d1d98d",
-  "pre_install": [
-    "Get-ChildItem \"$dir\" 'mobaxterm*.exe' | Select-Object -First 1 | Rename-Item -NewName 'MobaXterm.exe'",
-    "function PersistsFile([String] $file) {",
-    "    if (!(Test-Path \"$persist_dir\\$file\")) {",
-    "        New-Item \"$dir\\$file\" -Type File | Out-Null",
-    "    }",
-    "}",
-    "@('MobaXterm backup.zip', 'MobaXterm.ini') | ForEach-Object { PersistsFile $_ }"
-  ],
-  "bin": "MobaXterm.exe",
-  "shortcuts": [["MobaXterm.exe", "MobaXterm Personal"]],
-  "persist": ["MobaXterm.ini", "MobaXterm backup.zip"],
-  "checkver": {
-    "url": "https://mobaxterm.mobatek.net/download-home-edition.html",
-    "regex": "//download.mobatek.net/(?<random>[\\d]+)/MobaXterm_Portable_v([\\d.]+)\\.zip"
-  },
-  "autoupdate": {
-    "url": "https://download.mobatek.net/$matchRandom/MobaXterm_Portable_v$version.zip"
-  }
+    "version": "24.0",
+    "description": "终端工具 MobaXterm",
+    "homepage": "https://mobaxterm.mobatek.net",
+    "url": "https://download.mobatek.net/2402024022512842/MobaXterm_Portable_v24.0.zip",
+    "hash": "1cf640c979d8b3abf4ca3b1b646ffd6f09a8df399a7907221103a79e99a146df",
+    "pre_install": [
+        "Get-ChildItem \"$dir\" 'mobaxterm*.exe' | Select-Object -First 1 | Rename-Item -NewName 'MobaXterm.exe'",
+        "function PersistsFile([String] $file) {",
+        "    if (!(Test-Path \"$persist_dir\\$file\")) {",
+        "        New-Item \"$dir\\$file\" -Type File | Out-Null",
+        "    }",
+        "}",
+        "@('MobaXterm backup.zip', 'MobaXterm.ini') | ForEach-Object { PersistsFile $_ }"
+    ],
+    "bin": "MobaXterm.exe",
+    "shortcuts": [
+        [
+            "MobaXterm.exe",
+            "MobaXterm Personal"
+        ]
+    ],
+    "persist": [
+        "MobaXterm.ini",
+        "MobaXterm backup.zip"
+    ],
+    "checkver": {
+        "url": "https://mobaxterm.mobatek.net/download-home-edition.html",
+        "regex": "//download.mobatek.net/(?<random>[\\d]+)/MobaXterm_Portable_v([\\d.]+)\\.zip"
+    },
+    "autoupdate": {
+        "url": "https://download.mobatek.net/$matchRandom/MobaXterm_Portable_v$version.zip"
+    }
 }
