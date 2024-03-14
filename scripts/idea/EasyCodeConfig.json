@@ -1,0 +1,21 @@
+{
+  "author" : "Sean",
+  "version" : "1.2.8",
+  "userSecure" : "",
+  "currTypeMapperGroupName" : "Default",
+  "currTemplateGroupName" : "Rainte",
+  "currColumnConfigGroupName" : "Default",
+  "currGlobalConfigGroupName" : "Default",
+  "typeMapper" : { },
+  "template" : {
+    "Rainte" : {
+      "name" : "Rainte",
+      "elementList" : [ {
+        "name" : "domain",
+        "code" : "##导入宏定义\n$!{define.vm}\n\n##保存文件（宏定义）\n#save(\"/po\", \".java\")\n\n##包路径（宏定义）\n#setPackageSuffix(\"po\")\n\n##自动导入包（全局变量）\n$!{autoImport.vm}\nimport com.baomidou.mybatisplus.annotation.*;\nimport com.baomidou.mybatisplus.extension.activerecord.Model;\nimport lombok.Builder;\nimport lombok.Data;\n\n##表注释（宏定义）\n#tableComment(\"表实体类\")\n@Data\n@Builder\n@TableName(\"$!{tableInfo.obj.name}\")\npublic class $!{tableInfo.name} extends Model<$!{tableInfo.name}> {\n#foreach($column in $tableInfo.fullColumn)\n    #if(${column.comment})    // ${column.comment}\n#end\n    #if($tableInfo.pkColumn.contains($column))\n    @TableId(value = \"$!{column.obj.name}\", type = IdType.AUTO)\n    #else\n    @TableField(\"$!{column.obj.name}\")\n    #end\n    #if($column.obj.name.equals('ID'))    @TableLogic\n#end\n    private $!{tool.getClsNameByFullName($column.type)} $!{column.name};\n#end\n}"
+      } ]
+    }
+  },
+  "columnConfig" : { },
+  "globalConfig" : { }
+}
