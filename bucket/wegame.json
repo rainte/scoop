@@ -1,23 +1,34 @@
 {
-  "version": "5.6.6.12275",
-  "description": "游戏平台 WeGame",
-  "homepage": "https://wegame.com.cn",
-  "url": "https://dldir1.qq.com/tgc/wegame/full/WeGameSetup5.6.6.12275_gjwegame_0_0.exe#/dl.7z",
-  "hash": "1c71aa9672c17696bfe69f6da3c6e42b5e59686625755df80767b5d069eaa02c",
-  "pre_install": [
-    "Expand-7zipArchive \"$dir\\WeGameSetup.exe\" \"$dir\"",
-    "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\`$SYSDIR\",\"$dir\\WeGameSetup.exe\" -Force -Recurse"
-  ],
-  "shortcuts": [["wegame.exe", "WeGame"]],
-  "persist": ["downloads", "games", "data", "config", "client_config"],
-  "checkver": {
-    "script": [
-      "$res = Invoke-WebRequest -UseBasicParsing -Uri 'https://luban.m.qq.com/api/public/software-manager/softwareProxy' -Body 'cmdid=3318&jprxReq%5Breq%5D%5Bsoft_id_list%5D%5B%5D=23761' -Method 'POST'",
-      "Write-Output $res.Content"
+    "version": "5.6.8.3122",
+    "description": "游戏平台 WeGame",
+    "homepage": "https://www.wegame.com.cn",
+    "url": "https://dldir1.qq.com/tgc/wegame/full/WeGameSetup5.6.8.3122_gjwegame_0_0.exe#/dl.7z",
+    "hash": "a92155c9515fc40c1da3f6dd51c9477f5bab5d8e8d9ec860bb83cdb0a2390a4a",
+    "pre_install": [
+        "Expand-7zipArchive \"$dir\\WeGameSetup.exe\" \"$dir\"",
+        "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\`$SYSDIR\",\"$dir\\WeGameSetup.exe\" -Force -Recurse"
     ],
-    "jsonpath": "$..ver_name"
-  },
-  "autoupdate": {
-    "url": "https://dldir1.qq.com/tgc/wegame/full/WeGameSetup$matchVersion_gjwegame_0_0.exe#/dl.7z"
-  }
+    "shortcuts": [
+        [
+            "wegame.exe",
+            "WeGame"
+        ]
+    ],
+    "persist": [
+        "downloads",
+        "games",
+        "data",
+        "config",
+        "client_config"
+    ],
+    "checkver": {
+        "script": [
+            "$res = Invoke-WebRequest -UseBasicParsing -Uri 'https://luban.m.qq.com/api/public/software-manager/softwareProxy' -Body 'cmdid=3318&jprxReq%5Breq%5D%5Bsoft_id_list%5D%5B%5D=23761' -Method 'POST'",
+            "Write-Output $res.Content"
+        ],
+        "jsonpath": "$..ver_name"
+    },
+    "autoupdate": {
+        "url": "https://dldir1.qq.com/tgc/wegame/full/WeGameSetup$version_gjwegame_0_0.exe#/dl.7z"
+    }
 }
