@@ -3,7 +3,6 @@ Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 
 # ========== 变量 Start ==========
 # GitHub Token https://github.com/settings/tokens
-# scoop config gh_token GITHUB_TOKEN
 # 过滤的软件.
 $filters = @('jdk8', 'qqmusic', 'sogou', 'wegame')
 # ========== 变量 End ==========
