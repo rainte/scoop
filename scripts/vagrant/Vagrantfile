@@ -27,6 +27,9 @@ sudo apt update
 echo ========== 改系统时区 ==========
 sudo cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 sudo timedatectl set-timezone Asia/Shanghai
+echo ========== 禁用交换分区 ==========
+sudo swapoff -a
+sudo sed -ri 's/.*swap.*/#&/' /etc/fstab
 echo ========== 安装 Docker ==========
 sudo apt install -y docker.io
 sudo mkdir -p /etc/docker
