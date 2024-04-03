@@ -4,7 +4,11 @@
 [init]
     defaultBranch = main
 [core]
-    autocrlf = false
+    autocrlf = true
+[safe]
+    directory = *
+[credential "helperselector"]
+    selected = manager
 [alias]
     ac = "!git add -A; git commit -m'commit';"
     ap = "!git ac; git pull origin ${1-main}; git push origin ${1-main};"
