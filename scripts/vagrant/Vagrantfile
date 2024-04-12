@@ -5,7 +5,7 @@ Vagrant.configure("2") do |config|
   # 定义多个虚拟机配置.
   vms = [
     { name: "ubuntu", ip: "192.168.1.110" },
-    # { name: "windows", ip: "192.168.1.111", box: "gusztavvargadr/windows-11" },
+  # { name: "windows", ip: "192.168.1.111", box: "gusztavvargadr/windows-11" },
   ]
 
   config.vm.box_check_update = false
@@ -14,23 +14,20 @@ Vagrant.configure("2") do |config|
   end
 
   ubuntu = <<-SHELL
-echo ========== 去除提示页 ==========
+echo ================== 去除提示页 ==================
 sudo apt purge -y needrestart
-echo ========== 更换阿里源 ==========
+echo ================== 更换阿里源 ==================
 sudo sed -i -E 's#http://(archive|security).ubuntu.com#http://mirrors.aliyun.com#g' /etc/apt/sources.list
 # cloud-init 之后会替换源，所以把它的也换掉.
 sudo sed -i -E 's#http://(archive|security).ubuntu.com#http://mirrors.aliyun.com#g' /etc/cloud/cloud.cfg
-echo ========== 移除无用包 ==========
+echo ================== 移除无用包 ==================
 sudo apt autoremove -y
-echo ========== 更新软件包 ==========
+echo ================== 更新软件包 ==================
 sudo apt update
-echo ========== 改系统时区 ==========
+echo ================== 改系统时区 ==================
 sudo cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 sudo timedatectl set-timezone Asia/Shanghai
-echo ========== 禁用交换分区 ==========
-sudo swapoff -a
-sudo sed -ri 's/.*swap.*/#&/' /etc/fstab
-echo ========== 安装 Docker ==========
+echo ================== 安装 Docker ==================
 sudo apt install -y docker.io
 sudo mkdir -p /etc/docker
 cat <<EOF | sudo tee /etc/docker/daemon.json
@@ -41,10 +38,10 @@ EOF
 sudo sed -i '/ExecStart=/s#$# -H tcp://0.0.0.0:2375#' /usr/lib/systemd/system/docker.service
 sudo systemctl daemon-reload
 sudo systemctl restart docker
-echo ========== 安装 docker-compose ==========
-sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+echo ================== 安装 docker-compose ==================
+sudo curl -L "https://hub.gitmirror.com/https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
-SHELL
+  SHELL
 
   vms.each do |vm|
     config.vm.define "#{vm[:name]}" do |item|
@@ -60,8 +57,8 @@ SHELL
       item.vm.synced_folder ".", "/www/wwwroot"
 
       item.vm.provider "virtualbox" do |vb|
-        # vb.gui = true
         vb.name = vm[:name]
+        # vb.gui = true
         vb.cpus = 4
         vb.memory = "8192"
       end
