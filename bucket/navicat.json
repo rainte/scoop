@@ -1,9 +1,9 @@
 {
-    "version": "16.3.8",
+    "version": "16.3.9",
     "description": "数据库工具 Navicat",
     "homepage": "https://navicat.com.cn",
     "url": "https://dn.navicat.com/download/navicat163_premium_cs_x64.exe",
-    "hash": "625f12cfe000150d1ac5d5dbd29c5ba7fd0d925505420ec5e5d01010dfae31e1",
+    "hash": "1f087dd3c25d31dfe4aa545ebc8996b5f741f23ad5f26d7d8d28dbf53e9cfb37",
     "innosetup": true,
     "shortcuts": [
         [
