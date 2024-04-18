@@ -54,7 +54,7 @@ sudo chmod +x /usr/local/bin/docker-compose
 
       item.vm.hostname = vm[:name]
       item.vm.network "public_network", ip: vm[:ip]
-      item.vm.synced_folder ".", "/www"
+      item.vm.synced_folder ".", "/www/wwwroot"
 
       item.vm.provider "virtualbox" do |vb|
         vb.name = vm[:name]
