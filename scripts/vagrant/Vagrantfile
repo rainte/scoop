@@ -4,7 +4,7 @@
 Vagrant.configure("2") do |config|
   # 定义多个虚拟机配置.
   vms = [
-    { name: "ubuntu", ip: "192.168.1.110", memory: "8192" },
+    { name: "ubuntu", ip: "192.168.1.110", memory: 8 },
     # { name: "windows", ip: "192.168.1.111", box: "gusztavvargadr/windows-11" },
   ]
 
@@ -59,8 +59,8 @@ sudo chmod +x /usr/local/bin/docker-compose
       item.vm.provider "virtualbox" do |vb|
         vb.name = vm[:name]
         # vb.gui = true
-        vb.cpus = vm.key?(:cpus) ? vm[:cpus] : 4
-        vb.memory = vm.key?(:memory) ? vm[:memory] : "8192"
+        vb.cpus = vm.key?(:cpus) ? vm[:cpus] : 2
+        vb.memory = vm.key?(:memory) ? vm[:memory] * 1024 : 4096
       end
     end
   end
