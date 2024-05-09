@@ -1,9 +1,9 @@
 {
-    "version": "5.6.8.3122",
+    "version": "5.7.0.4240",
     "description": "游戏平台 WeGame",
     "homepage": "https://www.wegame.com.cn",
-    "url": "https://dldir1.qq.com/tgc/wegame/full/WeGameSetup5.6.8.3122_gjwegame_0_0.exe#/dl.7z",
-    "hash": "a92155c9515fc40c1da3f6dd51c9477f5bab5d8e8d9ec860bb83cdb0a2390a4a",
+    "url": "https://dldir1.qq.com/tgc/wegame/full/WeGameSetup5.7.0.4240_gjwegame_0_0.exe#/dl.7z",
+    "hash": "6ea0679f7ec0a5c5d4f89463174b70c8dade1c2144c61a5f4bbcc08e814c3a7a",
     "pre_install": [
         "Expand-7zipArchive \"$dir\\WeGameSetup.exe\" \"$dir\"",
         "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\`$SYSDIR\",\"$dir\\WeGameSetup.exe\" -Force -Recurse"
