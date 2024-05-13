@@ -1,8 +1,8 @@
 {
-    "version": "10.2.50.25708_2405",
+    "version": "10.2.50.25708_123456",
     "description": "音乐播放器 酷狗音乐",
     "homepage": "https://www.kugou.com/",
-    "url": "https://webcdn.m.qq.com/spcmgr/download/kugou7_1173_10.2.50.25708_2405.exe#/dl.7z",
+    "url": "https://webcdn.m.qq.com/spcmgr/download/kugou7_1173_10.2.50.25708_123456.exe#/dl.7z",
     "hash": "c64eb3efe23526b84a3283e69cfbc7c61efbfb8cb921056e251d8b70d17f50af",
     "pre_install": [
         "Move-Item \"$dir\\`$PLUGINSDIR\\KuGou.7z\" \"$dir\"",
