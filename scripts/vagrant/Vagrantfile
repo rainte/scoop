@@ -27,6 +27,7 @@ sudo apt update
 echo ================== 改系统时区 ==================
 sudo cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 sudo timedatectl set-timezone Asia/Shanghai
+sudo systemctl restart systemd-timesyncd
 echo ================== 安装 Docker ==================
 sudo apt install -y docker.io
 sudo mkdir -p /etc/docker
