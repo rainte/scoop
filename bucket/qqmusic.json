@@ -1,9 +1,9 @@
 {
-    "version": "20.13.0.0",
+    "version": "20.22.0.0",
     "description": "音乐播放器 QQMusic",
     "homepage": "https://y.qq.com",
     "url": "https://dldir1.qq.com/music/clntupate/QQMusic_YQQWinPCDL.exe#/dl.7z",
-    "hash": "6a5e0f79595ad8b77db817e1be0f3931a3949194322b169756fcd3771e9f1777",
+    "hash": "2ec67719eca25f2fa64d8767cf3d39b7e7ed4c892952fea7b139cfa8f051cf06",
     "installer": {
         "script": [
             "Import-Module $bucketsdir\\rainte\\scripts\\qqmusic\\AppsUtils.psm1",
