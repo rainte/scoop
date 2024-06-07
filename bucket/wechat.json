@@ -2,7 +2,7 @@
     "version": "3.9.10.27",
     "description": "通讯工具 WeChat",
     "homepage": "https://pc.weixin.qq.com",
-    "url": "https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe#/dl.7z",
+    "url": "https://webcdn.m.qq.com/spcmgr/download/WeChatSetup_3.9.10.27.exe#/dl.7z",
     "hash": "bd230520ab8debf42c282f067c55583b90f3ca11d5b929a99aeb3af51f9d23ea",
     "installer": {
         "script": [
@@ -35,9 +35,10 @@
             "$res = Invoke-WebRequest -UseBasicParsing -Uri 'https://luban.m.qq.com/api/public/software-manager/softwareProxy' -Body 'cmdid=3318&jprxReq%5Breq%5D%5Bsoft_id_list%5D%5B%5D=11488' -Method 'POST'",
             "Write-Output $res.Content"
         ],
-        "jsonpath": "$..ver_name"
+        "jsonpath": "$..file_name",
+        "regex": "WeChatSetup_(?<version>.*?).exe"
     },
     "autoupdate": {
-        "url": "https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe#/dl.7z"
+        "url": "https://webcdn.m.qq.com/spcmgr/download/WeChatSetup_$version.exe#/dl.7z"
     }
 }
