@@ -4,7 +4,7 @@ Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 # ========== 变量 Start ==========
 # GitHub Token https://github.com/settings/tokens
 # 过滤的软件.
-$filters = @('androidstudio', 'jdk8', 'qqmusic', 'wegame')
+$filters = @('android', 'jdk8', 'qqmusic', 'wegame')
 # ========== 变量 End ==========
 
 function Install-Scoop {
