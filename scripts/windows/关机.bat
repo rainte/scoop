@@ -1,12 +1,12 @@
-:::::::定时关机.bat::::::::
+:::::::Auto Shutdown.bat::::::::
 
 @echo off
 
-title 定时关机
+title "Auto Shutdown"
 
-echo 举例: 3h 或 3m 或 3s
+echo Example: 3h ^| 3m ^| 3s
 
-set /p time=时间: 
+set /p time=time: 
 
 if "%time:~-1%"=="s" set time=%time:~0,-1%
 if "%time:~-1%"=="S" set time=%time:~0,-1%

@@ -3,8 +3,8 @@ Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 
 # ========== 变量 Start ==========
 # GitHub Token https://github.com/settings/tokens
-# 过滤的软件.
-$filters = @('android', 'jdk8', 'qqmusic', 'wegame')
+# 安装的软件.
+$apps = @('chrome', 'fdm', 'kugou', 'office', 'qq', 'search', 'singbox', 'vscode', 'wechat', 'ximalaya')
 # ========== 变量 End ==========
 
 function Install-Scoop {
@@ -21,7 +21,7 @@ function Install-Scoop {
 
 function Install-Apps {
     param (
-        [string[]]$Filters
+        [string[]]$Apps
     )
 
     Write-Host 'Install Git.'
@@ -32,7 +32,7 @@ function Install-Apps {
     Write-Host 'Git add .gitconfig.'
     Copy-Item -Path '~\scoop\buckets\rainte\scripts\git\.gitconfig' -Destination '~\.gitconfig'
     Write-Host 'Install software.'
-    scoop install (Get-ChildItem '~\scoop\buckets\rainte\bucket' | ForEach-Object { $_.Name.Replace('.json', '') } | Where-Object { $_ -notin $Filters } | ForEach-Object { 'rainte/' + $_ })
+    scoop install (Get-ChildItem '~\scoop\buckets\rainte\bucket' | ForEach-Object { $_.Name.Replace('.json', '') } | Where-Object { $_ -in $Apps } | ForEach-Object { 'rainte/' + $_ })
     Write-Host 'Install completed.'
 }
 
@@ -48,7 +48,7 @@ if ($choice -eq 1) {
 elseif
  ($choice -eq 2) {
     if ($isAdmin) {
-        Install-Apps -Filters $filters
+        Install-Apps -Apps $apps
     }
     else {
         Write-Error 'To start PowerShell as an administrator.' -ErrorAction Stop
