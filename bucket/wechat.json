@@ -1,9 +1,9 @@
 {
-    "version": "3.9.10.27",
+    "version": "3.9.11.17",
     "description": "通讯工具 WeChat",
     "homepage": "https://pc.weixin.qq.com",
-    "url": "https://webcdn.m.qq.com/spcmgr/download/WeChatSetup_3.9.10.27.exe#/dl.7z",
-    "hash": "bd230520ab8debf42c282f067c55583b90f3ca11d5b929a99aeb3af51f9d23ea",
+    "url": "https://webcdn.m.qq.com/spcmgr/download/WeChatSetup_3.9.11.17.exe#/dl.7z",
+    "hash": "bbed5f01c0b51fe5d2ca5355159f7799e41ed72d75009ca79a4ff77514989e1f",
     "installer": {
         "script": [
             "Remove-Item \"$dir\\`$*\", \"$dir\\Uninst*\" -Force -Recurse",
