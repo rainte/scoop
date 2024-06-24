@@ -4,9 +4,11 @@
 
 title "Auto Shutdown"
 
-echo Example: 3h ^| 3m ^| 3s
+echo Example: 1h ^| 1m ^| 1s
 
-set /p time=time: 
+set /p time=time[default is 1h]: 
+
+if "%time%"=="" set "time=1h"
 
 if "%time:~-1%"=="s" set time=%time:~0,-1%
 if "%time:~-1%"=="S" set time=%time:~0,-1%
