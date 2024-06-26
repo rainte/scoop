@@ -6,7 +6,7 @@ title "Auto Shutdown"
 
 echo Example: 1h ^| 1m ^| 1s
 
-set /p time=time[default is 1h]: 
+set /p time=time[1h]: 
 
 if "%time%"=="" set "time=1h"
 
