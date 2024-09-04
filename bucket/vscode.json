@@ -7,7 +7,7 @@
     "shortcuts": [
         [
             "code.exe",
-            "Visual Studio Code"
+            "VSCode"
         ]
     ],
     "env_add_path": "bin",
