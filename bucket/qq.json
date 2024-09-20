@@ -1,9 +1,9 @@
 {
-    "version": "9.7.23.29391",
+    "version": "9.7.23.29392",
     "description": "通讯工具 QQ",
     "homepage": "https://im.qq.com",
-    "url": "https://webcdn.m.qq.com/spcmgr/download/QQ9.7.23.29391.exe#/dl.7z",
-    "hash": "26a5d9b672f4f2cb1617f51f2481bddfd0549ffa1adde77e718905bed8414427",
+    "url": "https://webcdn.m.qq.com/spcmgr/download/QQ9.7.23.29392.exe#/dl.7z",
+    "hash": "7045601a1ad6a5c53f4d0621c73adc4fdf3a20b9c606e126a29640ec3020ad9b",
     "installer": {
         "script": [
             "Get-Item \"$dir\\*\" -Exclude .rsrc | Remove-Item",
