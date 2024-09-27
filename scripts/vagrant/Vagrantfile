@@ -30,12 +30,8 @@ sudo timedatectl set-timezone Asia/Shanghai
 sudo systemctl restart systemd-timesyncd
 echo ================== 安装 Docker ==================
 sudo apt install -y docker.io
-sudo mkdir -p /etc/docker
-cat <<EOF | sudo tee /etc/docker/daemon.json
-{
-  "registry-mirrors": ["https://registry.cn-hangzhou.aliyuncs.com"]
-}
-EOF
+sudo mkdir -p /etc/systemd/system/docker.service.d
+echo -e "[Service]\nEnvironment=\"HTTP_PROXY=socks5://192.168.56.1:1080/\"\nEnvironment=\"HTTPS_PROXY=socks5://192.168.56.1:1080/\"\nEnvironment=\"NO_PROXY=localhost,127.0.0.1\"" | sudo tee /etc/systemd/system/docker.service.d/http-proxy.conf
 sudo sed -i '/ExecStart=/s#$# -H tcp://0.0.0.0:2375#' /usr/lib/systemd/system/docker.service
 sudo systemctl daemon-reload
 sudo systemctl restart docker
