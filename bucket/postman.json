@@ -1,9 +1,9 @@
 {
-    "version": "11.14.0",
+    "version": "11.15.0",
     "description": "接口调试工具 Postman",
     "homepage": "https://www.getpostman.com/",
-    "url": "https://dl.pstmn.io/download/11.14.0/Postman-win64-11.14.0-Setup.exe#/dl.7z",
-    "hash": "sha1:4edff905527d3c238062701bf598504f698a365d",
+    "url": "https://dl.pstmn.io/download/11.15.0/Postman-win64-11.15.0-Setup.exe#/dl.7z",
+    "hash": "sha1:af21f78e0d0999276cd4a5a663b907b0b9ea353b",
     "installer": {
         "script": [
             "Expand-7zipArchive \"$dir\\Postman-$version-full.nupkg\" \"$dir\\app\" -ExtractDir 'lib\\net45' -Removal",
