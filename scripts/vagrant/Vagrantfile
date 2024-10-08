@@ -14,6 +14,11 @@ Vagrant.configure("2") do |config|
   end
 
   init = <<-SHELL
+echo ================== 初始化 ==================
+echo "127.0.1.1 $HOSTNAME" | sudo tee -a /etc/hosts
+sudo tee /root/.curlrc << EOF
+proxy = "socks5://192.168.56.1:1080"
+EOF
 echo ================== 去除提示页 ==================
 sudo apt purge -y needrestart
 echo ================== 更换阿里源 ==================
@@ -31,12 +36,17 @@ sudo systemctl restart systemd-timesyncd
 echo ================== 安装 Docker ==================
 sudo apt install -y docker.io
 sudo mkdir -p /etc/systemd/system/docker.service.d
-echo -e "[Service]\nEnvironment=\"HTTP_PROXY=socks5://192.168.56.1:1080/\"\nEnvironment=\"HTTPS_PROXY=socks5://192.168.56.1:1080/\"\nEnvironment=\"NO_PROXY=localhost,127.0.0.1\"" | sudo tee /etc/systemd/system/docker.service.d/http-proxy.conf
+sudo tee /etc/systemd/system/docker.service.d/http-proxy.conf << EOF
+[Service]
+Environment="HTTP_PROXY=socks5://192.168.56.1:1080"
+Environment="HTTPS_PROXY=socks5://192.168.56.1:1080"
+Environment="NO_PROXY=localhost,127.0.0.1"
+EOF
 sudo sed -i '/ExecStart=/s#$# -H tcp://0.0.0.0:2375#' /usr/lib/systemd/system/docker.service
 sudo systemctl daemon-reload
 sudo systemctl restart docker
 echo ================== 安装 docker-compose ==================
-sudo curl -L "https://hub.gitmirror.com/https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
   SHELL
 
