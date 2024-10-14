@@ -1,9 +1,9 @@
 {
-    "version": "11.1.18.26777",
+    "version": "11.1.31.26839",
     "description": "音乐播放器 酷狗音乐",
     "homepage": "https://www.kugou.com/",
-    "url": "https://webcdn.m.qq.com/spcmgr/download/kugou7_1173_11.1.18.26777.exe#/dl.7z",
-    "hash": "ffbf5a882380f60730907df8fbaf23b340d83e9556fbed1b3b99ececdcec1462",
+    "url": "https://webcdn.m.qq.com/spcmgr/download/kugou7_1173_11.1.31.26839.exe#/dl.7z",
+    "hash": "62dbd707bf34d9612b4e56dbbe0d210e633612773f1a866382663db974b9ab1a",
     "pre_install": [
         "Move-Item \"$dir\\`$PLUGINSDIR\\KuGou.7z\" \"$dir\"",
         "Remove-Item \"$dir\\`$PLUGINSDIR\" -Force -Recurse",
