@@ -1,9 +1,9 @@
 {
-    "version": "1.96.0-insider",
+    "version": "1.95.3",
     "description": "编辑器 VSCode",
     "homepage": "https://code.visualstudio.com",
-    "url": "https://update.code.visualstudio.com/1.96.0-insider/win32-x64-archive/stable#/dl.7z",
-    "hash": "1a6f85ac9a7d3e11b97616b46dc2587caab276b4627c3da3dbad2d5a907accde",
+    "url": "https://update.code.visualstudio.com/1.95.3/win32-x64-archive/stable#/dl.7z",
+    "hash": "6d6fcd71fee97a3e110770032d7c8494145f15a92598813f031ceb09449c3f1d",
     "shortcuts": [
         [
             "code.exe",
