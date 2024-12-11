@@ -10,6 +10,32 @@ scoop config proxy 127.0.0.1:1080
 scoop config rm proxy
 ```
 
+- android
+- chrome
+- fdm
+- fiddler
+- fnm
+- idea
+- jdk17
+- jdk8
+- kugou
+- mobaxterm
+- navicat
+- office
+- postman
+- pyenv
+- qq
+- qqmusic
+- search
+- singbox
+- vagrant
+- virtualbox-np
+- vscode
+- wechat
+- wegame
+- wireshark
+- ximalaya
+
 ```json
 {
   "version": "",
