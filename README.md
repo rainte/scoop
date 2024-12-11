@@ -12,7 +12,7 @@ scoop config rm proxy
 
 - android
 - chrome
-- fdm
+- freedownloadmanager
 - fiddler
 - fnm
 - idea
