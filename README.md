@@ -29,7 +29,7 @@ scoop config rm proxy
 - search
 - singbox
 - vagrant
-- virtualbox-np
+- virtualbox-with-extension-pack-np
 - vscode
 - wechat
 - wegame
