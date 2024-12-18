@@ -28,6 +28,7 @@ scoop config rm proxy
 - qqmusic
 - search
 - singbox
+- tortoisesvn
 - vagrant
 - virtualbox-with-extension-pack-np
 - vscode
