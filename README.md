@@ -10,32 +10,32 @@ scoop config proxy 127.0.0.1:1080
 scoop config rm proxy
 ```
 
-- android
-- chrome
-- freedownloadmanager
-- fiddler
-- fnm
-- idea
-- jdk17
-- jdk8
-- kugou
-- mobaxterm
-- navicat
-- office
-- postman
-- pyenv
-- qq
-- qqmusic
-- search
-- singbox
-- tortoisesvn
-- vagrant
-- virtualbox-with-extension-pack-np
-- vscode
-- wechat
-- wegame
-- wireshark
-- ximalaya
+- extras/fiddler
+- extras/freedownloadmanager
+- extras/idea
+- extras/mobaxterm
+- extras/postman
+- extras/qq
+- extras/tortoisesvn
+- extras/vscode
+- extras/wechat
+- extras/wireshark
+- main/fnm
+- main/pyenv
+- nonportable/virtualbox-with-extension-pack-np
+- rainte/android
+- rainte/chrome
+- rainte/jdk17
+- rainte/jdk8
+- rainte/kugou
+- rainte/navicat
+- rainte/office
+- rainte/qqmusic
+- rainte/search
+- rainte/singbox
+- rainte/vagrant
+- rainte/wegame
+- rainte/ximalaya
 
 ```json
 {
