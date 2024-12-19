@@ -72,7 +72,7 @@ sudo chmod +x /usr/local/bin/docker-compose
         vb.name = vm[:name]
         # vb.gui = true
         vb.cpus = vm.key?(:cpus) ? vm[:cpus] : 4
-        vb.memory = vm.key?(:memory) ? vm[:memory] * 1024 : 4096
+        vb.memory = vm.key?(:memory) ? vm[:memory] * 1024 : 8192
       end
     end
   end
