@@ -1,6 +1,9 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+# vagrant up
+# vagrant ssh
+# vagrant reload ubuntu
 Vagrant.configure("2") do |config|
   # 定义多个虚拟机配置.
   vms = [
@@ -68,7 +71,7 @@ sudo chmod +x /usr/local/bin/docker-compose
       item.vm.provider "virtualbox" do |vb|
         vb.name = vm[:name]
         # vb.gui = true
-        vb.cpus = vm.key?(:cpus) ? vm[:cpus] : 2
+        vb.cpus = vm.key?(:cpus) ? vm[:cpus] : 4
         vb.memory = vm.key?(:memory) ? vm[:memory] * 1024 : 4096
       end
     end
