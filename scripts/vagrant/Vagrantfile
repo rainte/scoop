@@ -21,6 +21,7 @@ echo ================== 初始化 ==================
 echo "127.0.1.1 $HOSTNAME" | sudo tee -a /etc/hosts
 echo "DNS=8.8.8.8 8.8.4.4" | sudo tee -a /etc/systemd/resolved.conf
 sudo systemctl restart systemd-resolved
+sudo sed -i 's/^nameserver 127.0.0.53/nameserver 8.8.8.8/' /etc/resolv.conf
 sudo tee /root/.curlrc << EOF
 proxy = "socks5://192.168.56.1:1080"
 EOF
