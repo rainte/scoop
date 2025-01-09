@@ -15,7 +15,7 @@ scoop config rm proxy
 - extras/idea
 - extras/mobaxterm
 - extras/postman
-- extras/qq
+- extras/qq-nt
 - extras/tortoisesvn
 - extras/vscode
 - extras/wechat
