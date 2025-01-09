@@ -33,6 +33,7 @@ scoop config rm proxy
 - rainte/qqmusic
 - rainte/search
 - rainte/singbox
+- rainte/sun
 - rainte/vagrant
 - rainte/wegame
 - rainte/ximalaya
