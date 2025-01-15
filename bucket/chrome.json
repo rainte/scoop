@@ -1,9 +1,9 @@
 {
-    "version": "131.0.6778.265",
+    "version": "132.0.6834.84",
     "description": "浏览器 Chrome",
     "homepage": "https://google.com/chrome",
-    "url": "https://dl.google.com/release2/chrome/acqsprlbw3zm3i5cnpla7vn2oy7q_131.0.6778.265/131.0.6778.265_chrome_installer.exe#/dl.7z",
-    "hash": "bf5436261a44cc7ec66fbf36741a055e377230e38e27027540b9d3d206d9f3b7",
+    "url": "https://dl.google.com/release2/chrome/adgmkan4oqiiqq5aql5crhivkupa_132.0.6834.84/132.0.6834.84_chrome_installer.exe#/dl.7z",
+    "hash": "3701d7c70ad5af846a9194fca1ab552f40544812951abbfdd63ee5bfeb037f15",
     "installer": {
         "script": "Expand-7zipArchive \"$dir\\chrome.7z\" -ExtractDir 'Chrome-bin' -Removal"
     },
