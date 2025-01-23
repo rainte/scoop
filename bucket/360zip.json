@@ -1,17 +1,17 @@
 {
-  "version": "4.0正式1540版",
-  "description": "360zip",
-  "homepage": "https://yasuo.360.cn/",
-  "url": "https://dl.360safe.com/360zip_setup.exe#/setup.exe",
-  "hash": "d7ca1b032e780022ae08cbff16fa1064db894f00cd245b340a7f5015a6091c8e",
-  "installer": {
-    "script": ["Start-Process -Wait -FilePath \"$dir\\setup.exe\" -ArgumentList \"/S\""]
-  },
-  "checkver": {
-    "url": "https://yasuo.360.cn/update/changelog.json",
-    "jsonpath": "$..version"
-  },
-  "autoupdate": {
-    "url": "https://dl.360safe.com/360zip_setup.exe#/setup.exe"
-  }
+    "version": "4.0正式1540版",
+    "description": "360zip",
+    "homepage": "https://yasuo.360.cn/",
+    "url": "https://dl.360safe.com/360zip_setup.exe#/setup.exe",
+    "hash": "d7ca1b032e780022ae08cbff16fa1064db894f00cd245b340a7f5015a6091c8e",
+    "installer": {
+        "script": "Start-Process -Wait -FilePath \"$dir\\setup.exe\" -ArgumentList \"/S\""
+    },
+    "checkver": {
+        "url": "https://yasuo.360.cn/update/changelog.json",
+        "jsonpath": "$..version"
+    },
+    "autoupdate": {
+        "url": "https://dl.360safe.com/360zip_setup.exe#/setup.exe"
+    }
 }
