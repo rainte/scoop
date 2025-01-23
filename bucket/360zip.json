@@ -2,11 +2,10 @@
   "version": "4.0正式1540版",
   "description": "360zip",
   "homepage": "https://yasuo.360.cn/",
-  "url": "https://dl.360safe.com/360zip_setup.exe",
+  "url": "https://dl.360safe.com/360zip_setup.exe#/dl.7z",
   "hash": "d7ca1b032e780022ae08cbff16fa1064db894f00cd245b340a7f5015a6091c8e",
-  "installer": {
-    "script": ["Start-Process -Wait -FilePath \"$dir\\360zip_setup.exe\" -ArgumentList \"/S\""]
-  },
+  "pre_install": ["Expand-7zipArchive \"$dir\\360zip_setup.exe\" \"$dir\""],
+
   "bin": "360zip.exe",
   "shortcuts": [["360zip.exe", "360压缩"]],
   "checkver": {
@@ -14,6 +13,6 @@
     "jsonpath": "$..version"
   },
   "autoupdate": {
-    "url": "https://dl.360safe.com/360zip_setup.exe"
+    "url": "https://dl.360safe.com/360zip_setup.exe#/dl.7z"
   }
 }
