@@ -10,33 +10,35 @@ scoop config proxy 127.0.0.1:1080
 scoop config rm proxy
 ```
 
-- extras/fiddler
-- extras/freedownloadmanager
-- extras/idea
-- extras/mobaxterm
-- extras/postman
-- extras/qq-nt
-- extras/tortoisesvn
-- extras/vscode
-- extras/wechat
-- extras/wireshark
-- main/fnm
-- main/pyenv
-- nonportable/virtualbox-with-extension-pack-np
-- rainte/android
-- rainte/chrome
-- rainte/jdk17
-- rainte/jdk8
-- rainte/kugou
-- rainte/navicat
-- rainte/office
-- rainte/qqmusic
-- rainte/search
-- rainte/singbox
-- rainte/sun
-- rainte/vagrant
-- rainte/wegame
-- rainte/ximalaya
+- extras/fiddler `抓包`
+- extras/freedownloadmanager `下载`
+- extras/idea `编辑器`
+- extras/mobaxterm `远程终端`
+- extras/motrix `下载`
+- extras/postman `接口`
+- extras/qq-nt `聊天`
+- extras/tortoisesvn `版本控制`
+- extras/vscode `编辑器`
+- extras/wechat `聊天`
+- extras/wireshark `抓包`
+- main/fnm `Node版本`
+- main/pyenv `Python版本`
+- nonportable/virtualbox-with-extension-pack-np `虚拟机`
+- rainte/360zip `压缩`
+- rainte/android `编辑器`
+- rainte/chrome `浏览器`
+- rainte/jdk17 `Java`
+- rainte/jdk8 `Java`
+- rainte/kugou `音频`
+- rainte/navicat `数据库`
+- rainte/office `办公`
+- rainte/qqmusic `音频`
+- rainte/search `scoop`
+- rainte/singbox `翻墙`
+- rainte/sun `远程控制`
+- rainte/vagrant `构建虚拟环境`
+- rainte/wegame `游戏`
+- rainte/ximalaya `音频`
 
 ```json
 {
