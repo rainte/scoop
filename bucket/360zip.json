@@ -4,6 +4,13 @@
     "homepage": "https://yasuo.360.cn/",
     "url": "https://dl.360safe.com/360zip_setup.exe#/setup.exe#/dl.7z",
     "hash": "d7ca1b032e780022ae08cbff16fa1064db894f00cd245b340a7f5015a6091c8e",
+    "bin": "360zip.exe",
+    "shortcuts": [
+        [
+            "360zip.exe",
+            "360压缩"
+        ]
+    ],
     "post_install": [
         "$scriptdir = \"$bucketsdir\\rainte\\scripts\\360zip\"",
         "Copy-Item -Path \"$scriptdir\\7z.dll\" -Destination \"$dir\\7z.dll\""
