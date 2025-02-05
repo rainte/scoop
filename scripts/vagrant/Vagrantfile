@@ -4,6 +4,8 @@
 # vagrant up
 # vagrant ssh
 # vagrant reload ubuntu
+# cp -r /www/wwwroot/docker /srv/
+# find /srv/docker -type f -exec sed -i 's/\r$//' {} +
 Vagrant.configure("2") do |config|
   # 定义多个虚拟机配置.
   vms = [
