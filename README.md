@@ -23,7 +23,6 @@ scoop config rm proxy
 - extras/wireshark `抓包`
 - main/fnm `Node版本`
 - main/pyenv `Python版本`
-- nonportable/virtualbox-with-extension-pack-np `虚拟机`
 - rainte/360zip `压缩`
 - rainte/android `编辑器`
 - rainte/chrome `浏览器`
@@ -37,6 +36,7 @@ scoop config rm proxy
 - rainte/singbox `翻墙`
 - rainte/sun `远程控制`
 - rainte/vagrant `构建虚拟环境`
+- rainte/virtualbox `虚拟机`
 - rainte/wegame `游戏`
 - rainte/ximalaya `音频`
 
