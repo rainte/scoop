@@ -8,6 +8,10 @@ scoop config gh_token "GITHUB_TOKEN"
 # 设置代理.
 scoop config proxy 127.0.0.1:1080
 scoop config rm proxy
+# 去掉 Referer.
+(Get-Content "$env:SCOOP_HOME\lib\core.ps1") -replace '\$path -replace \[regex\]::escape\(\(fname \$path\)\)', 'return ""' | Set-Content "$env:SCOOP_HOME\lib\core.ps1"
+# 恢复 Referer.
+(Get-Content "$env:SCOOP_HOME\lib\core.ps1") -replace 'return \"\"', '$path -replace [regex]::escape((fname $path))' | Set-Content "$env:SCOOP_HOME\lib\core.ps1"
 ```
 
 - extras/fiddler `抓包`
