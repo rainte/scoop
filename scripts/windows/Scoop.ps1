@@ -4,7 +4,7 @@ Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 # ========== 变量 Start ==========
 # GitHub Token https://github.com/settings/tokens
 # 安装的软件.
-$apps = @('extras/qq-nt', 'extras/vscode', 'extras/wechat', 'rainte/chrome', 'rainte/kugou', 'rainte/office', 'rainte/search', 'rainte/singbox')
+$apps = @('extras/qq-nt', 'extras/vscode', 'extras/wechat', 'rainte/chrome', 'rainte/office', 'rainte/qqmusic', 'rainte/search', 'rainte/singbox')
 # ========== 变量 End ==========
 
 function Install-Scoop {
