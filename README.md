@@ -24,6 +24,7 @@ scoop config rm proxy
 - main/fnm `Node版本`
 - main/pyenv `Python版本`
 - rainte/360zip `压缩`
+- rainte/alipan `云盘`
 - rainte/android `编辑器`
 - rainte/chrome `浏览器`
 - rainte/jdk17 `Java`
@@ -35,7 +36,7 @@ scoop config rm proxy
 - rainte/search `scoop`
 - rainte/singbox `翻墙`
 - rainte/sun `远程控制`
-- rainte/vagrant `构建虚拟环境`
+- rainte/vagrant `虚拟环境构建`
 - rainte/virtualbox `虚拟机`
 - rainte/wegame `游戏`
 - rainte/ximalaya `音频`
