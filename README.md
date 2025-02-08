@@ -31,8 +31,9 @@ scoop config rm proxy
 - rainte/alipan `云盘`
 - rainte/android `编辑器`
 - rainte/chrome `浏览器`
-- rainte/jdk17 `Java`
-- rainte/jdk8 `Java`
+- rainte/jdk17 `JDK`
+- rainte/jdk21 `JDK`
+- rainte/jdk8 `JDK`
 - rainte/kugou `音频`
 - rainte/navicat `数据库`
 - rainte/office `办公`
