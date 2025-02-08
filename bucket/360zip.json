@@ -1,5 +1,5 @@
 {
-    "version": "4.0正式1540版",
+    "version": "2024.10.17",
     "description": "压缩工具 360zip",
     "homepage": "https://yasuo.360.cn/",
     "url": "https://dl.360safe.com/360zip_setup.exe#/setup.exe#/dl.7z",
@@ -17,7 +17,7 @@
     ],
     "checkver": {
         "url": "https://yasuo.360.cn/update/changelog.json",
-        "jsonpath": "$..version"
+        "jsonpath": "$..date"
     },
     "autoupdate": {
         "url": "https://dl.360safe.com/360zip_setup.exe#/setup.exe#/dl.7z"
