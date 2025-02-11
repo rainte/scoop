@@ -21,6 +21,7 @@ scoop config rm proxy
 - extras/motrix `下载`
 - extras/postman `接口`
 - extras/qq-nt `聊天`
+- extras/sigil `Epub`
 - extras/tortoisesvn `版本控制`
 - extras/vscode `编辑器`
 - extras/wechat `聊天`
