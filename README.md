@@ -8,10 +8,6 @@ scoop config gh_token "GITHUB_TOKEN"
 # 设置代理.
 scoop config proxy 127.0.0.1:1080
 scoop config rm proxy
-# 去掉 Referer.
-(Get-Content "$(Convert-Path (scoop prefix scoop))\lib\core.ps1") -replace '\$path -replace \[regex\]::escape\(\(fname \$path\)\)', 'return ""' | Set-Content "$(Convert-Path (scoop prefix scoop))\lib\core.ps1"
-# 恢复 Referer.
-(Get-Content "$(Convert-Path (scoop prefix scoop))\lib\core.ps1") -replace 'return \"\"', '$path -replace [regex]::escape((fname $path))' | Set-Content "$(Convert-Path (scoop prefix scoop))\lib\core.ps1"
 ```
 
 - extras/fiddler `抓包`
@@ -35,7 +31,6 @@ scoop config rm proxy
 - rainte/jdk17 `JDK`
 - rainte/jdk21 `JDK`
 - rainte/jdk8 `JDK`
-- rainte/kugou `音频`
 - rainte/navicat `数据库`
 - rainte/office `办公`
 - rainte/qqmusic `音频`

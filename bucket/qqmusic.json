@@ -1,9 +1,9 @@
 {
-    "version": "2102.2953",
+    "version": "21.2.0",
     "description": "音乐播放器 QQMusic",
     "homepage": "https://y.qq.com",
-    "url": "https://webcdn.m.qq.com/spcmgr/download/QQMusic_Setup_2102.2953_QMgr.exe#/dl.7z",
-    "hash": "6d5e38e26db40e7111a59aa1ea48b7f564844e5b0c9df558b11a16a89107f091",
+    "url": "https://webcdn.m.qq.com/spcmgr/download/#/dl.7z",
+    "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "installer": {
         "script": [
             "Import-Module $bucketsdir\\rainte\\scripts\\qqmusic\\AppsUtils.psm1",
@@ -28,13 +28,19 @@
     },
     "checkver": {
         "script": [
-            "$res = Invoke-WebRequest -UseBasicParsing -Uri 'https://luban.m.qq.com/api/public/software-manager/softwareProxy' -Body 'cmdid=3318&jprxReq%5Breq%5D%5Bsoft_id_list%5D%5B%5D=10' -Method 'POST'",
-            "Write-Output $res.Content"
+            "$res = Invoke-WebRequest -UseBasicParsing -Uri 'https://luban.m.qq.com/api/public/software-manager/softwareProxy' -Body 'cmdid=3318&jprxReq[req][soft_id_list]=10' -Method 'POST'",
+            "$content = $res.Content | ConvertFrom-Json",
+            "$verName = $content.resp.soft_list[0].ver_name",
+            "$fileName = $content.resp.soft_list[0].file_name",
+            "Write-Output \"$verName|$fileName\""
         ],
-        "jsonpath": "$..file_name",
-        "regex": "QQMusic_Setup_(?<version>.*?)_QMgr.exe"
+        "regex": "(?<version>[\\d.]+)(?<build>\\.[\\d]+)|(?<id>.*?)"
     },
     "autoupdate": {
-        "url": "https://webcdn.m.qq.com/spcmgr/download/QQMusic_Setup_$version_QMgr.exe#/dl.7z"
+        "url": "https://webcdn.m.qq.com/spcmgr/download/$matchId#/dl.7z",
+        "hash": {
+            "url": "https://raw.githubusercontent.com/microsoft/winget-pkgs/master/manifests/t/Tencent/QQMusic/$version/Tencent.QQMusic.installer.yaml",
+            "regex": "$sha256"
+        }
     }
 }
