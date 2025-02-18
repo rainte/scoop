@@ -2,8 +2,8 @@
     "version": "3.5.0",
     "description": "Adobe GenP",
     "homepage": "https://www.reddit.com/r/GenP",
-    "url": "https://file10.gofile.io/download/web/3faa5cfe-8169-43d1-8bfd-1e53330474ae/GenP.v3.5.0-CGP.zip",
-    "hash": "4c6183029dcf2e4d604c473c2dfb4f72037b6a8f13d9183b0842fd201e422d7a",
+    "url": "https://download2270.mediafire.com/vzqr7q2mdrqgD0dxgrWu3LQ7Zo42ToTHOULmiPqlZN-akZSeNGwOzVDjpVJ3VyvoIGmHv4tOcHdXTy5fQeR527c7ZcbE718nvV-YPpYQPt59DMugOPFgJqVGrlUhIvFa5PhZi4aKsGkaCp4TQ1TFcGDQlf1gcsegdrxJ_fqwpbyv5A/1wdgln0hniyirgi/GenP.v3.5.0-CGP.zip",
+    "hash": "ca0aa3669485c241af5166edea379b2a5474452b0d3f0951e0d5db1ccb5616f4",
     "shortcuts": [
         [
             "GenP 3.5.0.exe",
@@ -16,6 +16,6 @@
         "replace": "3.5.0"
     },
     "autoupdate": {
-        "url": "https://file10.gofile.io/download/web/3faa5cfe-8169-43d1-8bfd-1e53330474ae/GenP.v3.5.0-CGP.zip"
+        "url": "https://download2270.mediafire.com/vzqr7q2mdrqgD0dxgrWu3LQ7Zo42ToTHOULmiPqlZN-akZSeNGwOzVDjpVJ3VyvoIGmHv4tOcHdXTy5fQeR527c7ZcbE718nvV-YPpYQPt59DMugOPFgJqVGrlUhIvFa5PhZi4aKsGkaCp4TQ1TFcGDQlf1gcsegdrxJ_fqwpbyv5A/1wdgln0hniyirgi/GenP.v3.5.0-CGP.zip"
     }
 }
