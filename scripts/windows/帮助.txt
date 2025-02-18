@@ -1,1 +1,2 @@
 Shift+F10 弹出 CMD 输入 `OOBE\BYPASSNRO`
+dism++ 清空密码
