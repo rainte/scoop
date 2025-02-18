@@ -16,6 +16,7 @@
         "replace": "3.5.0"
     },
     "autoupdate": {
-        "url": "https://download2270.mediafire.com/vzqr7q2mdrqgD0dxgrWu3LQ7Zo42ToTHOULmiPqlZN-akZSeNGwOzVDjpVJ3VyvoIGmHv4tOcHdXTy5fQeR527c7ZcbE718nvV-YPpYQPt59DMugOPFgJqVGrlUhIvFa5PhZi4aKsGkaCp4TQ1TFcGDQlf1gcsegdrxJ_fqwpbyv5A/1wdgln0hniyirgi/GenP.v3.5.0-CGP.zip"
+        "url": "https://download2270.mediafire.com/vzqr7q2mdrqgD0dxgrWu3LQ7Zo42ToTHOULmiPqlZN-akZSeNGwOzVDjpVJ3VyvoIGmHv4tOcHdXTy5fQeR527c7ZcbE718nvV-YPpYQPt59DMugOPFgJqVGrlUhIvFa5PhZi4aKsGkaCp4TQ1TFcGDQlf1gcsegdrxJ_fqwpbyv5A/1wdgln0hniyirgi/GenP.v3.5.0-CGP.zip",
+        "extract_dir": "GenP.v3.5.0-CGP"
     }
 }
