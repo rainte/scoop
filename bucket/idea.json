@@ -10,7 +10,7 @@
         "script": [
             "if (!(Test-Path \"$persist_dir\\IDE\\bin\\idea.properties\")) {",
             "    info 'Copying idea.properties file...'",
-            "    $current = (Split-Path $dir | Join-Path -ChildPath 'current') -replace '\\', '/'",
+            "    $current = (Split-Path $dir | Join-Path -ChildPath 'current') -replace '\\\\', '/'",
             "    $CONT = Get-Content \"$dir\\IDE\\bin\\idea.properties\"",
             "    $CONT = $CONT -replace '^#\\s*(idea.config.path=).*$', \"`$1$current/profile/config\"",
             "    $CONT = $CONT -replace '^#\\s*(idea.system.path=).*$', \"`$1$current/profile/system\"",
