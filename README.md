@@ -12,7 +12,6 @@ scoop config rm proxy
 
 - extras/fiddler `抓包`
 - extras/freedownloadmanager `下载`
-- extras/idea `编辑器`
 - extras/mobaxterm `远程终端`
 - extras/motrix `下载`
 - extras/postman `接口`
@@ -25,16 +24,18 @@ scoop config rm proxy
 - main/fnm `Node版本`
 - main/pyenv `Python版本`
 - rainte/360zip `压缩`
+- rainte/adobe `设计`
 - rainte/alipan `云盘`
 - rainte/android `编辑器`
 - rainte/chrome `浏览器`
-- rainte/jdk17 `JDK`
-- rainte/jdk21 `JDK`
-- rainte/jdk8 `JDK`
+- rainte/idea `编辑器`
+- rainte/jdk17 `Jdk`
+- rainte/jdk21 `Jdk`
+- rainte/jdk8 `Jdk`
 - rainte/navicat `数据库`
 - rainte/office `办公`
 - rainte/qqmusic `音频`
-- rainte/search `scoop`
+- rainte/search `Scoop`
 - rainte/singbox `翻墙`
 - rainte/sun `远程控制`
 - rainte/vagrant `虚拟环境构建`
