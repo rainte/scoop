@@ -10,6 +10,9 @@ scoop config proxy 127.0.0.1:1080
 scoop config rm proxy
 # 开始菜单.
 %APPDATA%\Microsoft\Windows\Start Menu\Programs\Scoop Apps
+# 重启资源管理器.
+taskkill /f /im explorer.exe
+explorer.exe
 ```
 
 - extras/fiddler `抓包`
