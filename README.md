@@ -17,17 +17,17 @@ explorer.exe
 
 - extras/fiddler `抓包`
 - extras/freedownloadmanager `下载`
-- extras/mobaxterm `远程终端`
+- extras/mobaxterm `终端`
 - extras/motrix `下载`
 - extras/postman `接口`
 - extras/qq-nt `聊天`
 - extras/sigil `Epub`
-- extras/tortoisesvn `版本控制`
+- extras/tortoisesvn `版本`
 - extras/vscode `编辑器`
 - extras/wechat `聊天`
 - extras/wireshark `抓包`
-- main/fnm `Node版本`
-- main/pyenv `Python版本`
+- main/fnm `Node`
+- main/pyenv `Python`
 - rainte/360zip `压缩`
 - rainte/adobe `设计`
 - rainte/alipan `云盘`
@@ -42,8 +42,8 @@ explorer.exe
 - rainte/qqmusic `音频`
 - rainte/search `Scoop`
 - rainte/singbox `翻墙`
-- rainte/sun `远程控制`
-- rainte/vagrant `虚拟环境构建`
+- rainte/sun `远程`
+- rainte/vagrant `虚拟机`
 - rainte/virtualbox `虚拟机`
 - rainte/wegame `游戏`
 - rainte/ximalaya `音频`
