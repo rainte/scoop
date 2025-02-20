@@ -46,6 +46,7 @@ explorer.exe
 - rainte/vagrant `虚拟机`
 - rainte/virtualbox `虚拟机`
 - rainte/wegame `游戏`
+- rainte/wepe `装机`
 - rainte/ximalaya `音频`
 
 ```json
