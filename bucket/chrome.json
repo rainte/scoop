@@ -29,7 +29,7 @@
         "if ((Test-Path \"$dir\\User Data\") -and !(Test-Path \"$chrome\\User Data\")) {",
         "    New-Item -ItemType SymbolicLink -Target \"$dir\\User Data\" -Path \"$chrome\\User Data\"",
         "}",
-        "Invoke-WebRequest -Uri \"https://raw.githubusercontent.com/rainte/chrome/refs/heads/main/rainte.crx\" -OutFile \"$persist_dir\\chrome\"",
+        "Invoke-WebRequest -Uri \"https://raw.githubusercontent.com/rainte/chrome/refs/heads/main/rainte.crx\" -OutFile \"$persist_dir\\chrome\\rainte.crx\"",
         "Expand-7zipArchive \"$persist_dir\\chrome\\rainte.crx\" \"$persist_dir\\chrome\\rainte\""
     ],
     "notes": "AutoProxy: https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt",
