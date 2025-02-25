@@ -13,6 +13,8 @@ scoop config rm proxy
 # 重启资源管理器.
 taskkill /f /im explorer.exe
 explorer.exe
+# 杀死进程.
+taskkill /f /pid 110
 ```
 
 - extras/fiddler `抓包`
