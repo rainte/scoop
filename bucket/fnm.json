@@ -1,0 +1,40 @@
+{
+    "version": "1.38.1",
+    "description": "Node 版本管理器 Fast Node Manager",
+    "homepage": "https://github.com/Schniz/fnm",
+    "url": "https://github.com/Schniz/fnm/releases/download/v1.38.1/fnm-windows.zip",
+    "hash": "377796e8f2f51eb8b5de8983974caa8922b83c167197b68b33962775703ad4a0",
+    "bin": "fnm.exe",
+    "env_set": {
+        "FNM_NODE_DIST_MIRROR": "https://mirrors.aliyun.com/nodejs-release"
+    },
+    "post_install": [
+        "$bashrc = \"~\\.bashrc\"",
+        "if (!(Test-Path $bashrc)) {",
+        "    New-Item $bashrc -ItemType File -Force",
+        "}",
+        "Add-Content -Path $bashrc -Value 'eval \"$(fnm env --use-on-cd)\"'",
+        "if (!(Test-Path $PROFILE)) {",
+        "    New-Item $PROFILE -ItemType File -Force",
+        "}",
+        "Add-Content -Path $PROFILE -Value 'fnm env --use-on-cd | Out-String | Invoke-Expression'",
+        ". $PROFILE",
+        "fnm install 22",
+        "npm config set registry https://registry.npmmirror.com",
+        "npm install -g pnpm",
+        "pnpm config set store-dir $env:LOCALAPPDATA/.pnpm-store"
+    ],
+    "uninstaller": {
+        "script": [
+            "fnm uninstall 22",
+            "$bashrc = \"~\\.bashrc\"",
+            "(Get-Content $bashrc | Where-Object {$_ -notmatch 'fnm env --use-on-cd'}) | Out-File $bashrc",
+            "(Get-Content $PROFILE | Where-Object {$_ -notmatch 'fnm env --use-on-cd | Out-String | Invoke-Expression'}) | Out-File $PROFILE",
+            "[Environment]::SetEnvironmentVariable('FNM_NODE_DIST_MIRROR', '', 'User')"
+        ]
+    },
+    "checkver": "github",
+    "autoupdate": {
+        "url": "https://github.com/Schniz/fnm/releases/download/v$version/fnm-windows.zip"
+    }
+}
