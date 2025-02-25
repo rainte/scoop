@@ -26,7 +26,6 @@ taskkill /f /pid 110
 - extras/sigil `Epub`
 - extras/tortoisesvn `版本`
 - extras/vscode `编辑器`
-- extras/wechat `聊天`
 - extras/wireshark `抓包`
 - main/fnm `Node`
 - main/pyenv `Python`
@@ -47,6 +46,7 @@ taskkill /f /pid 110
 - rainte/sun `远程`
 - rainte/vagrant `虚拟机`
 - rainte/virtualbox `虚拟机`
+- rainte/wechat `聊天`
 - rainte/wegame `游戏`
 - rainte/wepe `装机`
 - rainte/ximalaya `音频`
