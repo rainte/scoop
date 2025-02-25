@@ -18,7 +18,7 @@
         "Add-Content -Path $PROFILE -Value \"Invoke-Expression (&scoop-search-multisource.exe --hook)\""
     ],
     "uninstaller": {
-        "script": "(Get-Content $PROFILE | Where-Object {$_ -notmatch \"Invoke-Expression (&scoop-search-multisource.exe --hook)\"}) | Out-File $PROFILE"
+        "script": "(Get-Content $PROFILE | Where-Object {$_ -notmatch \"scoop-search-multisource.exe\"}) | Out-File $PROFILE"
     },
     "checkver": "github",
     "autoupdate": {
