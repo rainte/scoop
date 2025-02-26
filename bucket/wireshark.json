@@ -2,6 +2,7 @@
     "version": "4.4.5",
     "description": "抓包: Wireshark",
     "homepage": "https://www.wireshark.org",
+    "license": "Unknown",
     "url": "https://www.wireshark.org/download/win64/Wireshark-4.4.5-x64.exe#/dl.7z",
     "hash": "2dfdd1116d1f2c5a916a223b3e421f43fd15a6d2fdb7e2be23ce280d2062e19f",
     "installer": {

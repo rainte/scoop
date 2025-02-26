@@ -2,6 +2,7 @@
     "version": "2.4.3",
     "description": "虚拟机: Vagrant",
     "homepage": "https://vagrantup.com",
+    "license": "Unknown",
     "url": "https://releases.hashicorp.com/vagrant/2.4.3/vagrant_2.4.3_windows_amd64.msi",
     "hash": "5eb57707046255b941a4b8fcf8863fa5d67aa5f33f1c48a150c2bb274c9f003c",
     "extract_dir": "Vagrant",

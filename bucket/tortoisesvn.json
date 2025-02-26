@@ -2,6 +2,7 @@
     "version": "1.14.9.29743",
     "description": "版本: TortoiseSVN",
     "homepage": "https://tortoisesvn.net",
+    "license": "Unknown",
     "url": [
         "https://sourceforge.net/projects/tortoisesvn/files/1.14.9/Application/TortoiseSVN-1.14.9.29743-x64-svn-1.14.5.msi",
         "https://raw.githubusercontent.com/ScoopInstaller/Extras/master/scripts/tortoisesvn/tortoisesvn-install-tools.reg.templ",

@@ -2,6 +2,7 @@
     "version": "5.0.20251.1171",
     "description": "抓包: fiddler",
     "homepage": "https://www.telerik.com/fiddler",
+    "license": "Unknown",
     "url": "https://downloads.getfiddler.com/fiddler-classic/FiddlerSetup.5.0.20251.1171-latest.exe#/dl.7z",
     "hash": "1212b60ddcecc5496c30e0ab5a128052099c65b87547deca70e0ef0d77478b94",
     "pre_install": [

@@ -2,6 +2,7 @@
     "version": "133.0.6943.142",
     "description": "浏览器: Chrome",
     "homepage": "https://google.com/chrome",
+    "license": "Unknown",
     "url": "https://dl.google.com/release2/chrome/i5o6mtxqmburb6cd6ay24lmlai_133.0.6943.142/133.0.6943.142_chrome_installer.exe#/dl.7z",
     "hash": "82b37a95cc738fee15ffbcf0011c515a64d6460e3f222d6003fd5f08ca2ade1d",
     "installer": {

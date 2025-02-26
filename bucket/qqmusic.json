@@ -2,6 +2,7 @@
     "version": "21.2.0.0",
     "description": "音频: QQMusic",
     "homepage": "https://y.qq.com",
+    "license": "Unknown",
     "url": "https://webcdn.m.qq.com/spcmgr/download/QQMusic_Setup_2102.2953_QMgr.exe#/dl.7z",
     "hash": "6d5e38e26db40e7111a59aa1ea48b7f564844e5b0c9df558b11a16a89107f091",
     "installer": {
