@@ -1,0 +1,46 @@
+{
+    "version": "3.9.12.17",
+    "description": "聊天: WeChat",
+    "homepage": "https://pc.weixin.qq.com",
+    "url": "https://webcdn.m.qq.com/spcmgr/download/WeChatSetup_3.9.12.17.exe#/dl.7z",
+    "hash": "4985f96235154fc4176e3972f14709f5f10fc0606e5589075a6da9b6dc7fccd3",
+    "installer": {
+        "script": [
+            "Remove-Item \"$dir\\`$*\", \"$dir\\Uninst*\" -Force -Recurse",
+            "$configpath = \"$env:APPDATA\\Tencent\\WeChat\\All Users\\config\"",
+            "ensure \"$configpath\" | Out-Null",
+            "Set-Content -NoNewline -Path \"$configpath\\3ebffe94.ini\" -Value \"$persist_dir\"",
+            "$regpath = \"HKCU:Software\\Tencent\\WeChat\"",
+            "if (!(Test-Path \"$regpath\")) {",
+            "    New-Item -Path \"$regpath\" -Type Directory -Force | Out-Null",
+            "}",
+            "New-ItemProperty -Path $regpath -Name \"FileSavePath\" -Value \"$persist_dir\" -Force | Out-Null"
+        ]
+    },
+    "shortcuts": [
+        [
+            "wechat.exe",
+            "WeChat"
+        ]
+    ],
+    "persist": "WeChat Files",
+    "uninstaller": {
+        "script": [
+            "Remove-Item -Path \"$env:APPDATA\\Tencent\\WeChat\\All Users\\config\\3ebffe94.ini\" -Force | Out-Null",
+            "Remove-ItemProperty -Path \"HKCU:Software\\Tencent\\WeChat\" -Name \"FileSavePath\" -Force | Out-Null"
+        ]
+    },
+    "checkver": {
+        "script": [
+            "$res = Invoke-WebRequest -UseBasicParsing -Uri 'https://luban.m.qq.com/api/public/software-manager/softwareProxy' -Body 'cmdid=3318&jprxReq[req][soft_id_list]=11488' -Method 'POST'",
+            "$content = $res.Content | ConvertFrom-Json",
+            "$verName = $content.resp.soft_list[0].ver_name",
+            "$fileName = $content.resp.soft_list[0].file_name",
+            "Write-Output \"$verName|$fileName\""
+        ],
+        "regex": "(?<version>[\\d.]+)\\|(?<id>.*)"
+    },
+    "autoupdate": {
+        "url": "https://webcdn.m.qq.com/spcmgr/download/$matchId#/dl.7z"
+    }
+}

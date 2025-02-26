@@ -1,0 +1,26 @@
+{
+  "version": "9.9.17.250110",
+  "description": "聊天: QQ",
+  "homepage": "https://im.qq.com/pcqq/index.shtml",
+  "url": "https://dldir1.qq.com/qqfile/qq/QQNT/Windows/QQ_9.9.17_250110_x64_01.exe#/dl.7z",
+  "hash": "cf02935bb2a6c245637a3c04f72c002a9957e1edfe3c912b2a37c32694fef082",
+  "extract_dir": "Files",
+  "shortcuts": [["QQ.exe", "QQ"]],
+  "checkver": {
+    "script": [
+      "$url = 'https://im.qq.com/pcqq/index.shtml'",
+      "$resp = Invoke-WebRequest -Uri $url",
+      "$cont = $resp.Content",
+      "$pattern = 'https://qq-web.cdn-go.cn.*windowsDownloadUrl.js'",
+      "$jsUrl = [regex]::Match($cont, $pattern).Value",
+      "Invoke-WebRequest -Uri $jsUrl"
+    ],
+    "regex": "QQNT/Windows/QQ_([\\d\\.]+)_([\\d]+)_x86_01.exe",
+    "replace": "${1}.${2}"
+  },
+  "autoupdate": {
+    "64bit": {
+      "url": "https://dldir1.qq.com/qqfile/qq/QQNT/Windows/QQ_$match1_$match2_x64_01.exe#/dl.7z"
+    }
+  }
+}

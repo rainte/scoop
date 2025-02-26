@@ -29,8 +29,6 @@ function Install-Apps {
     scoop install git
     cmd /c 'mklink /j "%PROGRAMFILES%\Git" "~\scoop\apps\git\current"'
     Write-Host 'Scoop add bucket.'
-    scoop bucket add extras
-    scoop bucket add nonportable
     scoop bucket add rainte 'https://github.com/rainte/scoop.git'
     Write-Host 'Git add .gitconfig.'
     Copy-Item -Path '~\scoop\buckets\rainte\scripts\git\.gitconfig' -Destination '~\.gitconfig'

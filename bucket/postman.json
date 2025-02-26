@@ -1,0 +1,30 @@
+{
+    "version": "11.34.2",
+    "description": "接口: Postman",
+    "homepage": "https://www.getpostman.com",
+    "url": "https://dl.pstmn.io/download/11.34.2/Postman-win64-11.34.2-Setup.exe#/dl.7z",
+    "hash": "sha1:0bf116893028a36a96b2a323a26c5221005194dc",
+    "installer": {
+        "script": [
+            "Expand-7zipArchive \"$dir\\Postman-$version-full.nupkg\" \"$dir\\app\" -ExtractDir 'lib\\net45' -Removal",
+            "'background.gif', 'RELEASES', 'setupIcon.ico' | ForEach-Object { Remove-Item \"$dir\\$_\" }"
+        ]
+    },
+    "shortcuts": [
+        [
+            "app/Postman.exe",
+            "Postman"
+        ]
+    ],
+    "checkver": {
+        "url": "https://dl.pstmn.io/changelog?channel=stable&platform=win64",
+        "jsonpath": "$.changelog[0].name"
+    },
+    "autoupdate": {
+        "url": "https://dl.pstmn.io/download/$version/Postman-win64-$version-Setup.exe#/dl.7z",
+        "hash": {
+            "url": "https://dl.pstmn.io/RELEASES?platform=win64&from=$version",
+            "regex": "(?sm)$basename.*?$sha1"
+        }
+    }
+}

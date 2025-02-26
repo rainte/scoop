@@ -17,39 +17,41 @@ explorer.exe
 taskkill /f /pid 110
 ```
 
-- extras/fiddler `抓包`
-- extras/freedownloadmanager `下载`
-- extras/mobaxterm `终端`
-- extras/motrix `下载`
-- extras/postman `接口`
-- extras/qq-nt `聊天`
-- extras/sigil `Epub`
-- extras/tortoisesvn `版本`
-- extras/vscode `编辑器`
-- extras/wechat `聊天`
-- extras/wireshark `抓包`
-- main/fnm `Node`
-- main/pyenv `Python`
-- rainte/360zip `压缩`
-- rainte/adobe `设计`
-- rainte/alipan `云盘`
-- rainte/android `编辑器`
-- rainte/chrome `浏览器`
-- rainte/idea `编辑器`
-- rainte/jdk17 `Jdk`
-- rainte/jdk21 `Jdk`
-- rainte/jdk8 `Jdk`
-- rainte/navicat `数据库`
-- rainte/office `办公`
-- rainte/qqmusic `音频`
-- rainte/search `Scoop`
-- rainte/singbox `翻墙`
-- rainte/sun `远程`
-- rainte/vagrant `虚拟机`
-- rainte/virtualbox `虚拟机`
-- rainte/wegame `游戏`
-- rainte/wepe `装机`
-- rainte/ximalaya `音频`
+| 名称        | 类型   |
+| ----------- | ------ |
+| 360zip      | 压缩   |
+| adobe       | 设计   |
+| alipan      | 云盘   |
+| android     | IDE    |
+| chrome      | 浏览器 |
+| fdm         | 下载   |
+| fiddler     | 抓包   |
+| fnm         | Node   |
+| idea        | IDE    |
+| jdk17       | JDK    |
+| jdk21       | JDK    |
+| jdk8        | JDK    |
+| mobaxterm   | 终端   |
+| motrix      | 下载   |
+| navicat     | 数据库 |
+| office      | 办公   |
+| postman     | 接口   |
+| pyenv       | Python |
+| qq          | 聊天   |
+| qqmusic     | 音频   |
+| search      | Scoop  |
+| sigil       | EPUB   |
+| singbox     | 翻墙   |
+| sun         | 远程   |
+| tortoisesvn | 版本   |
+| vagrant     | 虚拟机 |
+| virtualbox  | 虚拟机 |
+| vscode      | IDE    |
+| wechat      | 聊天   |
+| wegame      | 游戏   |
+| wepe        | 装机   |
+| wireshark   | 抓包   |
+| ximalaya    | 音频   |
 
 ```json
 {
