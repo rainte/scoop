@@ -16,13 +16,13 @@ catch {
     Write-Error 'Failed to request' -ErrorAction Stop
 }
 
-if (-not (Test-Path -Path singbox.json -PathType Leaf)) { 
+if (-not (Test-Path -Path singbox.json -PathType Leaf)) {
     Write-Error 'Failed to load singbox.json' -ErrorAction Stop
 }
 
 $tasks = netstat -ano | findstr :1080 | findstr LISTENING
 foreach ($task in $tasks) {
-    $ids = $task -split '\s+'  
+    $ids = $task -split '\s+'
     $id = $ids[-1]
     try {
         Get-Process -Id $id -ErrorAction Stop

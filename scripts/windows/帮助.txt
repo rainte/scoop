@@ -1,2 +1,3 @@
-Shift+F10 弹出 CMD 输入 `OOBE\BYPASSNRO`
-dism++ 清空密码
+激活: https://kms.cangshui.net
+不联网: Shift+F10 弹出 CMD 输入 `OOBE\BYPASSNRO`
+去密码: dism++
