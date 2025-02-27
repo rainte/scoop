@@ -1,6 +1,6 @@
 {
     "version": "8.0.442-6",
-    "description": "JDK: Temurin8 Jdk8",
+    "description": "Java: Temurin8 Jdk8",
     "homepage": "https://adoptium.net",
     "license": "Unknown",
     "url": "https://github.com/adoptium/temurin8-binaries/releases/download/jdk8u442-b06/OpenJDK8U-jdk_x64_windows_hotspot_8u442b06.zip",

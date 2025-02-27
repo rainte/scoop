@@ -28,9 +28,9 @@ taskkill /f /pid 110
 | fiddler     | 抓包   |
 | fnm         | Node   |
 | idea        | IDE    |
-| jdk17       | JDK    |
-| jdk21       | JDK    |
-| jdk8        | JDK    |
+| jdk17       | Java   |
+| jdk21       | Java   |
+| jdk8        | Java   |
 | mobaxterm   | 终端   |
 | motrix      | 下载   |
 | navicat     | 数据库 |

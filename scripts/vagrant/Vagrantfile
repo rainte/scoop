@@ -18,7 +18,30 @@ Vagrant.configure("2") do |config|
     config.vbguest.auto_update = false
   end
 
-  init = <<-SHELL
+  vms.each do |vm|
+    config.vm.define "#{vm[:name]}" do |item|
+      if vm.key?(:box) && !vm[:box].nil?
+        item.vm.box = vm[:box]
+      else
+        item.vm.box = "ubuntu/jammy64"
+        item.vm.provision "shell", inline: instance_variable_get(:@init)
+      end
+
+      item.vm.hostname = vm[:name]
+      item.vm.network "public_network", ip: vm[:ip]
+      item.vm.synced_folder ".", "/www/wwwroot"
+
+      item.vm.provider "virtualbox" do |vb|
+        vb.name = vm[:name]
+        # vb.gui = true
+        vb.cpus = vm.key?(:cpus) ? vm[:cpus] : 4
+        vb.memory = vm.key?(:memory) ? vm[:memory] * 1024 : 8192
+      end
+    end
+  end
+end
+
+@init = <<-SHELL
 echo ================== 初始化 ==================
 echo "127.0.1.1 $HOSTNAME" | sudo tee -a /etc/hosts
 echo "DNS=8.8.8.8 8.8.4.4" | sudo tee -a /etc/systemd/resolved.conf
@@ -56,27 +79,4 @@ sudo systemctl restart docker
 echo ================== 安装 docker-compose ==================
 sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
-  SHELL
-
-  vms.each do |vm|
-    config.vm.define "#{vm[:name]}" do |item|
-      if vm.key?(:box) && !vm[:box].nil?
-        item.vm.box = vm[:box]
-      else
-        item.vm.box = "ubuntu/jammy64"
-        item.vm.provision "shell", inline: init
-      end
-
-      item.vm.hostname = vm[:name]
-      item.vm.network "public_network", ip: vm[:ip]
-      item.vm.synced_folder ".", "/www/wwwroot"
-
-      item.vm.provider "virtualbox" do |vb|
-        vb.name = vm[:name]
-        # vb.gui = true
-        vb.cpus = vm.key?(:cpus) ? vm[:cpus] : 4
-        vb.memory = vm.key?(:memory) ? vm[:memory] * 1024 : 8192
-      end
-    end
-  end
-end
+SHELL
