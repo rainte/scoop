@@ -28,6 +28,7 @@ taskkill /f /pid 110
 | fiddler     | 抓包   |
 | fnm         | Node   |
 | idea        | IDE    |
+| jdgui       | Java   |
 | jdk17       | Java   |
 | jdk21       | Java   |
 | jdk8        | Java   |
