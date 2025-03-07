@@ -18,6 +18,9 @@ Vagrant.configure("2") do |config|
     config.vbguest.auto_update = false
   end
 
+  config.vm.provision "file", source: "~/.ssh/id_rsa", destination: "~/.ssh/id_rsa"
+  config.vm.provision "file", source: "~/.ssh/id_rsa.pub", destination: "~/.ssh/id_rsa.pub"
+
   vms.each do |vm|
     config.vm.define "#{vm[:name]}" do |item|
       if vm.key?(:box) && !vm[:box].nil?
@@ -44,9 +47,14 @@ end
 @init = <<-SHELL
 echo ================== 初始化 ==================
 echo "127.0.1.1 $HOSTNAME" | sudo tee -a /etc/hosts
-echo "DNS=8.8.8.8 8.8.4.4" | sudo tee -a /etc/systemd/resolved.conf
-sudo systemctl restart systemd-resolved
+echo "DNS=8.8.8.8 1.1.1.1" | sudo tee -a /etc/systemd/resolved.conf
 sudo sed -i 's/^nameserver 127.0.0.53/nameserver 8.8.8.8/' /etc/resolv.conf
+sudo systemctl restart systemd-resolved
+sudo chmod 700 ~/.ssh
+sudo chmod 600 ~/.ssh/id_rsa
+sudo chmod 644 ~/.ssh/id_rsa.pub
+sudo chmod 777 /srv
+echo ================== 设置代理 ==================
 sudo tee /root/.curlrc << EOF
 proxy = "socks5://dns.rainte.com:1080"
 EOF

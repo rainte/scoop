@@ -4,7 +4,7 @@ Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 # ========== 变量 Start ==========
 # GitHub Token https://github.com/settings/tokens
 # 安装的软件.
-$apps = @('rainte/search', 'rainte/singbox')
+$apps = @('rainte/search')
 # ========== 变量 End ==========
 
 function Install-Scoop {
