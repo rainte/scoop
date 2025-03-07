@@ -48,7 +48,7 @@ echo "DNS=8.8.8.8 8.8.4.4" | sudo tee -a /etc/systemd/resolved.conf
 sudo systemctl restart systemd-resolved
 sudo sed -i 's/^nameserver 127.0.0.53/nameserver 8.8.8.8/' /etc/resolv.conf
 sudo tee /root/.curlrc << EOF
-proxy = "socks5://192.168.56.1:1080"
+proxy = "socks5://dns.rainte.com:1080"
 EOF
 echo ================== 去除提示页 ==================
 sudo apt purge -y needrestart
@@ -69,8 +69,8 @@ sudo apt install -y docker.io
 sudo mkdir -p /etc/systemd/system/docker.service.d
 sudo tee /etc/systemd/system/docker.service.d/http-proxy.conf << EOF
 [Service]
-Environment="HTTP_PROXY=socks5://192.168.56.1:1080"
-Environment="HTTPS_PROXY=socks5://192.168.56.1:1080"
+Environment="HTTP_PROXY=socks5://dns.rainte.com:1080"
+Environment="HTTPS_PROXY=socks5://dns.rainte.com:1080"
 Environment="NO_PROXY=localhost,127.0.0.1"
 EOF
 sudo sed -i '/ExecStart=/s#$# -H tcp://0.0.0.0:2375#' /usr/lib/systemd/system/docker.service
