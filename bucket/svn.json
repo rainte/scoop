@@ -24,6 +24,9 @@
         "}"
     ],
     "bin": [
+        "bin\\TortoiseIDiff.exe",
+        "bin\\TortoiseMerge.exe",
+        "bin\\TortoiseProc.exe",
         "bin\\svn.exe",
         "bin\\svnadmin.exe",
         "bin\\svnbench.exe",
