@@ -16,7 +16,7 @@ function Install-Scoop {
     Write-Host 'Install Scoop.'
     iex "& {$(irm get.scoop.sh)} -RunAsAdmin"
     scoop config gh_token $Token
-    scoop config proxy dns.rainte.com:1080
+    scoop config proxy dns.rainte.com:10800
     Write-Host 'Install completed.'
 }
 

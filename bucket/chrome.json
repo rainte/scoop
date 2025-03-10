@@ -22,7 +22,7 @@
         [
             "chrome.exe",
             "Google Chrome Proxy",
-            "--proxy-server=\"socks5://dns.rainte.com:1080\""
+            "--proxy-server=\"socks5://127.0.0.1:1080\""
         ]
     ],
     "env_set": {
