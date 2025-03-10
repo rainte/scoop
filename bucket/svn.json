@@ -24,9 +24,6 @@
         "}"
     ],
     "bin": [
-        "bin\\TortoiseIDiff.exe",
-        "bin\\TortoiseMerge.exe",
-        "bin\\TortoiseProc.exe",
         "bin\\svn.exe",
         "bin\\svnadmin.exe",
         "bin\\svnbench.exe",
@@ -37,6 +34,36 @@
         "bin\\svnserve.exe",
         "bin\\svnsync.exe",
         "bin\\svnversion.exe"
+    ],
+    "shortcuts": [
+        [
+            "bin\\TortoiseIDiff.exe",
+            "TortoiseIDiff"
+        ],
+        [
+            "bin\\TortoiseMerge.exe",
+            "TortoiseMerge"
+        ],
+        [
+            "bin\\TortoiseProc.exe",
+            "TortoiseSVN",
+            "/command:rtfm"
+        ],
+        [
+            "bin\\TortoiseProc.exe",
+            "TortoiseSVN Project Monitor",
+            "/command:monitor"
+        ],
+        [
+            "bin\\TortoiseProc.exe",
+            "TortoiseSVN Repository Browser",
+            "/command:repobrowser"
+        ],
+        [
+            "bin\\TortoiseProc.exe",
+            "TortoiseSVN Settings",
+            "/command:settings"
+        ]
     ],
     "notes": [
         "To add TortoiseSVN as a context menu option, run '$dir\\tortoisesvn-install.reg'",
