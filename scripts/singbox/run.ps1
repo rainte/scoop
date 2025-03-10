@@ -9,15 +9,15 @@ try {
     $index = Read-Host -Prompt 'Update IP: 1|2|3|4 Continue: 0'
     if ($index -ne 0) {
         $url = $urls[[int]$index - 1]
-        Invoke-WebRequest -useb $url -o ('singbox.json');
+        Invoke-WebRequest -useb $url -o ('config.json');
     }
 }
 catch {
     Write-Error 'Failed to request' -ErrorAction Stop
 }
 
-if (-not (Test-Path -Path singbox.json -PathType Leaf)) {
-    Write-Error 'Failed to load singbox.json' -ErrorAction Stop
+if (-not (Test-Path -Path config.json -PathType Leaf)) {
+    Write-Error 'Failed to load config.json' -ErrorAction Stop
 }
 
 $tasks = netstat -ano | findstr :1080 | findstr LISTENING
@@ -32,4 +32,4 @@ foreach ($task in $tasks) {
     }
 }
 
-Start-Process sing-box.exe -ArgumentList 'run -c singbox.json' -WindowStyle Hidden
+Start-Process sing-box.exe -ArgumentList 'run -c config.json' -WindowStyle Hidden

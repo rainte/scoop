@@ -11,14 +11,10 @@
       "tag": "mixed-in",
       "listen": "::",
       "listen_port": 1080,
-      "sniff": true,
       "set_system_proxy": false
     }
   ],
-  "outbounds": [
-    { "tag": "out_direct", "type": "direct" },
-    { "tag": "out_proxy" }
-  ],
+  "outbounds": [{ "tag": "out_direct", "type": "direct" }, { "tag": "out_proxy" }],
   "route": {
     "final": "out_proxy",
     "auto_detect_interface": true,
