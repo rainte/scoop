@@ -36,7 +36,6 @@
         "bin\\svnversion.exe"
     ],
     "post_install": [
-        "info \"$dir\\tortoisesvn-install.reg\"",
         "regedit.exe /s \"$dir\\tortoisesvn-install.reg\"",
         "regedit.exe /s \"$dir\\tortoisesvn-install-tools.reg\""
     ],
