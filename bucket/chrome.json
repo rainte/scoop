@@ -1,10 +1,10 @@
 {
-    "version": "134.0.6998.36",
+    "version": "134.0.6998.89",
     "description": "浏览器: Chrome",
     "homepage": "https://google.com/chrome",
     "license": "Unknown",
-    "url": "https://dl.google.com/release2/chrome/ac4war5y5pzz7nlnczezcmca3vma_134.0.6998.36/134.0.6998.36_chrome_installer.exe#/dl.7z",
-    "hash": "b43c42d9741f0d1b3b09c38106a8d22f155d3ee594760df01e92a6f470105bc6",
+    "url": "https://dl.google.com/release2/chrome/cjg242f72qrnwyxucp3zodbszi_134.0.6998.89/134.0.6998.89_chrome_installer.exe#/dl.7z",
+    "hash": "dbb91722b734a34b0f79f8bad44d0dfceae6bc7c0b7417c14f0276596e1249aa",
     "installer": {
         "script": "Expand-7zipArchive \"$dir\\chrome.7z\" -ExtractDir 'Chrome-bin' -Removal"
     },
