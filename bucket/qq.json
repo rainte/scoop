@@ -1,10 +1,10 @@
 {
-    "version": "9.9.18.250307",
+    "version": "9.9.18.250318",
     "description": "聊天: QQ",
     "homepage": "https://im.qq.com/pcqq/index.shtml",
     "license": "Unknown",
-    "url": "https://dldir1.qq.com/qqfile/qq/QQNT/Windows/QQ_9.9.18_250307_x64_01.exe#/dl.7z",
-    "hash": "41e4580293bf6df3b81c100e6cb49a48d7f2fc7f29c49e8818afb9a03595187b",
+    "url": "https://dldir1.qq.com/qqfile/qq/QQNT/Windows/QQ_9.9.18_250318_x64_01.exe#/dl.7z",
+    "hash": "e4485a48c0c81893a4733db07f1681d707834c83ac7a7741e310ff9a974ae2b8",
     "extract_dir": "Files",
     "shortcuts": [
         [
