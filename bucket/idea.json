@@ -1,10 +1,10 @@
 {
-    "version": "2025.1.1-251.25410.109",
+    "version": "2025.1.1.1-251.25410.129",
     "description": "IDE: Java Idea",
     "homepage": "https://www.jetbrains.com/idea",
     "license": "Unknown",
-    "url": "https://download.jetbrains.com/idea/ideaIU-2025.1.1.win.zip",
-    "hash": "28e6b57c91b66e6da96aa585b72b36d57d3b1368d23dfe953beda5fe63e2cf4c",
+    "url": "https://download.jetbrains.com/idea/ideaIU-2025.1.1.1.win.zip",
+    "hash": "c30a56c783d3b995d8168984d56bd14ba62d33c7b9935b4ea759b126a9bc3ae7",
     "extract_to": "IDE",
     "installer": {
         "script": [
