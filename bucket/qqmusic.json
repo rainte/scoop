@@ -1,10 +1,10 @@
 {
-    "version": "21.41.0.0",
+    "version": "21.51.0.0",
     "description": "音频: QQMusic",
     "homepage": "https://y.qq.com",
     "license": "Unknown",
-    "url": "https://webcdn.m.qq.com/spcmgr/download/QQMusic_Setup_2141.3082_QMgr.exe#/dl.7z",
-    "hash": "9feff8e1d1b268bbc13452912f9ef687da8ad14b8daa775df12dcf804cc11f14",
+    "url": "https://webcdn.m.qq.com/spcmgr/download/QQMusic_Setup_2151.exe#/dl.7z",
+    "hash": "ec531a4cd08f09f04431fca052d4879db13becc45b9d24c151e8d3162409cdda",
     "installer": {
         "script": [
             "Import-Module $bucketsdir\\rainte\\scripts\\qqmusic\\AppsUtils.psm1",
