@@ -1,10 +1,10 @@
 {
-    "version": "4.0.5.26",
+    "version": "4.0.5.27",
     "description": "聊天: WeChat",
     "homepage": "https://pc.weixin.qq.com",
     "license": "Unknown",
-    "url": "https://webcdn.m.qq.com/spcmgr/download/WeChatWin_4.0.5.26.exe#/dl.7z",
-    "hash": "22f906689292009e98276eac17044443e7041516e9d5224bae91bd2d842f9288",
+    "url": "https://webcdn.m.qq.com/spcmgr/download/WeChatWin_4.0.5.27.exe#/dl.7z",
+    "hash": "a86d8cc4c1d7f570d2ccae9894950afd92e592a442c057713f85995e4410cc2d",
     "installer": {
         "script": [
             "Remove-Item \"$dir\\`$*\", \"$dir\\Uninst*\" -Force -Recurse",
