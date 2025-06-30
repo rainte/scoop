@@ -49,7 +49,6 @@ taskkill /f /pid 110
 | vscode     | IDE    |
 | wechat     | 聊天   |
 | wegame     | 游戏   |
-| wepe       | 装机   |
 | wireshark  | 抓包   |
 | ximalaya   | 音频   |
 
