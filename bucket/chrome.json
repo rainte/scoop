@@ -6,7 +6,7 @@
     "url": "https://dl.google.com/release2/chrome/o6dbyytvo73aj3atmz5ua7m6ry_138.0.7204.50/138.0.7204.50_chrome_installer_uncompressed.exe#/dl.7z",
     "hash": "22a8c81eebedbfa9cdb61a14a717e693864fe9626faf4fd1f587ea266cc22616",
     "installer": {
-        "script": "Expand-7zipArchive \"$dir\\chrome.7z\" -ExtractDir 'Chrome-bin' -Removal"
+        "script": "Expand-7zipArchive \"$dir\\dl.7z\" -ExtractDir 'Chrome-bin' -Removal"
     },
     "bin": [
         [
