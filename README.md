@@ -24,7 +24,6 @@ taskkill /f /pid 110
 | alipan     | 云盘   |
 | android    | IDE    |
 | chrome     | 浏览器 |
-| fdm        | 下载   |
 | fiddler    | 抓包   |
 | fnm        | Node   |
 | idea       | IDE    |

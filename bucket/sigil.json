@@ -17,9 +17,6 @@
         "github": "https://github.com/Sigil-Ebook/Sigil"
     },
     "autoupdate": {
-        "url": "https://github.com/Sigil-Ebook/Sigil/releases/download/$version/Sigil-$version-Windows-x64-Setup.exe",
-        "hash": {
-            "url": "$baseurl/Sigil-$version-CHECKSUMS.sha256.txt"
-        }
+        "url": "https://github.com/Sigil-Ebook/Sigil/releases/download/$version/Sigil-$version-Windows-x64-Setup.exe"
     }
 }
