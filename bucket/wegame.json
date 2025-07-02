@@ -1,10 +1,10 @@
 {
-    "version": "5.9.5.4191",
+    "version": "6.0.4.6232",
     "description": "游戏: WeGame",
     "homepage": "https://www.wegame.com.cn",
     "license": "Unknown",
-    "url": "https://webcdn.m.qq.com/spcmgr/download/WeGameSetup5.9.5.4191_gjwegame_0_0.exe#/dl.7z",
-    "hash": "8de9f53ac411a6e27116e598d5e3aff8fa660dc1da2e6fbbc666aa93d6aed330",
+    "url": "https://webcdn.m.qq.com/spcmgr/download/WeGameSetup6.0.4.6232_gjwegame_0_0.exe#/dl.7z",
+    "hash": "f5b3bf02f600a79dcd09f609e65fdfa0aaf1e51c5149719c71c48a24a124cb0b",
     "pre_install": [
         "Expand-7zipArchive \"$dir\\WeGameSetup.exe\" \"$dir\"",
         "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\`$SYSDIR\",\"$dir\\WeGameSetup.exe\" -Force -Recurse"
