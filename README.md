@@ -23,14 +23,16 @@ taskkill /f /pid 110
 | adobe      | 设计   |
 | alipan     | 云盘   |
 | android    | IDE    |
+| audiorelay | 音频   |
+| baidupan   | 云盘   |
 | chrome     | 浏览器 |
 | fiddler    | 抓包   |
 | fnm        | Node   |
 | idea       | IDE    |
 | jdgui      | Java   |
+| jdk8       | Java   |
 | jdk17      | Java   |
 | jdk21      | Java   |
-| jdk8       | Java   |
 | mobaxterm  | 终端   |
 | motrix     | 下载   |
 | navicat    | 数据库 |
