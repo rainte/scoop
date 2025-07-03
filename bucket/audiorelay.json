@@ -17,7 +17,6 @@
         "Copy-Item $dir\\app\\AudioRelay.cfg.win10 $dir\\app\\AudioRelay.cfg",
         "# Cleanup directory",
         "Set-Location $dir",
-        "Remove-Item -Recurse .\\.net; Remove-Item -Recurse .\\app; Remove-Item -Recurse .\\runtime; Remove-Item -Recurse .\\AudioRelay.exe; Remove-Item -Recurse .\\AudioRelay.ico",
         "Write-Output \"Installing driver...\"",
         "& $dir\\tools\\drivers\\AudioConnect.DriverHelper.exe install $dir\\drivers\\AudioRelayVirtualMic\\audiorelay.virtual-mic.inf *audiorelayvirtualmic",
         "& $dir\\tools\\drivers\\AudioConnect.DriverHelper.exe install $dir\\drivers\\AudioRelayVirtualSpeaker\\audiorelay.virtual-speaker.inf *audiorelayvirtualspeaker"
