@@ -21,9 +21,6 @@
         "& $dir\\tools\\drivers\\AudioConnect.DriverHelper.exe install $dir\\drivers\\AudioRelayVirtualMic\\audiorelay.virtual-mic.inf *audiorelayvirtualmic",
         "& $dir\\tools\\drivers\\AudioConnect.DriverHelper.exe install $dir\\drivers\\AudioRelayVirtualSpeaker\\audiorelay.virtual-speaker.inf *audiorelayvirtualspeaker"
     ],
-    "suggest": {
-        "virtual-mic": "audiorelay-virtualmic"
-    },
     "uninstaller": {
         "script": [
             "Write-Output \"Uninstalling driver...\"",
