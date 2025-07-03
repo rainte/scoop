@@ -5,7 +5,7 @@
     "license": "Unknown",
     "url": "https://dl.audiorelay.net/setups/windows/audiorelay-0.27.5.exe#/dl.7z",
     "hash": "ef4b2398d492a12ee25d25917b725294523b97bb6e532bed1a3e5ff020d6368f",
-    "bin": "audiorelay.exe",
+    "innosetup": true,
     "shortcuts": [
         [
             "audiorelay.exe",
