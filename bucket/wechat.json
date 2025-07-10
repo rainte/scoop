@@ -1,10 +1,10 @@
 {
-    "version": "4.0.5.27",
+    "version": "4.0.6.21",
     "description": "聊天: WeChat",
     "homepage": "https://pc.weixin.qq.com",
     "license": "Unknown",
-    "url": "https://webcdn.m.qq.com/spcmgr/download/WeChatWin_4.0.5.27.exe#/dl.7z",
-    "hash": "a86d8cc4c1d7f570d2ccae9894950afd92e592a442c057713f85995e4410cc2d",
+    "url": "https://webcdn.m.qq.com/spcmgr/download/WeChatWin_4.0.6.21.exe#/dl.7z",
+    "hash": "eebcd43ccbc9b4d0d06ce3b90e203b9f6bf55349771e6422620b9e40687ccb5c",
     "installer": {
         "script": [
             "Expand-7zipArchive \"$dir\\install.7z\" \"$dir\" -Removal",
