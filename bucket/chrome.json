@@ -1,10 +1,10 @@
 {
-    "version": "138.0.7204.101",
+    "version": "138.0.7204.158",
     "description": "浏览器: Chrome",
     "homepage": "https://google.com/chrome",
     "license": "Unknown",
-    "url": "https://dl.google.com/release2/chrome/aclczb5bjdhbdipy7respylybp4a_138.0.7204.101/138.0.7204.101_chrome_installer_uncompressed.exe#/dl.7z",
-    "hash": "d02e25d8901c73c23326982a0e35cea6f8d87dc1049d33dd47f88b410380cc1b",
+    "url": "https://dl.google.com/release2/chrome/adoxq6yw64jzwswqufh3prv6wcra_138.0.7204.158/138.0.7204.158_chrome_installer_uncompressed.exe#/dl.7z",
+    "hash": "c04b9bef1a1a4ee74b238e47d45db20280480897a8a444aa225ed53c7c647ad7",
     "extract_dir": "Chrome-bin",
     "bin": [
         [
