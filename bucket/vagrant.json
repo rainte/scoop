@@ -1,10 +1,10 @@
 {
-    "version": "2.4.8",
+    "version": "2.4.9",
     "description": "虚拟机: Vagrant",
     "homepage": "https://vagrantup.com",
     "license": "Unknown",
-    "url": "https://releases.hashicorp.com/vagrant/2.4.8/vagrant_2.4.8_windows_amd64.msi",
-    "hash": "c4c2afec8ca5d123896a12e7662670a03d6b351626c33fca5d486544e9a4dd12",
+    "url": "https://releases.hashicorp.com/vagrant/2.4.9/vagrant_2.4.9_windows_amd64.msi",
+    "hash": "3bdd967927705872a70c7c98e0576afd5acd9dd73b527695f4d9dd75dd26cbe3",
     "extract_dir": "Vagrant",
     "bin": "bin\\vagrant.exe",
     "post_install": [
