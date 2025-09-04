@@ -1,10 +1,10 @@
 {
-    "version": "11.61.5",
+    "version": "11.61.7",
     "description": "接口: Postman",
     "homepage": "https://www.getpostman.com",
     "license": "Unknown",
-    "url": "https://dl.pstmn.io/download/11.61.5/Postman-win64-11.61.5-Setup.exe#/dl.7z",
-    "hash": "sha1:815d73f236dfdb229be2cf966a87f40fcb7eda5c",
+    "url": "https://dl.pstmn.io/download/11.61.7/Postman-win64-11.61.7-Setup.exe#/dl.7z",
+    "hash": "sha1:4d3197391c1573e20dd8526c8dcd831eb37c4bff",
     "installer": {
         "script": [
             "Expand-7zipArchive \"$dir\\Postman-$version-full.nupkg\" \"$dir\\app\" -ExtractDir 'lib\\net45' -Removal",
