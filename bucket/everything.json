@@ -1,0 +1,33 @@
+{
+    "version": "1.4.1.1028",
+    "description": "搜索引擎: Everything",
+    "homepage": "https://www.voidtools.com",
+    "license": "Unknown",
+    "url": "http://www.voidtools.com/Everything-1.4.1.1028.x64-Setup.exe",
+    "hash": "874e87dc9de6e99bcbf46400bf7eced0deda402fc79dd13e0cafabf2277c8149",
+    "bin": "Everything.exe",
+    "shortcuts": [
+        [
+            "Everything.exe",
+            "Everything"
+        ]
+    ],
+    "installer": {
+        "script": [
+            "Start-Process \"$dir\\$fname\" -ArgumentList @('/S', \"/D=$dir\") -Wait -Verb RunAs | Out-Null",
+            "Remove-Item \"$dir\\$fname\""
+        ]
+    },
+    "post_install": [
+        "Remove-Item -Recurse \"$([Environment]::GetFolderPath('commonstartmenu'))\\Programs\\Everything.lnk\"",
+        "Remove-Item -Recurse \"$Env:Public\\Desktop\\Everything.lnk\""
+    ],
+    "uninstaller": {
+        "script": "Start-Process \"$dir\\Uninstall.exe\" -ArgumentList '/S' -Wait -Verb RunAs | Out-Null"
+    },
+    "pre_uninstall": "Stop-Process -Name 'everything' -Force -ErrorAction SilentlyContinue",
+    "checkver": "Download Everything ([\\d.]+)",
+    "autoupdate": {
+        "url": "http://www.voidtools.com/Everything-$version.x64-Setup.exe"
+    }
+}
