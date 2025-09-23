@@ -42,12 +42,13 @@
         ]
     ],
     "uninstaller": {
-        "script": [
+       "script": [
             "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
-             "$id_array = Get-WmiObject -Class Win32_Product | Where-Object { $_.Name -like '*VirtualBox*' } | Select-Object IdentifyingNumber",
-            "if (!($id_array[2] -match '({[0-9A-F-]+})')) { error 'Could not find product ID'; break }",
-            "$id = $matches[1]",
-            "Invoke-ExternalCommand msiexec -ArgumentList @('/x', \"$id\", '/qn', '/norestart') -RunAs | Out-Null"
+            "$ids = Get-WmiObject -Class Win32_Product | Where-Object { $_.Name -like '*VirtualBox*' } | Select-Object IdentifyingNumber",
+            "if (!($ids)) { error \"Could not find product ID\"; break }",
+            "$ids | ForEach-Object {",
+            "    Start-Process msiexec -ArgumentList \"/x\", $_.IdentifyingNumber, \"/qn\", \"/norestart\" -NoNewWindow -Wait",
+            "}"
         ]
     },
     "checkver": {
