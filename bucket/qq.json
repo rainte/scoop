@@ -1,10 +1,10 @@
 {
-    "version": "9.9.20.250626",
+    "version": "9.9.21.250904",
     "description": "聊天: QQ",
     "homepage": "https://im.qq.com/pcqq/index.shtml",
     "license": "Unknown",
-    "url": "https://dldir1.qq.com/qqfile/qq/QQNT/Windows/QQ_9.9.20_250626_x64_01.exe#/dl.7z",
-    "hash": "97b99108b5be55fd9ebfca9d825b584450f3fd2fc7a96f7ace0587bbcba5cfd7",
+    "url": "https://dldir1.qq.com/qqfile/qq/QQNT/Windows/QQ_9.9.21_250904_x64_01.exe#/dl.7z",
+    "hash": "55fb4684d01316ecdbfcbd5ba82eceda5a6e4d6fc4aa8b0b3d2515c3d41a21d1",
     "extract_dir": "Files",
     "shortcuts": [
         [
@@ -14,12 +14,10 @@
     ],
     "checkver": {
         "script": [
-            "$url = 'https://im.qq.com/pcqq/index.shtml'",
-            "$resp = Invoke-WebRequest -Uri $url",
-            "$cont = $resp.Content",
-            "$pattern = 'https://qq-web.cdn-go.cn.*windowsDownloadUrl.js'",
-            "$jsUrl = [regex]::Match($cont, $pattern).Value",
-            "Invoke-WebRequest -Uri $jsUrl"
+            "$headers = @{ 'Accept-Encoding' = 'gzip' }",
+            "$url = 'https://cdn-go.cn/qq-web/im.qq.com_new/latest/rainbow/windowsConfig.js'",
+            "$response = Invoke-WebRequest -Uri $url -UseBasicParsing -Headers $headers",
+            "Write-Output $response.Content"
         ],
         "regex": "QQNT/Windows/QQ_([\\d\\.]+)_([\\d]+)_x86_01.exe",
         "replace": "${1}.${2}"
