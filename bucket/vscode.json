@@ -1,10 +1,10 @@
 {
-    "version": "1.104.2",
+    "version": "1.104.3",
     "description": "IDE: Visual Studio Code",
     "homepage": "https://code.visualstudio.com",
     "license": "Unknown",
-    "url": "https://update.code.visualstudio.com/1.104.2/win32-x64-archive/stable#/dl.7z",
-    "hash": "5d97d498e4a0a0331888df56d9057f151c4d31a24a41ccdf3168afe73692c93f",
+    "url": "https://update.code.visualstudio.com/1.104.3/win32-x64-archive/stable#/dl.7z",
+    "hash": "7e6c1695a5eefacf36edf64b720ff1356ff3b1c36c691590ab3df295d5a6acaa",
     "env_add_path": "bin",
     "shortcuts": [
         [
