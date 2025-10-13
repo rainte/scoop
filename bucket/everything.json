@@ -1,10 +1,10 @@
 {
-    "version": "1.4.1.1028",
+    "version": "1.4.1.1029",
     "description": "搜索引擎: Everything",
     "homepage": "https://www.voidtools.com",
     "license": "Unknown",
-    "url": "http://www.voidtools.com/Everything-1.4.1.1028.x64-Setup.exe",
-    "hash": "874e87dc9de6e99bcbf46400bf7eced0deda402fc79dd13e0cafabf2277c8149",
+    "url": "http://www.voidtools.com/Everything-1.4.1.1029.x64-Setup.exe",
+    "hash": "392b0c84b5fb5464f7b5948592a586333347d38bba921972905d72aaf1ecc560",
     "bin": "Everything.exe",
     "shortcuts": [
         [
