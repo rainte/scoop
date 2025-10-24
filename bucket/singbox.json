@@ -18,9 +18,7 @@
     ],
     "post_install": {
         "script": [
-            "Copy-Item -Path \"$bucketsdir\\rainte\\scripts\\singbox\\run.ps1\" -Destination \"$dir\\run.ps1\"",
-            "$SingBoxPath = \"$env:USERPROFILE\\scoop\\apps\\singbox\\current\"",
-            "$Action = New-ScheduledTaskAction -Execute \"$SingBoxPath\\sing-box.exe\" -Argument \"run -c config.json\" -WorkingDirectory $SingBoxPath",
+            "$Action = New-ScheduledTaskAction -Execute \"$dir\\sing-box.exe\" -Argument \"run -c config.json\" -WorkingDirectory $dir",
             "$Trigger = New-ScheduledTaskTrigger -AtStartup",
             "$Settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -StartWhenAvailable",
             "$Principal = New-ScheduledTaskPrincipal -UserId \"SYSTEM\" -LogonType ServiceAccount -RunLevel Highest",
