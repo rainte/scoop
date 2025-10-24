@@ -18,10 +18,15 @@
     ],
     "post_install": {
         "script": [
+        "Write-Output '111'",
             "$Action = New-ScheduledTaskAction -Execute \"$dir\\sing-box.exe\" -Argument \"run -c config.json\" -WorkingDirectory $dir",
+        "Write-Output '222'",
             "$Trigger = New-ScheduledTaskTrigger -AtStartup",
+        "Write-Output '333'",
             "$Settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -StartWhenAvailable",
+        "Write-Output '444'",
             "$Principal = New-ScheduledTaskPrincipal -UserId \"SYSTEM\" -LogonType ServiceAccount -RunLevel Highest",
+        "Write-Output '555'",
             "Register-ScheduledTask -TaskName \"SingBoxStartup\" -Action $Action -Trigger $Trigger -Settings $Settings -Principal $Principal -Description \"Start sing-box service at startup\""
         ]
     },
