@@ -18,21 +18,17 @@
     ],
     "post_install": {
         "script": [
-            $SingBoxPath = "$env:USERPROFILE\scoop\apps\singbox\current"
-$Action = New-ScheduledTaskAction -Execute "$SingBoxPath\sing-box.exe" -Argument "run -c config.json" -WorkingDirectory $SingBoxPath
-$Trigger = New-ScheduledTaskTrigger -AtStartup
-$Settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -StartWhenAvailable
-
-# 关键：设置任务主体为系统账户且不交互
-$Principal = New-ScheduledTaskPrincipal -UserId "SYSTEM" -LogonType ServiceAccount -RunLevel Highest
-
-            Register-ScheduledTask -TaskName "SingBoxStartup" -Action $Action -Trigger $Trigger -Settings $Settings -Principal $Principal -Description "Start sing-box service at startup"
+            "Copy-Item -Path \"$bucketsdir\\rainte\\scripts\\singbox\\run.ps1\" -Destination \"$dir\\run.ps1\"",
+            "$SingBoxPath = \"$env:USERPROFILE\\scoop\\apps\\singbox\\current\"",
+            "$Action = New-ScheduledTaskAction -Execute \"$SingBoxPath\\sing-box.exe\" -Argument \"run -c config.json\" -WorkingDirectory $SingBoxPath",
+            "$Trigger = New-ScheduledTaskTrigger -AtStartup",
+            "$Settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -StartWhenAvailable",
+            "$Principal = New-ScheduledTaskPrincipal -UserId \"SYSTEM\" -LogonType ServiceAccount -RunLevel Highest",
+            "Register-ScheduledTask -TaskName \"SingBoxStartup\" -Action $Action -Trigger $Trigger -Settings $Settings -Principal $Principal -Description \"Start sing-box service at startup\""
         ]
     },
     "uninstaller": {
-        "script": [
-            Unregister-ScheduledTask -TaskName "SingBoxStartup" -Confirm:$false
-        ]
+        "script": "Unregister-ScheduledTask -TaskName \"SingBoxStartup\" -Confirm:$false"
     },
     "checkver": "github",
     "autoupdate": {
