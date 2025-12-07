@@ -1,15 +1,15 @@
 $urls = @(
-    'https://www.gitlabip.xyz/Alvin9999/PAC/master/backup/img/1/2/ipp/singbox/1/config.json',
-    'https://gitlab.com/free9999/ipupdate/-/raw/master/backup/img/1/2/ipp/singbox/1/config.json',
-    'https://www.gitlabip.xyz/Alvin9999/PAC/master/backup/img/1/2/ip/singbox/2/config.json',
-    'https://fastly.jsdelivr.net/gh/Alvin9999/PAC@latest/backup/img/1/2/ip/singbox/2/config.json'
+    'https://raw.githubusercontent.com/rainte/cdn/refs/heads/main/docs/singbox/pc/config1.json',
+    'https://raw.githubusercontent.com/rainte/cdn/refs/heads/main/docs/singbox/pc/config2.json',
+    'https://raw.githubusercontent.com/rainte/cdn/refs/heads/main/docs/singbox/pc/config3.json',
+    'https://raw.githubusercontent.com/rainte/cdn/refs/heads/main/docs/singbox/pc/config4.json'
 )
 
 try {
     $index = Read-Host -Prompt 'Update IP: 1|2|3|4 Continue: 0'
     if ($index -ne 0) {
         $url = $urls[[int]$index - 1]
-        Invoke-WebRequest -useb $url -o ('config.json');
+        ~\scoop\buckets\rainte\scripts\wget\wget.exe -t 2 --no-check-certificate $url -O 'config.json'
     }
 }
 catch {
