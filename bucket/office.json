@@ -1,10 +1,10 @@
 {
-    "version": "1.4.1.1030",
+    "version": "16.0.19426.20170",
     "description": "办公: Office",
     "homepage": "https://office.com",
     "license": "Unknown",
-    "url": "https://download.microsoft.com/download/#/dl.7z_",
-    "hash": "4fca9c746c2018ca37705ae2afd7ed428211a48d9ba4126f629d2a8d0f6770e7",
+    "url": "https://download.microsoft.com/download/6c1eeb25-cf8b-41d9-8d0d-cc1dbc032140/officedeploymenttool_19426-20170.exe#/dl.7z_",
+    "hash": "c96332fb466b78e54e918698ca089f0b01eb87336b5c446cb631fd4ab832f2b6",
     "pre_install": [
         "$scriptdir = \"$bucketsdir\\rainte\\scripts\\office\"",
         "Copy-Item \"$scriptdir\\install.xml\" \"$dir\\\"",
