@@ -1,10 +1,10 @@
 {
-    "version": "143.0.7499.170",
+    "version": "143.0.7499.193",
     "description": "浏览器: Chrome",
     "homepage": "https://google.com/chrome",
     "license": "Unknown",
-    "url": "https://dl.google.com/release2/chrome/ac7ajtusblhl4xhi5sryyfujuqqa_143.0.7499.170/143.0.7499.170_chrome_installer_uncompressed.exe#/dl.7z",
-    "hash": "6a9f31038779de6c973fc02fad450b514a6c70c25825cc812f2ba53740203dce",
+    "url": "https://dl.google.com/release2/chrome/bnrcmkp5cmhfsd5dxhwdykvx2e_143.0.7499.193/143.0.7499.193_chrome_installer_uncompressed.exe#/dl.7z",
+    "hash": "7489fe46b131c26ec7b69c39bc8794e83b5473b89d73c9061d684008cb95a951",
     "extract_dir": "Chrome-bin",
     "bin": [
         [
