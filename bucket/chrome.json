@@ -1,10 +1,10 @@
 {
-    "version": "145.0.7632.68",
+    "version": "145.0.7632.76",
     "description": "浏览器: Chrome",
     "homepage": "https://google.com/chrome",
     "license": "Unknown",
-    "url": "https://dl.google.com/release2/chrome/acqjif3p26wxp6x6biz5fy2dbtsa_145.0.7632.68/145.0.7632.68_chrome_installer_uncompressed.exe#/dl.7z",
-    "hash": "9185d1b58c6a574887180b0c0ee75acaee6c285ba57f5165beabd054fe13cf7b",
+    "url": "https://dl.google.com/release2/chrome/nrd4up5p2c3leiznhjwhtcjg54_145.0.7632.76/145.0.7632.76_chrome_installer_uncompressed.exe#/dl.7z",
+    "hash": "d695b679de3326c3503d9d7c975a92b74ecebda4e5d740072bcfca6d207affea",
     "extract_dir": "Chrome-bin",
     "bin": [
         [
