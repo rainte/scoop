@@ -1,3 +1,4 @@
 激活: https://kms.cangshui.net
+升级: 绕过 Win11 硬件检查 `setup.exe /product server`
 不联网: Shift+F10 弹出 CMD 输入 `OOBE\BYPASSNRO`
 去密码: dism++
