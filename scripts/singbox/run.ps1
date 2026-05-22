@@ -20,7 +20,7 @@ if (-not (Test-Path -Path config.json -PathType Leaf)) {
     Write-Error 'Failed to load config.json' -ErrorAction Stop
 }
 
-$tasks = netstat -ano | findstr :1080 | findstr LISTENING
+$tasks = netstat -ano | findstr :1080 | findstr LISTENING | Group-Object { ($_ -split '\s+')[-1] } | ForEach-Object { $_.Group[0] }
 foreach ($task in $tasks) {
     $ids = $task -split '\s+'
     $id = $ids[-1]
