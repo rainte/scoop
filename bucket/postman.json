@@ -1,10 +1,10 @@
 {
-    "version": "11.68.0",
+    "version": "12.17.3",
     "description": "接口: Postman",
     "homepage": "https://www.getpostman.com",
     "license": "Unknown",
-    "url": "https://dl.pstmn.io/download/11.68.0/Postman-win64-11.68.0-Setup.exe#/dl.7z",
-    "hash": "sha1:d621df1a8da755078a3e7f503f95d74d740dcb81",
+    "url": "https://dl.pstmn.io/download/12.17.3/Postman%20v12.17.3%20(x64).exe#/dl.7z",
+    "hash": "sha1:7eb346fb310cb05207a1083a42860afe2fe06463",
     "installer": {
         "script": [
             "Expand-7zipArchive \"$dir\\Postman-$version-full.nupkg\" \"$dir\\app\" -ExtractDir 'lib\\net45' -Removal",
@@ -22,7 +22,7 @@
         "jsonpath": "$.changelog[0].name"
     },
     "autoupdate": {
-        "url": "https://dl.pstmn.io/download/$version/Postman-win64-$version-Setup.exe#/dl.7z",
+        "url": "https://dl.pstmn.io/download/$version/Postman%20v$version%20(x64).exe#/dl.7z",
         "hash": {
             "url": "https://dl.pstmn.io/RELEASES?platform=win64&from=$version",
             "regex": "(?sm)$basename.*?$sha1"

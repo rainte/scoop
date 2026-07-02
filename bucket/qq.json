@@ -1,10 +1,10 @@
 {
-    "version": "9.9.29.260401",
+    "version": "9.9.31.49738",
     "description": "聊天: QQ",
     "homepage": "https://im.qq.com/pcqq/index.shtml",
     "license": "Unknown",
-    "url": "https://dldir1.qq.com/qqfile/qq/QQNT/Windows/QQ_9.9.29_260401_x64_01.exe#/dl.7z",
-    "hash": "d52601a3224d29364f03f4948a487ecd2710db1921383730801d795397e0a808",
+    "url": "https://webcdn.m.qq.com/spcmgr/download/QQ9.9.31.49738_guanjia_x64.exe#/dl.7z",
+    "hash": "0cb894ffdcc0d41b07de56295650bb13aec6edb1b3201d1626174431c17e797a",
     "extract_dir": "Files",
     "shortcuts": [
         [
@@ -14,15 +14,15 @@
     ],
     "checkver": {
         "script": [
-            "$headers = @{ 'Accept-Encoding' = 'gzip' }",
-            "$url = 'https://cdn-go.cn/qq-web/im.qq.com_new/latest/rainbow/windowsConfig.js'",
-            "$response = Invoke-WebRequest -Uri $url -UseBasicParsing -Headers $headers",
-            "Write-Output $response.Content"
+            "$res = Invoke-WebRequest -UseBasicParsing -Uri 'https://luban.m.qq.com/api/public/software-manager/softwareProxy' -Body 'cmdid=3318&jprxReq[req][soft_id_list]=35094' -Method 'POST'",
+            "$content = $res.Content | ConvertFrom-Json",
+            "$verName = $content.resp.soft_list[0].ver_name",
+            "$fileName = $content.resp.soft_list[0].file_name",
+            "Write-Output \"$verName|$fileName\""
         ],
-        "regex": "QQNT/Windows/QQ_([\\d\\.]+)_([\\d]+)_x86_01.exe",
-        "replace": "${1}.${2}"
+        "regex": "(?<version>[\\d.]+)\\|(?<id>.*)"
     },
     "autoupdate": {
-        "url": "https://dldir1.qq.com/qqfile/qq/QQNT/Windows/QQ_$match1_$match2_x64_01.exe#/dl.7z"
+        "url": "https://webcdn.m.qq.com/spcmgr/download/$matchId#/dl.7z"
     }
 }
