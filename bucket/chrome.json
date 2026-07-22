@@ -1,10 +1,10 @@
 {
-    "version": "150.0.7871.129",
+    "version": "150.0.7871.182",
     "description": "浏览器: Chrome",
     "homepage": "https://google.com/chrome",
     "license": "Unknown",
-    "url": "https://dl.google.com/release2/chrome/acyfzdooxjhnaladzsvqy5vjwtfq_150.0.7871.129/150.0.7871.129_chrome_installer_uncompressed.exe#/dl.7z",
-    "hash": "5f1bc7c0ec651d84a1d8377a17f74c216ca571b0993dce24a2210679408b2d2c",
+    "url": "https://dl.google.com/release2/chrome/acz7bi4upto224cpgfqo2nklbxfa_150.0.7871.182/150.0.7871.182_chrome_installer_uncompressed.exe#/dl.7z",
+    "hash": "150c67da8c0a5e408c2109d14e889170aa1bc83d70d2de3fd1096669c4b1b18f",
     "extract_dir": "Chrome-bin",
     "bin": [
         [
