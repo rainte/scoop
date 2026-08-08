@@ -1,0 +1,88 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# 192.168.56.1
+# vagrant up
+# vagrant ssh
+# vagrant reload ubuntu
+Vagrant.configure("2") do |config|
+  # 定义多个虚拟机配置.
+  vms = [
+    { name: "ubuntu", ip: "192.168.1.110", memory: 8 },
+    # { name: "windows", ip: "192.168.1.111", box: "gusztavvargadr/windows-11" },
+  ]
+
+  config.vm.box_check_update = false
+  if Vagrant.has_plugin?("vagrant-vbguest")
+    config.vbguest.auto_update = false
+  end
+
+  config.vm.provision "file", source: "~/.ssh/id_rsa", destination: "~/.ssh/id_rsa"
+  config.vm.provision "file", source: "~/.ssh/id_rsa.pub", destination: "~/.ssh/id_rsa.pub"
+
+  vms.each do |vm|
+    config.vm.define "#{vm[:name]}" do |item|
+      if vm.key?(:box) && !vm[:box].nil?
+        item.vm.box = vm[:box]
+      else
+        item.vm.box = "ubuntu/jammy64"
+        item.vm.provision "shell", inline: instance_variable_get(:@init)
+      end
+
+      item.vm.hostname = vm[:name]
+      item.vm.network "public_network", ip: vm[:ip]
+      item.vm.synced_folder ".", "/www/wwwroot"
+
+      item.vm.provider "virtualbox" do |vb|
+        vb.name = vm[:name]
+        # vb.gui = true
+        vb.cpus = vm.key?(:cpus) ? vm[:cpus] : 4
+        vb.memory = vm.key?(:memory) ? vm[:memory] * 1024 : 8192
+      end
+    end
+  end
+end
+
+@init = <<-SHELL
+echo ================== 初始化 ==================
+echo "127.0.1.1 $HOSTNAME" | sudo tee -a /etc/hosts
+echo "DNS=8.8.8.8 1.1.1.1" | sudo tee -a /etc/systemd/resolved.conf
+sudo systemctl restart systemd-resolved
+sudo sed -i 's/^nameserver 127.0.0.53/nameserver 8.8.8.8/' /etc/resolv.conf
+sudo tee /root/.curlrc << EOF
+proxy = "socks5://192.168.56.1:1080"
+EOF
+sudo chmod 700 /home/vagrant/.ssh
+sudo chmod 600 /home/vagrant/.ssh/id_rsa
+sudo chmod 644 /home/vagrant/.ssh/id_rsa.pub
+sudo chmod 777 /srv
+echo ================== 去除提示页 ==================
+sudo apt purge -y needrestart
+echo ================== 更换阿里源 ==================
+sudo sed -i -E 's#http://(archive|security).ubuntu.com#http://mirrors.aliyun.com#g' /etc/apt/sources.list
+# cloud-init 之后会替换源，所以把它的也换掉.
+sudo sed -i -E 's#http://(archive|security).ubuntu.com#http://mirrors.aliyun.com#g' /etc/cloud/cloud.cfg
+echo ================== 移除无用包 ==================
+sudo apt autoremove -y
+echo ================== 更新软件包 ==================
+sudo apt update
+echo ================== 改系统时区 ==================
+sudo cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+sudo timedatectl set-timezone Asia/Shanghai
+sudo systemctl restart systemd-timesyncd
+echo ================== 安装 Docker ==================
+sudo apt install -y docker.io
+sudo mkdir -p /etc/systemd/system/docker.service.d
+sudo tee /etc/systemd/system/docker.service.d/http-proxy.conf << EOF
+[Service]
+Environment="HTTP_PROXY=socks5://192.168.56.1:1080"
+Environment="HTTPS_PROXY=socks5://192.168.56.1:1080"
+Environment="NO_PROXY=localhost,127.0.0.1"
+EOF
+sudo sed -i '/ExecStart=/s#$# -H tcp://0.0.0.0:2375#' /usr/lib/systemd/system/docker.service
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+echo ================== 安装 docker-compose ==================
+sudo curl -k -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+SHELL

@@ -1,0 +1,54 @@
+{
+    "version": "151.0.7922.109",
+    "description": "浏览器: Chrome",
+    "homepage": "https://google.com/chrome",
+    "license": "Unknown",
+    "notes": "AutoProxy: https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt",
+    "url": "https://dl.google.com/release2/chrome/jfmiyxoi6is5wsugjr5quwwsdi_151.0.7922.109/151.0.7922.109_chrome_installer_uncompressed.exe#/dl.7z",
+    "hash": "9f7dc558edb2fdfac2d9c7d2dddf5bda25ad8f7e558ba9dae777a025abd59e5b",
+    "persist": "User Data",
+    "bin": [
+        [
+            "chrome.exe",
+            "chrome"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "chrome.exe",
+            "Google Chrome"
+        ],
+        [
+            "chrome.exe",
+            "Google Chrome Proxy",
+            "--proxy-server=\"socks5://127.0.0.1:1080\""
+        ]
+    ],
+    "env_set": {
+        "CHROME_EXECUTABLE": "$dir\\chrome.exe"
+    },
+    "extract_dir": "Chrome-bin",
+    "post_install": [
+        "$chrome = \"$env:LocalAppData\\Google\\Chrome\"",
+        "New-Item -ItemType Directory -Force -Path \"$chrome\"",
+        "if ((Test-Path \"$dir\\User Data\") -and !(Test-Path \"$chrome\\User Data\")) {",
+        "    New-Item -ItemType SymbolicLink -Target \"$dir\\User Data\" -Path \"$chrome\\User Data\"",
+        "}",
+        "Invoke-WebRequest -Uri \"https://raw.githubusercontent.com/rainte/chrome/refs/heads/main/rainte.crx\" -OutFile \"$persist_dir\\rainte.crx\"",
+        "Expand-7zipArchive \"$persist_dir\\rainte.crx\" \"$persist_dir\\rainte\""
+    ],
+    "uninstaller": {
+        "script": "[Environment]::SetEnvironmentVariable('CHROME_EXECUTABLE', '', 'User')"
+    },
+    "checkver": {
+        "url": "https://scoopinstaller.github.io/UpdateTracker/googlechrome/chrome.min.xml",
+        "regex": "(?sm)<stable32><version>(?<version>[\\d.]+)</version>.+release2/chrome/(?<32>[\\w-]+)_.+<stable64>.+release2/chrome/(?<64>[\\w-]+)_.+</stable64>"
+    },
+    "autoupdate": {
+        "url": "https://dl.google.com/release2/chrome/$match64_$version/$version_chrome_installer_uncompressed.exe#/dl.7z",
+        "hash": {
+            "url": "https://scoopinstaller.github.io/UpdateTracker/googlechrome/chrome.min.xml",
+            "xpath": "/chromechecker/stable64[version='$version']/sha256"
+        }
+    }
+}

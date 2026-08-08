@@ -1,0 +1,31 @@
+{
+    "version": "4.0.14.486",
+    "description": "音频: 喜马拉雅",
+    "homepage": "https://www.ximalaya.com",
+    "license": "Unknown",
+    "url": "https://webcdn.m.qq.com/spcmgr/download/Ximalaya-4.0.14_99B_sc100001.exe#/dl.7z",
+    "hash": "5b189d2cb9b4ba264c70784d210113b11cd0179e034af02908f161db1375ffe8",
+    "shortcuts": [
+        [
+            "喜马拉雅.exe",
+            "喜马拉雅"
+        ]
+    ],
+    "installer": {
+        "script": "(Get-ChildItem $dir 'ximalaya-*-ia32.nsis.7z').Fullname | Expand-7zipArchive -DestinationPath $dir -Removal"
+    },
+    "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\" -Force -Recurse",
+    "checkver": {
+        "script": [
+            "$res = Invoke-WebRequest -UseBasicParsing -Uri 'https://luban.m.qq.com/api/public/software-manager/softwareProxy' -Body 'cmdid=3318&jprxReq[req][soft_id_list]=26167' -Method 'POST'",
+            "$content = $res.Content | ConvertFrom-Json",
+            "$verName = $content.resp.soft_list[0].ver_name",
+            "$fileName = $content.resp.soft_list[0].file_name",
+            "Write-Output \"$verName|$fileName\""
+        ],
+        "regex": "(?<version>[\\d.]+)\\|(?<id>.*)"
+    },
+    "autoupdate": {
+        "url": "https://webcdn.m.qq.com/spcmgr/download/$matchId#/dl.7z"
+    }
+}

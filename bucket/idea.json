@@ -1,0 +1,52 @@
+{
+    "version": "2026.2.0.1-262.8665.337",
+    "description": "IDE: Java Idea",
+    "homepage": "https://www.jetbrains.com/idea",
+    "license": "Unknown",
+    "notes": "激活: https://blog.idejihuo.com",
+    "url": "https://download.jetbrains.com/idea/ideaIU-2026.2.0.1.win.zip",
+    "hash": "269c47f7b184f65b2ce23e411736c55d4dcc5bc42ca6ad8cf377212e2efd2d34",
+    "persist": [
+        "IDE\\bin\\idea.properties",
+        "profile"
+    ],
+    "bin": [
+        [
+            "IDE\\bin\\idea64.exe",
+            "idea"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "IDE\\bin\\idea64.exe",
+            "IDEA"
+        ]
+    ],
+    "extract_to": "IDE",
+    "installer": {
+        "script": [
+            "if (!(Test-Path \"$persist_dir\\IDE\\bin\\idea.properties\")) {",
+            "    info 'Copying idea.properties file...'",
+            "    $current = (Split-Path $dir | Join-Path -ChildPath 'current') -replace '\\\\', '/'",
+            "    $CONT = Get-Content \"$dir\\IDE\\bin\\idea.properties\"",
+            "    $CONT = $CONT -replace '^#\\s*(idea.config.path=).*$', \"`$1$current/profile/config\"",
+            "    $CONT = $CONT -replace '^#\\s*(idea.system.path=).*$', \"`$1$current/profile/system\"",
+            "    $CONT = $CONT -replace '^#\\s*(idea.plugins.path=).*$', '$1${idea.config.path}/plugins'",
+            "    $CONT = $CONT -replace '^#\\s*(idea.log.path=).*$', '$1${idea.system.path}/log'",
+            "    Set-Content -LiteralPath \"$dir\\IDE\\bin\\idea.properties\" -Value $CONT -Encoding 'Ascii' -Force",
+            "}"
+        ]
+    },
+    "pre_uninstall": "Get-ChildItem \"$dir\\IDE\\bin\\idea*.exe.vmoptions\" -ErrorAction SilentlyContinue | Copy-Item -Destination \"$persist_dir\\IDE\\bin\"",
+    "checkver": {
+        "url": "https://data.services.jetbrains.com/products/releases?code=IIU&latest=true&platform=zip&type=release",
+        "regex": "version\":\"(?<ver>[\\d.]+)\".*\"build\":\"(?<build>[\\d.]+)\"",
+        "replace": "${ver}-${build}"
+    },
+    "autoupdate": {
+        "url": "https://download.jetbrains.com/idea/ideaIU-$matchVer.win.zip",
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}

@@ -1,0 +1,21 @@
+{
+    "version": "v2.1.5",
+    "description": "代理: FastGithub",
+    "homepage": "https://github.com/creazyboyone/FastGithub",
+    "license": "Unknown",
+    "url": "https://github.com/creazyboyone/FastGithub/releases/download/v2.1.5/fastgithub-win-x64.zip",
+    "hash": "8719a4e16070e169e90fd14dbee9c0b7834e4b2368c4949a81d8ce44de61554e",
+    "shortcuts": [
+        [
+            "FastGithub.UI.exe",
+            "FastGithub.UI"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/creazyboyone/FastGithub",
+        "regex": "tag/(v[\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://github.com/creazyboyone/FastGithub/releases/download/$version/fastgithub-win-x64.zip"
+    }
+}
