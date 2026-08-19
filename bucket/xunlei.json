@@ -1,10 +1,10 @@
 {
-    "version": "4.1.12.26",
+    "version": "12.4.12.4000",
     "description": "下载: 迅雷",
     "homepage": "https://pc.xunlei.com",
     "license": "Unknown",
-    "url": "https://webcdn.m.qq.com/spcmgr/download/WeChatWin_4.1.12.26.exe#/dl.7z",
-    "hash": "58997cfe4513ab71f107c2137bb570ade030f228115c14688544cec80e604053",
+    "url": "https://webcdn.m.qq.com/spcmgr/download/XunLeiSetup_txrjgjdsplx.exe#/dl.7z",
+    "hash": "d14735d29936b4354b5e690521bb962494392845874faed5d1c8fe270c1e3dbb",
     "shortcuts": [
         [
             "Weixin.exe",
