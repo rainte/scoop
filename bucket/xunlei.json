@@ -1,0 +1,27 @@
+{
+    "version": "4.1.12.26",
+    "description": "下载: 迅雷",
+    "homepage": "https://pc.xunlei.com",
+    "license": "Unknown",
+    "url": "https://webcdn.m.qq.com/spcmgr/download/WeChatWin_4.1.12.26.exe#/dl.7z",
+    "hash": "58997cfe4513ab71f107c2137bb570ade030f228115c14688544cec80e604053",
+    "shortcuts": [
+        [
+            "Weixin.exe",
+            "WeChat"
+        ]
+    ],
+    "checkver": {
+        "script": [
+            "$res = Invoke-WebRequest -UseBasicParsing -Uri 'https://luban.m.qq.com/api/public/software-manager/softwareProxy' -Body 'cmdid=3318&jprxReq[req][soft_id_list]=59515' -Method 'POST'",
+            "$content = $res.Content | ConvertFrom-Json",
+            "$verName = $content.resp.soft_list[0].ver_name",
+            "$fileName = $content.resp.soft_list[0].file_name",
+            "Write-Output \"$verName|$fileName\""
+        ],
+        "regex": "(?<version>[\\d.]+)\\|(?<id>.*)"
+    },
+    "autoupdate": {
+        "url": "https://webcdn.m.qq.com/spcmgr/download/$matchId#/dl.7z"
+    }
+}
