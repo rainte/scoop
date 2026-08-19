@@ -5,10 +5,7 @@
     "license": "Unknown",
     "url": "https://webcdn.m.qq.com/spcmgr/download/XunLeiSetup_txrjgjdsplx.exe#/dl.7z",
     "hash": "d14735d29936b4354b5e690521bb962494392845874faed5d1c8fe270c1e3dbb",
-<<<<<<< HEAD
     "persist": "profiles",
-=======
->>>>>>> 53727dbfec12c6b9aca2bf74cf5fd656208272aa
     "shortcuts": [
         [
             "Program\\ThunderStart.exe",
