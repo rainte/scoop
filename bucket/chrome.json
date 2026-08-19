@@ -1,11 +1,11 @@
 {
-    "version": "151.0.7922.109",
+    "version": "151.0.7922.138",
     "description": "浏览器: Chrome",
     "homepage": "https://google.com/chrome",
     "license": "Unknown",
     "notes": "AutoProxy: https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt",
-    "url": "https://dl.google.com/release2/chrome/jfmiyxoi6is5wsugjr5quwwsdi_151.0.7922.109/151.0.7922.109_chrome_installer_uncompressed.exe#/dl.7z",
-    "hash": "9f7dc558edb2fdfac2d9c7d2dddf5bda25ad8f7e558ba9dae777a025abd59e5b",
+    "url": "https://dl.google.com/release2/chrome/acsbjnlokc2yt537wrgkmaitb55a_151.0.7922.138/151.0.7922.138_chrome_installer_uncompressed.exe#/dl.7z",
+    "hash": "c4295c444e111b732963a08f26e4c5411389bff632891dd9784f4579127ea47b",
     "persist": "User Data",
     "bin": [
         [
