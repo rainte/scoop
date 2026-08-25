@@ -1,5 +1,5 @@
 {
-    "version": "0.100.2",
+    "version": "0.101.2362.0",
     "description": "工具: PowerToys",
     "homepage": "https://github.com/microsoft/PowerToys",
     "license": "Unknown",
@@ -10,8 +10,8 @@
         "If an error occurs when updating or uninstalling, execute the following command then retry:",
         "`Stop-Process -Name 'explorer'`"
     ],
-    "url": "https://github.com/microsoft/PowerToys/releases/download/v0.100.2/PowerToysUserSetup-0.100.2-x64.exe",
-    "hash": "945fdf327e4d38e4ced61b0727b7ab8a1222958782982052989ddf7cb7096f62",
+    "url": "https://github.com/microsoft/PowerToys/releases/download/v0.101.2362.0/PowerToysUserSetup-0.101.2362.0-x64.exe",
+    "hash": "d56fa7130fa68afe553068c15a59a6b24c8dbcc9a0989a43ef0fc5a373230de3",
     "shortcuts": [
         [
             "PowerToys.exe",
