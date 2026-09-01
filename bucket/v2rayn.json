@@ -1,11 +1,11 @@
 {
-    "version": "7.24.8",
+    "version": "7.24.9",
     "description": "代理: v2rayN",
     "homepage": "https://github.com/2dust/v2rayN",
     "license": "Unknown",
     "notes": "订阅: https://raw.githubusercontent.com/Pawdroid/Free-servers/main/sub",
-    "url": "https://github.com/2dust/v2rayN/releases/download/7.24.8/v2rayN-windows-64-desktop.zip",
-    "hash": "579838ef53f8429edddc716827c893c312b8d2d5e22c67afe7c16a1d6251acde",
+    "url": "https://github.com/2dust/v2rayN/releases/download/7.24.9/v2rayN-windows-64-desktop.zip",
+    "hash": "fbf187b3eca3e391bf348cc559bb458ab6d8f5cd5afdfbce5de45b01c26bd179",
     "shortcuts": [
         [
             "v2rayN.exe",
