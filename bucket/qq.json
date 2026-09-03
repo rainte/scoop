@@ -1,10 +1,10 @@
 {
-    "version": "9.9.33.52230",
+    "version": "9.9.35.52892",
     "description": "聊天: QQ",
     "homepage": "https://im.qq.com/pcqq/index.shtml",
     "license": "Unknown",
-    "url": "https://webcdn.m.qq.com/spcmgr/download/QQ9.9.33.52230_guanjia_x64.exe#/dl.7z",
-    "hash": "1da6cd7589eba8725a7592a9791ccb234fc38b06f87d99d14a132003d50f32f5",
+    "url": "https://webcdn.m.qq.com/spcmgr/download/QQ9.9.35.52892_guanjia_x64.exe#/dl.7z",
+    "hash": "df84a5930649a574cdbd1fd4f392860ffe33f4e765349086a8676e2ac1c0d6dc",
     "shortcuts": [
         [
             "QQ.exe",
