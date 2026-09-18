@@ -1,10 +1,10 @@
 {
-    "version": "4.1.15.9",
+    "version": "4.1.15.11",
     "description": "聊天: WeChat",
     "homepage": "https://pc.weixin.qq.com",
     "license": "Unknown",
-    "url": "https://webcdn.m.qq.com/spcmgr/download/WeChatWin_4.1.15.exe#/dl.7z",
-    "hash": "2474cdbef82c86f9266a24f7a10cddb1c19589b76980c5bd745645e47d4c4952",
+    "url": "https://webcdn.m.qq.com/spcmgr/download/WeChatWin_4.1.15.11.exe#/dl.7z",
+    "hash": "4aa51657d0938ad8754b46485a19e32d8de16f1ee13a0938d1493057ddcf6e7e",
     "persist": "WeChat Files",
     "shortcuts": [
         [
