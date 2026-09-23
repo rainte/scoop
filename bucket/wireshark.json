@@ -1,5 +1,5 @@
 {
-    "version": "4.6.8",
+    "version": "4.6.9",
     "description": "抓包: Wireshark",
     "homepage": "https://www.wireshark.org",
     "license": "Unknown",
@@ -12,8 +12,8 @@
         "",
         "If this is the first time you opted to install USBPcap, please restart and run: $dir\\enable-usbpcap.ps1"
     ],
-    "url": "https://www.wireshark.org/download/win64/Wireshark-4.6.8-x64.exe#/dl.7z",
-    "hash": "8eba737cb6875d9b3709228d37893f71125bdc50d7148e24d9cdc755259e9c3a",
+    "url": "https://www.wireshark.org/download/win64/Wireshark-4.6.9-x64.exe#/dl.7z",
+    "hash": "bf9b5ce8a89f244c376a9b1a946276eaa06463dde3e33069a34d7f102f5878cf",
     "persist": "Data",
     "bin": [
         "capinfos.exe",
