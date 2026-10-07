@@ -9,7 +9,9 @@ try {
     $index = Read-Host -Prompt 'Update IP: 1|2|3|4 Continue: 0'
     if ($index -ne 0) {
         $url = $urls[[int]$index - 1]
-        ~\scoop\buckets\rainte\scripts\wget\wget.exe -t 2 --no-check-certificate $url -O 'config.json'
+        ~\scoop\buckets\rainte\scripts\wget\wget.exe -t 2 --no-check-certificate $url -O 'config.json.tmp'
+        Get-Content 'config.json.tmp' -Raw | ConvertFrom-Json | Out-Null
+        Move-Item -Force 'config.json.tmp' 'config.json'
     }
 }
 catch {
