@@ -12,7 +12,7 @@ try {
         ~\scoop\buckets\rainte\scripts\wget\wget.exe -t 2 --no-check-certificate $url -O 'config.json.tmp'
         $raw = Get-Content 'config.json.tmp' -Raw
         if ([string]::IsNullOrWhiteSpace($raw)) {
-            throw "配置文件不是有效的 JSON"
+            throw "Invalid configuration file: not valid JSON"
         }
         $raw | ConvertFrom-Json | Out-Null
         Move-Item -Force 'config.json.tmp' 'config.json'
