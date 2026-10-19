@@ -1,10 +1,10 @@
 {
-    "version": "12.32.4",
+    "version": "12.33.0",
     "description": "接口: Postman",
     "homepage": "https://www.getpostman.com",
     "license": "Unknown",
-    "url": "https://dl.pstmn.io/download/12.32.4/Postman%20v12.32.4%20(x64).exe#/dl.7z",
-    "hash": "sha1:ca0ddab8dc6c7098f7b01c6a47e97d612a360d5b",
+    "url": "https://dl.pstmn.io/download/12.33.0/Postman%20v12.33.0%20(x64).exe#/dl.7z",
+    "hash": "sha1:435cd1e5acf9cc54cb2d1c053b3bfd444a6333b3",
     "shortcuts": [
         [
             "app/Postman.exe",
