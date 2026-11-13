@@ -1,0 +1,21 @@
+{
+    "version": "2.8.6",
+    "description": "EPUB: Sigil",
+    "homepage": "https://sigil-ebook.com",
+    "license": "Unknown",
+    "url": "https://github.com/Sigil-Ebook/Sigil/releases/download/2.8.6/Sigil-2.8.6-Windows-x64-Setup.exe",
+    "hash": "95cf12e2611f5cbf38ba079281f7806f696c6e7c81ba5c52112508be2a482d6b",
+    "innosetup": true,
+    "shortcuts": [
+        [
+            "Sigil.exe",
+            "Sigil"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/Sigil-Ebook/Sigil"
+    },
+    "autoupdate": {
+        "url": "https://github.com/Sigil-Ebook/Sigil/releases/download/$version/Sigil-$version-Windows-x64-Setup.exe"
+    }
+}

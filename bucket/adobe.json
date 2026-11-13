@@ -1,0 +1,26 @@
+{
+    "version": "6.11.0.478.6",
+    "description": "设计: Adobe Creative Cloud",
+    "homepage": "https://www.adobe.com/creativecloud.html",
+    "license": "Unknown",
+    "notes": "激活: https://www.reddit.com/r/GenP",
+    "url": "https://prod-rel-ffc-ccm.oobesaas.adobe.com/adobe-ffc-external/core/v1/wam/download?sapCode=KCCC&wamFeature=nuj-live#/setup.exe",
+    "hash": "bf7e929294f116077806470c0b0cfb2be0c689db653d56b3d19c14ef878b485c",
+    "installer": {
+        "script": "& \"$dir\\setup.exe\""
+    },
+    "uninstaller": {
+        "script": [
+            "warn '通过已安装应用卸载.'",
+            "Start-Process ms-settings:appsfeatures-app"
+        ]
+    },
+    "checkver": {
+        "useragent": "curl/7.77",
+        "url": "https://helpx.adobe.com/creative-cloud/release-note/cc-release-notes.html",
+        "regex": "version ([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://prod-rel-ffc-ccm.oobesaas.adobe.com/adobe-ffc-external/core/v1/wam/download?sapCode=KCCC&wamFeature=nuj-live#/setup.exe"
+    }
+}

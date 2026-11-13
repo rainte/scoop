@@ -1,0 +1,31 @@
+{
+    "version": "1.14.4",
+    "description": "翻墙: Singbox",
+    "homepage": "https://github.com/SagerNet/sing-box",
+    "license": "Unknown",
+    "url": "https://github.com/SagerNet/sing-box/releases/download/v1.14.4/sing-box-1.14.4-windows-amd64.zip",
+    "hash": "99185d75d314a07dbba4a130c8ad986cbeb629a07927975636b341ca61f991df",
+    "shortcuts": [
+        [
+            "run.ps1",
+            "Singbox"
+        ]
+    ],
+    "extract_dir": "sing-box-1.14.4-windows-amd64",
+    "pre_install": [
+        "Copy-Item -Path \"$bucketsdir\\$bucket\\scripts\\$app\\run.ps1\" -Destination \"$dir\\run.ps1\"",
+        "Copy-Item -Path \"$bucketsdir\\$bucket\\scripts\\$app\\mixed.json\" -Destination \"$dir\\mixed.json\""
+    ],
+    "post_install": [
+        "schtasks /Create /TN \"SingBoxMixed\" /TR \"'$dir\\sing-box.exe' run -c mixed.json\" /SC ONSTART /RU SYSTEM /RL HIGHEST /F",
+        "schtasks /Create /TN \"SingBoxTun\" /TR \"'$dir\\sing-box.exe' run -c tun.json\" /SC ONSTART /RU SYSTEM /RL HIGHEST /F"
+    ],
+    "uninstaller": {
+        "script": "Get-ScheduledTask -TaskName \"SingBox*\" -ErrorAction SilentlyContinue | Unregister-ScheduledTask -Confirm:$false"
+    },
+    "checkver": "github",
+    "autoupdate": {
+        "url": "https://github.com/SagerNet/sing-box/releases/download/v$version/sing-box-$version-windows-amd64.zip",
+        "extract_dir": "sing-box-$version-windows-amd64"
+    }
+}

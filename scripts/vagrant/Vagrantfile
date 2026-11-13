@@ -1,0 +1,92 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+#
+# 192.168.56.1
+# 用法:
+#   vagrant up            # 启动所有 VM
+#   vagrant up ubuntu     # 只启动 ubuntu
+#   vagrant ssh ubuntu
+#   vagrant reload ubuntu
+#   vagrant destroy -f
+
+INIT_SCRIPT = <<~SHELL
+  #!/usr/bin/env bash
+  set -euo pipefail
+  export DEBIAN_FRONTEND=noninteractive
+
+  echo "================== 初始化 =================="
+  echo "127.0.1.1 $HOSTNAME" >> /etc/hosts
+  echo "DNS=8.8.8.8 1.1.1.1" >> /etc/systemd/resolved.conf
+  systemctl restart systemd-resolved
+  sed -i 's/^nameserver 127.0.0.53/nameserver 8.8.8.8/' /etc/resolv.conf
+  echo 'proxy = "socks5://192.168.56.1:1080"' > /root/.curlrc
+  chmod 777 /srv
+  echo "================== 去除提示页 =================="
+  apt-get purge -y needrestart
+  echo "================== 更换阿里源 =================="
+  sed -i -E 's#http://(archive|security).ubuntu.com#http://mirrors.aliyun.com#g' /etc/apt/sources.list /etc/cloud/cloud.cfg
+  echo "================== 移除无用包 / 更新 =================="
+  apt-get autoremove -y
+  apt-get update
+  echo "================== 改系统时区 =================="
+  ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+  timedatectl set-timezone Asia/Shanghai
+  systemctl restart systemd-timesyncd
+  echo "================== 安装 Docker =================="
+  apt-get install -y docker.io
+  mkdir -p /etc/systemd/system/docker.service.d
+  printf '[Service]\\nEnvironment="HTTP_PROXY=socks5://192.168.56.1:1080"\\nEnvironment="HTTPS_PROXY=socks5://192.168.56.1:1080"\\nEnvironment="NO_PROXY=localhost,127.0.0.1"\\n' > /etc/systemd/system/docker.service.d/http-proxy.conf
+  sed -i '/ExecStart=/s#$# -H tcp://0.0.0.0:2375#' /usr/lib/systemd/system/docker.service
+  systemctl daemon-reload
+  systemctl restart docker
+  echo "================== 安装 docker-compose =================="
+  curl -k -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+  chmod +x /usr/local/bin/docker-compose
+SHELL
+
+Vagrant.configure("2") do |config|
+  # ---- VM 定义 ----
+  vms = [
+    { name: "ubuntu", ip: "192.168.1.110", memory: 8, cpus: 4 },
+    # { name: "windows", ip: "192.168.1.111", box: "gusztavvargadr/windows-11", memory: 8, cpus: 4 },
+  ]
+
+  # ---- 全局配置 ----
+  config.vm.box_check_update = false
+  config.vbguest.auto_update = false if Vagrant.has_plugin?("vagrant-vbguest")
+
+  # ---- 复制宿主机 SSH 密钥对进 VM ----
+  Dir.glob(File.expand_path("~/.ssh/id_*")).each do |src|
+    config.vm.provision "file", source: src, destination: "~/.ssh/#{File.basename(src)}"
+  end
+
+  config.vm.provision "shell", privileged: true, inline: <<-SHELL
+    mkdir -p /root/.ssh && chmod 700 /root/.ssh
+    cp -f /home/vagrant/.ssh/id_* /root/.ssh/
+    chmod 700 /home/vagrant/.ssh /root/.ssh
+    chmod 600 /home/vagrant/.ssh/id_* /root/.ssh/id_*
+    chmod 644 /home/vagrant/.ssh/id_*.pub /root/.ssh/id_*.pub
+  SHELL
+
+  config.vm.provision "shell", privileged: true, inline: INIT_SCRIPT
+
+  vms.each do |vm|
+    config.vm.define vm[:name] do |item|
+      item.vm.box      = vm[:box] || "ubuntu/jammy64"
+      item.vm.hostname = vm[:name]
+
+      item.vm.network "public_network", ip: vm[:ip]
+
+      # 项目目录挂载；VirtualBox 共享文件夹对 symlink/权限有限制
+      item.vm.synced_folder ".", "/www/wwwroot",
+        mount_options: ["dmode=777", "fmode=777"]
+
+      item.vm.provider "virtualbox" do |vb|
+        vb.name   = vm[:name]
+        vb.cpus   = vm[:cpus]   || 4
+        vb.memory = (vm[:memory] || 8) * 1024
+        # vb.gui = true
+      end
+    end
+  end
+end

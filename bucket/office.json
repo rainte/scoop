@@ -1,0 +1,42 @@
+{
+    "version": "16.0.20430.20146",
+    "description": "办公: Office",
+    "homepage": "https://office.com",
+    "license": "Unknown",
+    "url": "https://download.microsoft.com/download/6c1eeb25-cf8b-41d9-8d0d-cc1dbc032140/officedeploymenttool_20430-20146.exe#/dl.7z_",
+    "hash": "af1594121ab610cd8abc3dd6ff0a504e0cbc6ce54372e5c3813926352d1179c6",
+    "pre_install": [
+        "$scriptdir = \"$bucketsdir\\$bucket\\scripts\\$app\"",
+        "Copy-Item \"$scriptdir\\install.xml\" \"$dir\\\"",
+        "Copy-Item \"$scriptdir\\uninstall.xml\" \"$dir\\\""
+    ],
+    "installer": {
+        "script": [
+            "Start-Process -Wait 7z -ArgumentList @('x', '-bso0', \"`\"$dir\\dl.7z_`\"\", \"`\"-o$dir`\"\")",
+            "Start-Process -Wait \"$dir\\setup.exe\" -ArgumentList @('/configure', \"`\"$dir\\install.xml`\"\")"
+        ]
+    },
+    "uninstaller": {
+        "script": "Start-Process -Wait \"$dir\\setup.exe\" -ArgumentList @('/configure', \"`\"$dir\\uninstall.xml`\"\")"
+    },
+    "checkver": {
+        "url": "https://www.microsoft.com/en-au/download/details.aspx?id=49117",
+        "script": [
+            "$ProgressPreference = 'SilentlyContinue'",
+            "$url = 'https://www.microsoft.com/en-au/download/details.aspx?id=49117'",
+            "$cont = (Invoke-WebRequest $url).Content",
+            "",
+            "if (!($cont -match '\"version\":\"(?<ver>\\d+\\.\\d+\\.\\d+\\.\\d+)\"')) { Write-Error 'Could not match version'; return }",
+            "$app_ver = $matches['ver']",
+            "",
+            "if (!($cont -match '\"url\":\"(?<url>https://download\\.microsoft\\.com/download/[a-z0-9\\-]+/officedeploymenttool_[0-9\\-]+\\.exe)\"')) { Write-Error 'Could not match download URL'; return }",
+            "$download_url = $matches['url']",
+            "",
+            "Write-Output \"$app_ver $download_url\""
+        ],
+        "regex": "(?<version>[\\d.]+) (?<url>https://download\\.microsoft\\.com/download/[a-z0-9\\-]+/officedeploymenttool_[0-9\\-]+\\.exe)"
+    },
+    "autoupdate": {
+        "url": "$matchUrl#/dl.7z_"
+    }
+}

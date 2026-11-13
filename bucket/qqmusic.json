@@ -1,0 +1,43 @@
+{
+    "version": "22.81.0.0",
+    "description": "音频: QQMusic",
+    "homepage": "https://y.qq.com",
+    "license": "Unknown",
+    "url": "https://webcdn.m.qq.com/spcmgr/download/QQMusic22.81.3831.1106_txgjhz.exe#/dl.7z",
+    "hash": "c762819b26bd42b259ec4ec47b9470260a3d5a92d909c5ca59d68638c453501e",
+    "shortcuts": [
+        [
+            "QQMusic.exe",
+            "QQ音乐"
+        ]
+    ],
+    "installer": {
+        "script": [
+            "Import-Module $bucketsdir\\$bucket\\scripts\\$app\\AppsUtils.psm1",
+            "Mount-ExternalRuntimeData -Source \"$persist_dir\\appdata\" -Target \"$env:APPDATA\\Tencent\\QQMusic\"",
+            "Remove-Module -Name AppsUtils"
+        ]
+    },
+    "post_install": "Copy-Item \"$dir\\QQMusic.tpc\" \"$dir\\instok\"",
+    "uninstaller": {
+        "script": [
+            "Import-Module $bucketsdir\\$bucket\\scripts\\$app\\AppsUtils.psm1",
+            "Dismount-ExternalRuntimeData -Target \"$env:APPDATA\\Tencent\\QQMusic\"",
+            "Remove-Module -Name AppsUtils"
+        ]
+    },
+    "checkver": {
+        "url": "https://cdn.rainte.com/scoop/scoop.md",
+        "script": [
+            "$res = Invoke-WebRequest -UseBasicParsing -Uri 'https://luban.m.qq.com/api/public/software-manager/softwareProxy' -Body 'cmdid=3318&jprxReq[req][soft_id_list]=10' -Method 'POST'",
+            "$content = $res.Content | ConvertFrom-Json",
+            "$verName = $content.resp.soft_list[0].ver_name",
+            "$fileName = $content.resp.soft_list[0].file_name",
+            "Write-Output \"$verName|$fileName\""
+        ],
+        "regex": "(?<version>[\\d.]+)\\|(?<id>.*)"
+    },
+    "autoupdate": {
+        "url": "https://webcdn.m.qq.com/spcmgr/download/$matchId#/dl.7z"
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "version": "9.9.37.54395",
+    "description": "聊天: QQ",
+    "homepage": "https://im.qq.com/pcqq/index.shtml",
+    "license": "Unknown",
+    "url": "https://webcdn.m.qq.com/spcmgr/download/QQ9.9.37.54395_guanjia_x64.exe#/dl.7z",
+    "hash": "532c5621a2635313cf9512eb85267d1e884a817ff12f51e619c7ed7e40919552",
+    "shortcuts": [
+        [
+            "QQ.exe",
+            "QQ"
+        ]
+    ],
+    "extract_dir": "Files",
+    "checkver": {
+        "url": "https://cdn.rainte.com/scoop/scoop.md",
+        "script": [
+            "$res = Invoke-WebRequest -UseBasicParsing -Uri 'https://luban.m.qq.com/api/public/software-manager/softwareProxy' -Body 'cmdid=3318&jprxReq[req][soft_id_list]=35094' -Method 'POST'",
+            "$content = $res.Content | ConvertFrom-Json",
+            "$verName = $content.resp.soft_list[0].ver_name",
+            "$fileName = $content.resp.soft_list[0].file_name",
+            "Write-Output \"$verName|$fileName\""
+        ],
+        "regex": "(?<version>[\\d.]+)\\|(?<id>.*)"
+    },
+    "autoupdate": {
+        "url": "https://webcdn.m.qq.com/spcmgr/download/$matchId#/dl.7z"
+    }
+}

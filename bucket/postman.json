@@ -1,0 +1,31 @@
+{
+    "version": "12.36.3",
+    "description": "接口: Postman",
+    "homepage": "https://www.getpostman.com",
+    "license": "Unknown",
+    "url": "https://dl.pstmn.io/download/12.36.3/Postman%20v12.36.3%20(x64).exe#/dl.7z",
+    "hash": "sha1:4dab646a77c33ad28d5196f3dd8cba75d5213d31",
+    "shortcuts": [
+        [
+            "app/Postman.exe",
+            "Postman"
+        ]
+    ],
+    "installer": {
+        "script": [
+            "Expand-7zipArchive \"$dir\\Postman-$version-full.nupkg\" \"$dir\\app\" -ExtractDir 'lib\\net45' -Removal",
+            "'background.gif', 'RELEASES', 'setupIcon.ico' | ForEach-Object { Remove-Item \"$dir\\$_\" }"
+        ]
+    },
+    "checkver": {
+        "url": "https://dl.pstmn.io/changelog?channel=stable&platform=win64",
+        "jsonpath": "$.changelog[0].name"
+    },
+    "autoupdate": {
+        "url": "https://dl.pstmn.io/download/$version/Postman%20v$version%20(x64).exe#/dl.7z",
+        "hash": {
+            "url": "https://dl.pstmn.io/RELEASES?platform=win64&from=$version",
+            "regex": "(?sm)$basename.*?$sha1"
+        }
+    }
+}
