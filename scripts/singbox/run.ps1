@@ -37,20 +37,61 @@ function Add-GoogleProxyRule {
     param([string]$JsonFile)
     try {
         $json = Get-Content $JsonFile -Raw | ConvertFrom-Json
+
+        # ---------- route ----------
         if (-not $json.route) {
             $json | Add-Member -NotePropertyName route -NotePropertyValue ([PSCustomObject]@{}) -Force
         }
+
+        # 默认出站改为直连
+        $json.route | Add-Member -NotePropertyName final -NotePropertyValue "direct" -Force
+
         if (-not $json.route.rules) {
             $json.route | Add-Member -NotePropertyName rules -NotePropertyValue @() -Force
         }
-        $json.route.rules = @($json.route.rules) + [PSCustomObject]@{
-            domain_suffix = @("google.com")
-            outbound      = "proxy"
+
+        # 追加 Google 走代理的路由规则（去重）
+        $hasGoogleRoute = $json.route.rules | Where-Object {
+            $_.domain_suffix -contains "google.com" -and $_.outbound -eq "proxy"
         }
-        $json | ConvertTo-Json -Depth 32 | Set-Content $JsonFile -Encoding utf8NoBOM
+        if (-not $hasGoogleRoute) {
+            $json.route.rules = @($json.route.rules) + [PSCustomObject]@{
+                domain_suffix = @("google.com")
+                outbound      = "proxy"
+            }
+        }
+
+        # ---------- dns ----------
+        if (-not $json.dns) {
+            $json | Add-Member -NotePropertyName dns -NotePropertyValue ([PSCustomObject]@{}) -Force
+        }
+
+        if (-not $json.dns.rules) {
+            $json.dns | Add-Member -NotePropertyName rules -NotePropertyValue @() -Force
+        }
+
+        # 默认 DNS 走本地
+        $json.dns | Add-Member -NotePropertyName final -NotePropertyValue "local-dns" -Force
+
+        # 追加 Google 用代理解析的 DNS 规则（去重）
+        $hasGoogleDns = $json.dns.rules | Where-Object {
+            $_.domain_suffix -contains "google.com" -and $_.server -eq "proxy-dns"
+        }
+        if (-not $hasGoogleDns) {
+            $json.dns.rules = @($json.dns.rules) + [PSCustomObject]@{
+                domain_suffix = @("google.com")
+                action        = "route"
+                server        = "proxy-dns"
+            }
+        }
+
+        # ---------- 写回文件 ----------
+        $jsonText = $json | ConvertTo-Json -Depth 32
+        [System.IO.File]::WriteAllText((Resolve-Path $JsonFile).Path, $jsonText, [System.Text.UTF8Encoding]::new($false))
     }
     catch {
-        # 加不上就不管
+        Write-Host "ERROR: $($_.Exception.Message)"
+        Write-Host $_.ScriptStackTrace
     }
 }
 
