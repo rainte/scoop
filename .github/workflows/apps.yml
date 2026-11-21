@@ -1,0 +1,256 @@
+name: 转存文件
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 * * * *'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: archive-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 20
+
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        app: ${{ fromJson(vars.APPS) }}
+
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      APP_NAME: ${{ matrix.app.name }}
+      SETUP_URL: ${{ matrix.app.setup_url }}
+      INSTALL_ARGS: ${{ toJson(matrix.app.install_args) }}
+      VERSION_EXE: ${{ matrix.app.version_exe }}
+      ZIP_NAME: ${{ matrix.app.zip_name }}
+      WORK_DIR: ${{ github.workspace }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Download & Install
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+
+          $installer = "$env:APP_NAME-setup.exe"
+
+          # 下载重试
+          $downloaded = $false
+
+          for ($i = 1; $i -le 3; $i++) {
+            try {
+              Write-Host "Download attempt $i"
+              Invoke-WebRequest -Uri $env:SETUP_URL -OutFile $installer
+              $downloaded = $true
+              break
+            }
+            catch {
+              Write-Warning $_
+              if ($i -eq 3) { throw }
+              Start-Sleep -Seconds 5
+            }
+          }
+
+          if (!$downloaded -or !(Test-Path $installer)) {
+            throw "Installer download failed"
+          }
+
+          # 解析 JSON
+          $rawArgs = ConvertFrom-Json -InputObject $env:INSTALL_ARGS
+
+          # 解析安装参数
+          $installArgs = (
+            $rawArgs | ForEach-Object {
+              $ExecutionContext.InvokeCommand.ExpandString([string]$_)
+            }
+          )
+
+          # 启动安装程序并等待结束
+          $process = Start-Process `
+            -FilePath ".\$installer" `
+            -ArgumentList $installArgs `
+            -Wait `
+            -PassThru
+
+          Write-Host "Installer ExitCode: $($process.ExitCode)"
+
+          # 等待目标文件
+          $deadline = (Get-Date).AddMinutes(5)
+
+          $rawPath = $env:VERSION_EXE
+          $realPath = $ExecutionContext.InvokeCommand.ExpandString($rawPath)
+          while (!(Test-Path $realPath -PathType Leaf)) {
+            if ((Get-Date) -ge $deadline) {
+              throw "Install timeout: $realPath"
+            }
+
+            Start-Sleep -Seconds 5
+            Write-Host "Waiting for installation..."
+          }
+
+          Write-Host "Installation completed"
+
+      - name: Pack & Fingerprint
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+
+          $src = Join-Path $env:GITHUB_WORKSPACE "$env:APP_NAME"
+
+          if (!(Test-Path $src -PathType Container)) {
+            throw "Source directory not found: $src"
+          }
+
+          # 固定文件时间戳
+          $fixedTime = [DateTime]::SpecifyKind(
+            [DateTime]::Parse('2000-01-01T00:00:00'),
+            [DateTimeKind]::Utc
+          )
+
+          Get-ChildItem $src -Recurse -Force |
+            ForEach-Object {
+              $_.LastWriteTimeUtc = $fixedTime
+            }
+
+          # 按相对路径排序计算 SHA256
+          $files = @(
+            Get-ChildItem $src -File -Recurse |
+              ForEach-Object {
+                $relative = [IO.Path]::GetRelativePath(
+                  $src, $_.FullName
+                ).Replace('\', '/')
+
+                $hash = (Get-FileHash $_.FullName -Algorithm SHA256).Hash
+
+                [PSCustomObject]@{
+                  Path = $relative
+                  Hash = $hash
+                }
+              } |
+              Sort-Object Path
+          )
+
+          if ($files.Count -eq 0) {
+            throw "Source directory is empty"
+          }
+
+          $fingerprintRaw = (
+            $files | ForEach-Object {
+              "$($_.Path)|$($_.Hash)"
+            }
+          ) -join "`n"
+
+          $sha = [Security.Cryptography.SHA256]::Create()
+
+          try {
+            $bytes = [Text.Encoding]::UTF8.GetBytes($fingerprintRaw)
+            $fingerprint = [Convert]::ToHexString(
+              $sha.ComputeHash($bytes)
+            ).ToLowerInvariant()
+          }
+          finally {
+            $sha.Dispose()
+          }
+
+          # 打包
+          Compress-Archive `
+            -Path "$src\*" `
+            -DestinationPath $env:ZIP_NAME `
+            -CompressionLevel Optimal `
+            -Force
+
+          if (!(Test-Path $env:ZIP_NAME)) {
+            throw "ZIP creation failed"
+          }
+
+          # 发布变量
+          $dateVer = Get-Date -Format 'yyyyMMdd'
+          $tagPrefix = "$env:APP_NAME-"
+
+          "APP_VER=$dateVer" >> $env:GITHUB_ENV
+          "TAG_PREFIX=$tagPrefix" >> $env:GITHUB_ENV
+          "FINGERPRINT=$fingerprint" >> $env:GITHUB_ENV
+          "ZIP_FILE=$env:ZIP_NAME" >> $env:GITHUB_ENV
+
+          Write-Host "Fingerprint: $fingerprint"
+          Write-Host "ZIP: $env:ZIP_NAME"
+
+      - name: Check Release
+        id: check
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+
+          # 获取全部 Releases
+          $json = gh api --paginate --slurp `
+            "repos/$env:GITHUB_REPOSITORY/releases?per_page=100"
+
+          if ($LASTEXITCODE -ne 0) {
+            throw "Failed to query releases"
+          }
+
+          $pages = $json | ConvertFrom-Json
+
+          $releases = @(
+            foreach ($page in $pages) {
+              foreach ($release in $page) {
+                $release
+              }
+            }
+          )
+
+          # 找到当前应用最新 Release
+          $found = $releases |
+            Where-Object {
+              $_.tag_name.StartsWith(
+                $env:TAG_PREFIX,
+                [StringComparison]::Ordinal
+              )
+            } |
+            Sort-Object {
+              if ($_.published_at) {
+                $_.published_at
+              } else {
+                $_.created_at
+              }
+            } -Descending |
+            Select-Object -First 1
+
+          $publish = $true
+
+          if ($found -and $found.body -match [regex]::Escape($env:FINGERPRINT)) {
+            Write-Host "Same fingerprint, skip publishing"
+            $publish = $false
+          }
+
+          # 日期 + 指纹短码，避免同一天重复变更时 Tag 冲突
+          $newTag = "$env:TAG_PREFIX$env:APP_VER-$($env:FINGERPRINT.Substring(0,6))"
+
+          "PUBLISH=$($publish.ToString().ToLowerInvariant())" >> $env:GITHUB_ENV
+          "NEW_TAG=$newTag" >> $env:GITHUB_ENV
+
+          Write-Host "Publish: $publish"
+          Write-Host "Tag: $newTag"
+
+      - name: Create Release
+        if: env.PUBLISH == 'true'
+        uses: softprops/action-gh-release@v3
+        with:
+          tag_name: ${{ env.NEW_TAG }}
+          name: ${{ env.NEW_TAG }}
+          body: |
+            Content Fingerprint SHA256:
+
+            `${{ env.FINGERPRINT }}`
+          files: ${{ env.ZIP_FILE }}
+          make_latest: false
+          fail_on_unmatched_files: true

@@ -1,0 +1,28 @@
+{
+    "version": "2.4.5",
+    "description": "下载: Motrix",
+    "homepage": "https://motrix.app",
+    "license": "Unknown",
+    "url": "https://github.com/agalwood/Motrix/releases/download/v2.4.5/Motrix-Setup-2.4.5.exe#/dl.7z",
+    "hash": "sha512:3715e411a040f516a824e58e7be5f394ed0242f87ffb93ffb40cd01b9edde8821bfda0d5c5b6ac42301dcb6dc8baf750ab54f05c0abbc3157e7c1c1696c2b986",
+    "shortcuts": [
+        [
+            "Motrix.exe",
+            "Motrix"
+        ]
+    ],
+    "pre_install": [
+        "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
+        "Remove-Item \"$dir\\`$*\" -Force -Recurse"
+    ],
+    "checkver": {
+        "github": "https://github.com/agalwood/Motrix"
+    },
+    "autoupdate": {
+        "url": "https://github.com/agalwood/Motrix/releases/download/v$version/Motrix-Setup-$version.exe#/dl.7z",
+        "hash": {
+            "url": "$baseurl/latest.yml",
+            "regex": "sha512:\\s+$base64"
+        }
+    }
+}

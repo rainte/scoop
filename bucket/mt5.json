@@ -1,0 +1,21 @@
+{
+    "version": "20261120-2cbd8f",
+    "description": "交易: MT5",
+    "homepage": "https://www.metatrader5.com/zh/download",
+    "license": "Unknown",
+    "url": "https://github.com/rainte/scoop/releases/download/MT5-20261120-2cbd8f/MT5-x64.zip",
+    "hash": "2993007b400b6796eaaa0712ed3192a72d7c81c6ef0b967f8b75382f6112d3aa",
+    "shortcuts": [
+        [
+            "terminal64.exe",
+            "MT5"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/rainte/scoop",
+        "regex": "MT5-([\\d\\w-]+)"
+    },
+    "autoupdate": {
+        "url": "https://github.com/rainte/scoop/releases/download/MT5-$version/MT5-x64.zip"
+    }
+}
