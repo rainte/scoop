@@ -1,0 +1,78 @@
+{
+  "$schema": "https://sing-box.sagernet.org/schema.json",
+  "dns": {
+    "servers": [
+      {
+        "type": "https",
+        "tag": "proxy-dns",
+        "server": "1.1.1.1",
+        "detour": "proxy"
+      },
+      {
+        "type": "local",
+        "tag": "local-dns"
+      }
+    ],
+    "rules": [
+      {
+        "domain_suffix": [
+          "ua5v.com",
+          "google.com",
+          "google.com.hk",
+          "googleapis.com",
+          "googleusercontent.com",
+          "gstatic.com",
+          "gvt1.com"
+        ],
+        "action": "route",
+        "server": "proxy-dns"
+      }
+    ],
+    "final": "proxy-dns"
+  },
+  "inbounds": [
+    {
+      "type": "tun",
+      "tag": "tun-in",
+      "address": ["172.19.0.1/30"],
+      "auto_route": true,
+      "strict_route": false
+    }
+  ],
+  "outbounds": [
+    {
+      "type": "direct",
+      "tag": "direct"
+    }
+  ],
+  "route": {
+    "final": "proxy",
+    "auto_detect_interface": true,
+    "default_domain_resolver": "local-dns",
+    "rules": [
+      {
+        "action": "sniff"
+      },
+      {
+        "protocol": "dns",
+        "action": "hijack-dns"
+      },
+      {
+        "ip_is_private": true,
+        "outbound": "direct"
+      },
+      {
+        "domain_suffix": [
+          "ua5v.com",
+          "google.com",
+          "google.com.hk",
+          "googleapis.com",
+          "googleusercontent.com",
+          "gstatic.com",
+          "gvt1.com"
+        ],
+        "outbound": "proxy"
+      }
+    ]
+  }
+}

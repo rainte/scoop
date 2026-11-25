@@ -1,0 +1,23 @@
+{
+    "version": "2026.11.25",
+    "description": "交易: MT5",
+    "homepage": "https://www.metatrader5.com/zh/download",
+    "license": "Unknown",
+    "url": "https://github.com/rainte/scoop/releases/download/MT5-latest/MT5.zip",
+    "hash": "4cd0b87304d8437eea6061717dbc95d1c6033c15c5d42151a3893d0a608e3e01",
+    "shortcuts": [
+        [
+            "terminal64.exe",
+            "MT5"
+        ]
+    ],
+    "checkver": {
+        "github": "https://api.github.com/repos/rainte/scoop/releases",
+        "jsonpath": "$[?(@.tag_name == 'MT5-latest')].assets[?(@.name == 'MT5.zip')].updated_at",
+        "regex": "(\\d+)-(\\d+)-(\\d+)",
+        "replace": "${1}.${2}.${3}"
+    },
+    "autoupdate": {
+        "url": "https://github.com/rainte/scoop/releases/download/MT5-latest/MT5.zip"
+    }
+}

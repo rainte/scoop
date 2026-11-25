@@ -1,0 +1,29 @@
+{
+    "version": "7.1.36.176",
+    "description": "播放器: 迅雷影音",
+    "homepage": "https://video.xunlei.com",
+    "license": "Unknown",
+    "url": "https://webcdn.m.qq.com/spcmgr/download/XMPSetup7.1.36.176xmplenovo.exe#/dl.7z",
+    "hash": "209dbba4d1192818bab1c3489a37a4b7671cd2d5c2dfa29b0ad6fa56fe8a4275",
+    "persist": "profiles",
+    "shortcuts": [
+        [
+            "program\\xmp.exe",
+            "迅雷影音"
+        ]
+    ],
+    "checkver": {
+        "url": "https://www.apple.com/library/test/success.html",
+        "script": [
+            "$res = Invoke-WebRequest -UseBasicParsing -Uri 'https://luban.m.qq.com/api/public/software-manager/softwareProxy' -Body 'cmdid=3318&jprxReq[req][soft_id_list]=18973' -Method 'POST'",
+            "$content = $res.Content | ConvertFrom-Json",
+            "$verName = $content.resp.soft_list[0].ver_name",
+            "$fileName = $content.resp.soft_list[0].file_name",
+            "Write-Output \"$verName|$fileName\""
+        ],
+        "regex": "(?<version>[\\d.]+)\\|(?<id>.*)"
+    },
+    "autoupdate": {
+        "url": "https://webcdn.m.qq.com/spcmgr/download/$matchId#/dl.7z"
+    }
+}
