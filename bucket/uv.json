@@ -1,0 +1,41 @@
+{
+    "version": "0.13.10",
+    "description": "Python: uv",
+    "homepage": "https://docs.astral.sh/uv/",
+    "license": "Unknown",
+    "url": "https://github.com/astral-sh/uv/releases/download/0.13.10/uv-x86_64-pc-windows-msvc.zip",
+    "hash": "297b3881fe1adfb922becc2c1613202abb41dc83ea5ff43d472aa087ca1f8683",
+    "bin": [
+        "uv.exe",
+        "uvx.exe",
+        "uvw.exe"
+    ],
+    "env_set": {
+        "UV_CACHE_DIR": "$persist_dir\\cache",
+        "UV_PYTHON_BIN_DIR": "$persist_dir\\python\\shims",
+        "UV_PYTHON_INSTALL_DIR": "$persist_dir\\python\\versions",
+        "UV_TOOL_BIN_DIR": "$persist_dir\\tools\\shims",
+        "UV_TOOL_DIR": "$persist_dir\\tools\\versions"
+    },
+    "installer": {
+        "script": [
+            "Add-Path -Path \"$persist_dir\\python\\shims\" -Global:$global -Force",
+            "Add-Path -Path \"$persist_dir\\tools\\shims\" -Global:$global -Force"
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "Remove-Path -Path \"$persist_dir\\tools\\shims\" -Global:$global -Force",
+            "Remove-Path -Path \"$persist_dir\\python\\shims\" -Global:$global -Force"
+        ]
+    },
+    "checkver": {
+        "github": "https://github.com/astral-sh/uv"
+    },
+    "autoupdate": {
+        "url": "https://github.com/astral-sh/uv/releases/download/$version/uv-x86_64-pc-windows-msvc.zip",
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}

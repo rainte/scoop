@@ -1,0 +1,53 @@
+{
+    "version": "22.81.0.0",
+    "description": "音频: QQMusic",
+    "homepage": "https://y.qq.com",
+    "license": "Unknown",
+    "url": "https://webcdn.m.qq.com/spcmgr/download/QQMusic22.81.3831.1106_txgjhz.exe#/dl.7z",
+    "hash": "c762819b26bd42b259ec4ec47b9470260a3d5a92d909c5ca59d68638c453501e",
+    "shortcuts": [
+        [
+            "QQMusic.exe",
+            "QQ音乐"
+        ]
+    ],
+    "installer": {
+        "script": [
+            "$source = \"$persist_dir\\appdata\"",
+            "$target = \"$env:APPDATA\\Tencent\\QQMusic\"",
+            "if (Test-Path $source) {",
+            "    Remove-Item $target -Force -Recurse -ErrorAction SilentlyContinue",
+            "} else {",
+            "    New-Item -ItemType Directory $source -Force | Out-Null",
+            "    if (Test-Path $target) {",
+            "        Get-ChildItem $target | Move-Item -Destination $source -Force",
+            "        Remove-Item $target",
+            "    }",
+            "}",
+            "New-Item -ItemType Junction -Path $target -Target $source -Force | Out-Null"
+        ]
+    },
+    "post_install": "Copy-Item \"$dir\\QQMusic.tpc\" \"$dir\\instok\"",
+    "uninstaller": {
+        "script": [
+            "$target = \"$env:APPDATA\\Tencent\\QQMusic\"",
+            "if (Test-Path $target) {",
+            "    Remove-Item $target -Force -Recurse",
+            "}"
+        ]
+    },
+    "checkver": {
+        "url": "https://www.apple.com/library/test/success.html",
+        "script": [
+            "$res = Invoke-WebRequest -UseBasicParsing -Uri 'https://luban.m.qq.com/api/public/software-manager/softwareProxy' -Body 'cmdid=3318&jprxReq[req][soft_id_list]=10' -Method 'POST'",
+            "$content = $res.Content | ConvertFrom-Json",
+            "$verName = $content.resp.soft_list[0].ver_name",
+            "$fileName = $content.resp.soft_list[0].file_name",
+            "Write-Output \"$verName|$fileName\""
+        ],
+        "regex": "(?<version>[\\d.]+)\\|(?<id>.*)"
+    },
+    "autoupdate": {
+        "url": "https://webcdn.m.qq.com/spcmgr/download/$matchId#/dl.7z"
+    }
+}
